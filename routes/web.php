@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\backend\crawl\ArticlesController;
+use App\Http\Controllers\backend\crawl\CategoriesController;
+use App\Http\Controllers\backend\crawl\HomeController;
+use App\Http\Controllers\backend\crawl\ItemSchemaController;
+use App\Http\Controllers\backend\crawl\LinksController;
+use App\Http\Controllers\backend\crawl\WebsitesController;
+use Goutte\Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,14 +28,10 @@ Route::group(['namespace'=>'frontend'], function(){
 
     Route::group(['prefix'=>''],function()
         {
-            Route::get('/details1','PostsController@details1')->name('frontend.posts.details1'); 
-            Route::get('/details1/{id}', 'PostsController@getArticleDetails')->name('post-details');
+            Route::get('/tin-tuc','PostsController@details1')->name('frontend.posts.details1'); 
+            Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
             //Route::get('/details2','PostsController@details2')->name('frontend.posts.details2');
         });
-   
-    
-
-  
     //Route::get('/category/{id}', [HomeController::class,'getCategory']);    
 });
 
@@ -40,22 +42,31 @@ Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:
     Route::group(['prefix'=>'posts'],function()
     {
         Route::get('/','PostsController@index')->name('backend.posts.index');
+        Route::get('/diff/{id}','PostsController@diff')->name('backend.posts.diff');
         Route::get('/create','PostsController@create')->name('backend.posts.create');
-        Route::post('/create','PostsController@store');
+        Route::post('/create','PostsController@add');
         Route::get('/update/{id}','PostsController@edit')->name('backend.posts.edit');
         Route::post('/update/{id}','PostsController@update');
         Route::get('/{action}/{id}','PostsController@action')->name('backend.posts.delete');
     });
+    Route::group(['namespace'=>'crawl','prefix'=>'crawl'],function()
+    {
+        Route::get('/','HomeController@index');
+        Route::get('/article-details/{id}', [HomeController::class,'getArticleDetails']);
+        Route::get('/category/{id}', [HomeController::class,'getCategory']);
 
-    Route::get('/crawl', function() {
-        $crawler = Goutte::request('GET', 'https://vatlieuxaydung.org.vn/vlxd-ket-cau-192');
-        $crawler->filter('.result__title .result__a')->each(function ($node) {
-          dump($node->text());
-        });
-        return view('welcome');
+        Route::resource('/websites', WebsitesController::class);
+        Route::resource('/categories', CategoriesController::class);
+        Route::patch('/links/set-item-schema', [LinksController::class,'setItemSchema']);
+        Route::post('/links/scrape',  'LinksController@scrape');
+        Route::get('/links', 'LinksController@index');
+        //Route::resource('/links', LinksController::class);
+        Route::resource('/item-schema', ItemSchemaController::class);
+        Route::resource('/articles', ArticlesController::class);
+
     });
-    
 });
+
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:sanctum']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

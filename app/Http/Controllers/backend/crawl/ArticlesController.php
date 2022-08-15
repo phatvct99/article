@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class ArticlesController extends Controller
     {
         $articles = Article::orderBy('id', 'DESC')->paginate(10);
 
-        return view('dashboard.article.index')->withArticles($articles);
+        return view('crawl.dashboard.article.index')->withArticles($articles);
     }
 
 

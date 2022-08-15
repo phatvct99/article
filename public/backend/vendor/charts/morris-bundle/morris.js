@@ -174,7 +174,7 @@ Licensed under the BSD-2-Clause License.
       gridStrokeWidth: .8,
       gridTextColor: '#71748d',
       gridTextSize: 13,
-      gridTextFamily: 'Circular Std Book',
+      gridTextFamily: 'arial',
       gridTextWeight: 'normal',
       hideHover: false,
       yLabelFormat: null,

@@ -8,12 +8,15 @@ use App\Models\Category;
 use Illuminate\Pagination\Paginator;
 use App\Models\Article;
 use App\Http\Requests\RequestPosts;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
+
     public function index()
     {
-        $posts = Article::orderBy('id', 'DESC')->paginate(20);
+        $posts = Article::orderBy('id', 'DESC')->paginate(10);
         $viewData = [
             'posts' => $posts,
             // 'query' => $posts->query()
@@ -24,31 +27,41 @@ class PostsController extends Controller
 
     public function create()
     {
-        return view('backend.posts.create');
+        $category = Category::get();
+        $viewData = [
+            'category' => $category
+        ];
+        return view('backend.posts.create',$viewData);
     }
 
    
-    public function store(RequestPosts $requestPost)
+    public function add(RequestPosts $requestPost)
     {
-        
         $this -> InsertOrUpdate($requestPost);
-        return redirect()-> back()->with('status', 'Thêm thành công!');
+        return redirect('/admin/posts')->with('status', 'Thêm thành công!');
     }
 
     public function update(RequestPosts $requestPost, $id)
     {
         $this -> InsertOrUpdate($requestPost, $id);
-        return redirect()-> back()->with('status', 'Cập nhật thành công!');
+        return redirect('/admin/posts')->with('status', 'Cập nhật thành công!');
     }
 
     public function edit($id)
     {
         $posts = Article::find($id);
-        return view('backend.posts.update', compact('posts'));
+        $category = Category::get();
+        $viewData = [
+            'posts' => $posts,
+            'category' => $category
+        ];
+        //dd($category);
+        return view('backend.posts.update',$viewData);
     }
 
     public function InsertOrUpdate (RequestPosts $requestPost, $id = '')
     {
+        //Debugbar::disable();
         $code=1;
         try{
             $posts = new Article();
@@ -57,26 +70,25 @@ class PostsController extends Controller
             {
                 $posts = Article::find($id);
             }
-            
             $posts -> name = $requestPost->name;
-            $posts -> slug = $requestPost ->slug;
+            $posts -> slug = $requestPost->slug;
             $posts -> title = $requestPost->title? $requestPost->title : $requestPost->name;
             $posts -> keyword = $requestPost->keyword;
             $posts -> excerpt = $requestPost->excerpt;
             $posts -> content = $requestPost ->content;
             $posts -> image = $requestPost ->image;
             $posts -> category_id = $requestPost ->category_id;
-            // $posts -> hot = $requestPost ->hot;
-            // $posts -> status = $requestPost ->status;
-            // $posts -> active = $requestPost ->active;
-             dd($posts);
+            $posts -> hot = $requestPost ->hot;
+            $posts -> status = $requestPost ->status;
+            ///$posts -> active = $requestPost ->active;
+             //dd($posts);
             $posts -> save();
         }
-        catch(\Exception $exception)
+        catch(Exception $exception)
         {
-            return $code=0;
-            dd($code);
-            Log::error ("[Error insertOrUpdate news]".$exception->getMessage());
+            Debugbar::addThrowable($exception);
+            return $code = 0;
+            //Debugbar::addThrowable($exception);
         };
         
         return $code;
@@ -95,5 +107,24 @@ class PostsController extends Controller
            }
        }
         return redirect( route('backend.posts.index'))->with('status','Xóa bài viết thành công');
+    }
+    public function diff($id){
+
+        $old = DB::table('article_log')
+                ->select('*')
+                ->where('article_id',$id)
+                ->limit(1)->get();
+        $new = DB::table('article')
+            ->select('title','content')
+            ->where('id',$id)->get();
+        $a = json_encode($old, JSON_UNESCAPED_UNICODE);
+        $viewData = [
+            'old' => $old,
+            'new' => $new,
+            'vip' => $a
+        ];
+        //dd($a);
+        //dd($obj->{'old_row_data'});
+        return view('backend.posts-history.hightlight', $viewData);
     }
 }

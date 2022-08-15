@@ -84,7 +84,7 @@
                         <a class="nav-link" href="#" ><i class=" fas fa-chart-bar"></i>Thống kê ADS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" ><i class=" fas fa-arrow-alt-circle-down"></i>Crawl</a>
+                        <a class="nav-link" href="{{ url('admin/crawl')}}" ><i class=" fas fa-arrow-alt-circle-down"></i>Crawl</a>
                     </li>
 
                     <li class="nav-item">

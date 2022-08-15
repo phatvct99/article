@@ -111,7 +111,7 @@ $(function() {
 
                     labels: {
                         fontColor: '#71748d',
-                        fontFamily:'Circular Std Book',
+                        fontFamily:'arial',
                         fontSize: 14,
                     }
             },
@@ -120,14 +120,14 @@ $(function() {
                     xAxes: [{
                 ticks: {
                     fontSize: 14,
-                     fontFamily:'Circular Std Book',
+                     fontFamily:'arial',
                      fontColor: '#71748d',
                 }
             }],
             yAxes: [{
                 ticks: {
                     fontSize: 14,
-                     fontFamily:'Circular Std Book',
+                     fontFamily:'arial',
                      fontColor: '#71748d',
                 }
             }]

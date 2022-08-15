@@ -19,23 +19,27 @@
                   <tr class="border-0">
                      <th class="border-0">Image</th>
                      <th class="border-0">Tên bài viết</th>
+                     <th class="border-0">Diff</th>
                      <th class="border-0" style="width:20px;">Chức năng</th>
-
                   </tr>
                </thead>
                <tbody>
                @if (isset($posts))
-                  @foreach($posts as $posts)
+                  @foreach($posts as $post)
                   <tr>
                      <td>
-                        <div class="m-r-10"><img src="{{ asset($posts->image) }}" alt="" class="" width="60" height="45"></div>
+                        <div class="m-r-10"><img src="{{ asset($post->image) }}" alt="" class="" width="60" height="45"></div>
                      </td>
-                     <td>{{ $posts->title }}</td>
-
+                     <td>{{ $post->title }}</td>
                      <td> 
                         <div class="btn-group ml-auto">
-                           <button class="btn btn-sm btn-outline-light"><a href="{{route ('backend.posts.edit',$posts->id) }}"><i class="far fa-edit"></i></a></button>
-                           <button class="btn btn-sm btn-outline-light"><a href="{{route('backend.posts.delete',['delete',$posts->id])}}"><i class="far fa-trash-alt"></i></a></button>
+                           <button class="btn btn-sm btn-outline-light"><a href="{{route ('backend.posts.diff',$post->id) }}"><i class="fas fa-eye"></i></a></button>
+                        </div>
+                     </td>
+                     <td> 
+                        <div class="btn-group ml-auto">
+                           <button class="btn btn-sm btn-outline-light"><a href="{{route ('backend.posts.edit',$post->id) }}"><i class="far fa-edit"></i></a></button>
+                           <button class="btn btn-sm btn-outline-light"><a href="{{route('backend.posts.delete',['delete',$post->id])}}"><i class="far fa-trash-alt"></i></a></button>
                         </div>
                      </td>
                   </tr>
@@ -43,9 +47,17 @@
                @endif
                </tbody>
             </table>
+            
+            <div class="row">
+               <div class="col-sm-12 col-md-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                     <ul class="pagination">
+                     {{$posts->links('vendor.pagination.bootstrap-4')}}
+                     </ul>
+                  </div>
+               </div>
+            </div>
 
-
-        </div>
          </div>
       </div>
    </div>

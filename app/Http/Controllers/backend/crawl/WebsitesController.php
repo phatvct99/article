@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\Website;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class WebsitesController extends Controller
     {
         $websites = Website::orderBy('id', 'DESC')->paginate(10);
 
-        return view('dashboard.website.index')->withWebsites($websites);
+        return view('crawl.dashboard.website.index')->withWebsites($websites);
     }
 
     /**
@@ -26,7 +26,7 @@ class WebsitesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.website.create');
+        return view('crawl.dashboard.website.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class WebsitesController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.website.edit')->withWebsite(Website::find($id));
+        return view('crawl.dashboard.website.edit')->withWebsite(Website::find($id));
     }
 
     /**
@@ -117,5 +117,22 @@ class WebsitesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    function uploadFile($name, $destination, $request = null)
+    {
+        try {
+
+            $image = $request->file($name);
+
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+
+            $image->move($destination, $fileName);
+
+            return ["state" => 1, "filename" => $fileName];
+        } catch (\Exception $ex) {
+
+            return ["state" => 0, "filename" => ""];
+
+        }
     }
 }

@@ -58,12 +58,16 @@
                     @endforeach
                     @endif
                 </div>
+
                 <div class="row mt-20-r mb-30">
                     <div class="col-sm-6 col-12">
                         <div class="pagination-btn-wrapper text-center--xs mb15--xs">
-                            <ul>
-                            {{ $posts->links() }}
-                            </ul>
+                        {{ $posts->links('vendor.pagination.bootstrap-4') }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="pagination-result text-right pt-10 text-center--xs">
+                            <p class="mb-none">Page 1 of 4</p>
                         </div>
                     </div>
                 </div>

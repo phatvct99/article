@@ -33,7 +33,10 @@
                         </div>
                         @endif
                     <h2 class="title-semibold-dark size-c30">{{$posts->title}}</h2>
-                    {{!! $posts->content!!}}
+                    
+                    <div class="article-content">
+                        {!! $posts->content !!}
+                    </div>
                     <ul class="blog-tags item-inline">
                         <li>Tags</li>
                         <li>
@@ -83,28 +86,47 @@
                         </ul>
                         
                     </div>
-                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
+                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center banner-ads">
                         <a href="#">
-                            <img src="../frontend/../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
                         </a>
                     </div>
-                    <div class="row no-gutters divider blog-post-slider">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <a href="#" class="prev-article">
-                                <i class="fa fa-angle-left" aria-hidden="true"></i>Previous article</a>
-                            <h3 class="title-medium-dark pr-50">Wonderful Outdoors Experience: Eagle Spotting in Alaska</h3>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-right">
-                            <a href="#" class="next-article">Next article
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
-                            <h3 class="title-medium-dark pl-50">The only thing that overcomes hard luck is hard work</h3>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="row">
+                            @if(isset($posts_related))
+                            @foreach($posts_related as $post)
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="media media-none--lg mb-30">
+                                    <div class="position-relative width-40">
+                                        <a href="single-news-1.html" class="img-opacity-hover img-overlay-70">
+                                            <img src="frontend/img/news/news141.jpg" alt="news" class="img-fluid">
+                                        </a>
+                                        <div class="topic-box-top-xs">
+                                            <div class="topic-box-sm color-cod-gray mb-20">Adventure</div>
+                                        </div>
+                                    </div>
+                                    <div class="media-body p-mb-none-child media-margin30">
+                                        <h3 class="title-semibold-dark size-lg mb-15">
+                                            <a href="{{ route('post-details',$post ->id)}}">{{ $post->title }}</a>
+                                        </h3>
+                                        @if(isset($post->excerpt))
+                                            <article>
+                                                <p>{{ $post->excerpt }}</p>
+                                            </article>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
+                
                 <div class="sidebar-box">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
@@ -232,14 +254,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-box image-ads">
+                </div>
+
+                <div class="sidebar-box image-ads">
                         <div class="ne-banner-layout1 text-center">
                             <a href="#">
                                 <img src="../frontend/../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
                             </a>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
@@ -248,10 +271,10 @@
 @section('js')
 <script>
 window.onscroll = function() {myFunction()};
-
+console.log(window.scrollY)
 function myFunction() {
   if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    var footerElement = document.getElementById("asd");
+    var footerElement = document.getElementById("footerPost");
     var footerPosition = footerElement.offsetTop;
     if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
       document.querySelector(".image-ads").style.position = "fixed";

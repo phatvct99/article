@@ -4,13 +4,10 @@
    function ChangeToSlug()
          {
                var title, slug;
-
                //Lấy text từ thẻ input title 
                title = document.getElementById("title").value;
-
                //Đổi chữ hoa thành chữ thường
                slug = title.toLowerCase();
-
                //Đổi ký tự có dấu thành không dấu
                slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
                slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
@@ -47,13 +44,22 @@
          </div>
       @endif
       <div class="card-body">
-      <form id="validationform" action="" method="POST" enctype="multipart-form-data">
-            {{ csrf_field() }}
-
+      <form id="validationform" action="{{ route('backend.posts.create') }}" method="POST">
+            @csrf
+            <div class="form-group">
+               <label class="col-12 col-sm-3 col-form-label text-sm-right">Loại bài viết</label>
+               <select class="selectpicker" name="category_id" data-style="btn-success" id="">
+               @if(isset($category))
+                  @foreach($category as $categories)
+                  <option value="{{ $categories->id }}">{{ $categories->title }}</option>
+                  @endforeach
+               @endif
+               </select>
+            </div>
             <div class="form-group row">
                <label class="col-12 col-sm-3 col-form-label text-sm-right">Tên tin tức</label>
                <div class="col-12 col-sm-8 col-lg-6">
-                  <input  class="form-control" type="text" name="n_name" id = "title"  value="{{ old('n_name',isset($posts->n_name)?$posts->n_name:'')}}" onkeyup="ChangeToSlug();">
+                  <input  class="form-control" type="text" name="name" id = "title"  value="{{ old('n_name',isset($posts->name)?$posts->n_name:'')}}" onkeyup="ChangeToSlug();">
                   <p style="color:red">{{ $errors->first('n_name') }}</p>
                </div>
             </div>

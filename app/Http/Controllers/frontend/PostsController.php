@@ -5,9 +5,15 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Constant;
 
 class PostsController extends Controller
 {
+    public function boot()
+    {
+        Paginator::useBootstrap();
+    }
+    
     public function details1()
     {
         $posts = Article::orderBy('id', 'DESC')->paginate(9);
@@ -27,19 +33,28 @@ class PostsController extends Controller
 
     public function getArticleDetails($id)
     {
+        Article::find($id)->increment('total_view');
         $posts = Article::find($id);
-        $content = $posts->content;
-        $pattern = '/<\s*(h.*?|p.*?|div.*?)[^>]*>([^<]*)<\s*\/\s*(h.*?|p|div)\s*>/';
-        
-        $regex = preg_match_all($pattern,$content,$result);
+        $posts_related = Article::orderBy('id', 'DESC')->paginate(5);
+
+        $pattern = Constant::REGEX_CONTENT;
+
+        $regex = preg_match_all($pattern,$posts->content,$result);
+        $content = $result[0];
+
+        $html = '<img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">';
+        $replace = preg_replace($pattern, $html, $posts->content);
+
+        //dd($content);
         $viewData = [
             'posts' => $posts,
-            //'result' => $result,
-            // 'query' => $posts->query()
+            'content' => $content,
+            'posts_related' => $posts_related,
+            // 'html' => $html,
+            // 'replace' => $replace
         ];
-        //dd($result[0]);
 
-        return view('frontend.posts.postdetail',$viewData)->withArticle($posts);
+        return view('frontend.posts.postdetail',$viewData);
     }
 
     public function getCategory($id)

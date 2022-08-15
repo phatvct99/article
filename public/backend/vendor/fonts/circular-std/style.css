@@ -9,10 +9,10 @@ src: local('Circular Std Black'), url('CircularStd-Black.woff') format('woff');
 
 
 @font-face {
-font-family: 'Circular Std Book';
+font-family: 'arial';
 font-style: normal;
 font-weight: normal;
-src: local('Circular Std Book'), url('CircularStd-Book.woff') format('woff');
+src: local('arial'), url('CircularStd-Book.woff') format('woff');
 }
 
 
@@ -49,10 +49,10 @@ src: local('Circular Std Bold Italic'), url('CircularStd-BoldItalic.woff') forma
 
 
 @font-face {
-font-family: 'Circular Std Book Italic';
+font-family: 'arial Italic';
 font-style: normal;
 font-weight: normal;
-src: local('Circular Std Book Italic'), url('CircularStd-BookItalic.woff') format('woff');
+src: local('arial Italic'), url('CircularStd-BookItalic.woff') format('woff');
 }
 
 

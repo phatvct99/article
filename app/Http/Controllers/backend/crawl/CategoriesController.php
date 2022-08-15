@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class CategoriesController extends Controller
     {
         $cats = Category::orderBy('id', 'DESC')->paginate(10);
 
-        return view('dashboard.category.index')->withCategories($cats);
+        return view('crawl.dashboard.category.index')->withCategories($cats);
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create');
+        return view('crawl.dashboard.category.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.category.edit')->withCategory(Category::find($id));
+        return view('crawl.dashboard.category.edit')->withCategory(Category::find($id));
     }
 
     /**

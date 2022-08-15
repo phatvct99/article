@@ -1,6 +1,6 @@
 /*-- Chart --*/
 .c3 svg {
-  font-size: 14px; font-family: 'Circular Std Book';
+  font-size: 14px; font-family: 'arial';
   -webkit-tap-highlight-color:#71748d; fill: #71748d; }
 
 .c3 path, .c3 line {
@@ -31,7 +31,7 @@
 
 .c3-chart-arc text {
   fill: #fff;
-   font-size: 13px; font-family: 'Circular Std Book'; }
+   font-size: 13px; font-family: 'arial'; }
 
 /*-- Axis --*/
 /*-- Grid --*/
@@ -93,7 +93,7 @@
 /*-- Select - Drag --*/
 /*-- Legend --*/
 .c3-legend-item {
-   font-size: 14px; font-family: 'Circular Std Book'; }
+   font-size: 14px; font-family: 'arial'; }
 
 .c3-legend-item-hidden {
   opacity: 0.15; }
@@ -106,7 +106,7 @@
 
 /*-- Title --*/
 .c3-title {
-  font-size: 14px;font-family: 'Circular Std Book'; }
+  font-size: 14px;font-family: 'arial'; }
 
 /*-- Tooltip --*/
 .c3-tooltip-container {

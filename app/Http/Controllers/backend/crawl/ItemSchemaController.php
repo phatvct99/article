@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\ItemSchema;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class ItemSchemaController extends Controller
     {
         $itemSchema = ItemSchema::orderBy('id', 'DESC')->paginate(10);
 
-        return view('dashboard.item_schema.index')->withItemSchemas($itemSchema);
+        return view('crawl.dashboard.item_schema.index')->withItemSchemas($itemSchema);
     }
 
     /**
@@ -26,7 +26,7 @@ class ItemSchemaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.item_schema.create');
+        return view('crawl.dashboard.item_schema.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class ItemSchemaController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.item_schema.edit')->withItemSchema(ItemSchema::find($id));
+        return view('crawl.dashboard.item_schema.edit')->withItemSchema(ItemSchema::find($id));
     }
 
     /**

@@ -49,7 +49,7 @@ $(function() {
 
                 labels: {
                     fontColor: '#71748d',
-                    fontFamily: 'Circular Std Book',
+                    fontFamily: 'arial',
                     fontSize: 14,
                 }
             },
@@ -65,7 +65,7 @@ $(function() {
                     },
                     ticks: {
                         fontSize: 14,
-                        fontFamily: 'Circular Std Book',
+                        fontFamily: 'arial',
                         fontColor: '#71748d',
                     }
                 }],
@@ -75,7 +75,7 @@ $(function() {
                     },
                     ticks: {
                         fontSize: 14,
-                        fontFamily: 'Circular Std Book',
+                        fontFamily: 'arial',
                         fontColor: '#71748d',
                     }
                 }]

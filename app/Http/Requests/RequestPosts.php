@@ -26,7 +26,7 @@ class RequestPosts extends FormRequest
         return [           
             // 'name' => 'required|min:5|max:200',
             // 'description' => 'required|min:5',
-             'slug' => 'required',
+            // 'slug' => 'required',
             // 'keyword_seo' => 'required|min:2|max:1150'
         ];
     }

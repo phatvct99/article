@@ -383,7 +383,7 @@ const isSupportAmd = typeof define === 'function' && __webpack_require__(2); // 
  * @return {Boolean}
  */
 
-const genericFontFamilies = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
+const genericFontFamilies = ['arial', 'serif', 'monospace', 'cursive', 'fantasy'];
 
 function validFontName(fontName) {
   return external_jQuery_default.a.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? `'${fontName}'` : fontName;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\Category;
 use App\Models\ItemSchema;
@@ -23,7 +23,7 @@ class LinksController extends Controller
 
         $itemSchemas = ItemSchema::all();
 
-        return view('dashboard.link.index')->withLinks($links)->withItemSchemas($itemSchemas);
+        return view('crawl.dashboard.link.index')->withLinks($links)->withItemSchemas($itemSchemas);
     }
 
     /**
@@ -36,7 +36,7 @@ class LinksController extends Controller
         $categories = Category::all();
         $websites = Website::all();
 
-        return view('dashboard.link.create')->withCategories($categories)->withWebsites($websites);
+        return view('crawl.dashboard.link.create')->withCategories($categories)->withWebsites($websites);
     }
 
     /**
@@ -91,7 +91,7 @@ class LinksController extends Controller
         $categories = Category::all();
         $websites = Website::all();
 
-        return view('dashboard.link.edit')->withLink(Link::find($id))->withCategories($categories)->withWebsites($websites);
+        return view('crawl.dashboard.link.edit')->withLink(Link::find($id))->withCategories($categories)->withWebsites($websites);
     }
 
     /**

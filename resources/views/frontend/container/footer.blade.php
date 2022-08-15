@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer-area-top" id ="asd">
+    <div class="footer-area-top" id ="footerPost">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
