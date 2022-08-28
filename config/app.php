@@ -29,6 +29,12 @@ return [
     'env' => env('APP_ENV', 'production'),
 
     /*
+     Date Format 
+    */
+    'date_format' => 'dd-mm-yyyy',
+    'date_format_javascript' => 'DD/MM/YYYY',
+
+    /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------

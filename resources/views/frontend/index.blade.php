@@ -431,6 +431,17 @@
 
                 </div>
                 <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
+                    <div class="newsletter-area bg-primary" style="">
+                        <h2 class="title-medium-light size-xl">Tra cứu thông tin doanh nghiệp</p>
+                        <div class="input-group stylish-input-group">
+                            <input type="text" placeholder="Nhập mã số thuế, tên công ty, ..." class="form-control">
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
                     <div class="sidebar-box">
                         <div class="ne-banner-layout1 text-center">
                             <a href="#">
@@ -1013,18 +1024,6 @@
                                 <img src="frontend/img/banner/banner6.jpg" alt="ad" class="img-fluid">
                             </a>
                         </div>
-                        <div class="newsletter-area bg-primary" style="">
-                            <h2 class="title-medium-light size-xl">Subscribe to our mailing list to get the new updates!</h2>
-                            <p>Subscribe our newsletter to stay updated every moment</p>
-                            <div class="input-group stylish-input-group">
-                                <input type="text" placeholder="Enter your mail" class="form-control">
-                                <span class="input-group-addon">
-                                    <button type="submit">
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -1040,7 +1039,6 @@
     $(window).on('scroll', function() {
         $topOffset = $(this).scrollTop();
         console.log($topOffset);
-    
     });
 </script>
 <script>

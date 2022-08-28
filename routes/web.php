@@ -27,11 +27,13 @@ Route::group(['namespace'=>'frontend'], function(){
     Route::get('/','HomeController@index')->name('frontend.home.index');
 
     Route::group(['prefix'=>''],function()
-        {
-            Route::get('/tin-tuc','PostsController@details1')->name('frontend.posts.details1'); 
-            Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
-            //Route::get('/details2','PostsController@details2')->name('frontend.posts.details2');
-        });
+    {
+        Route::get('/tin-tuc','PostsController@details1')->name('frontend.posts.details1'); 
+        Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
+        Route::get('/tra-cuu-doanh-nghiep','BusinessController@index')->name('frontend.business.index');
+        Route::get('/tra-cuu-doanh-nghiep-{tax}-{slug}', 'BusinessController@detail')->name('frontend.business.detail');
+    });
+    
     //Route::get('/category/{id}', [HomeController::class,'getCategory']);    
 });
 

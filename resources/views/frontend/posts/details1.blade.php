@@ -65,11 +65,6 @@
                         {{ $posts->links('vendor.pagination.bootstrap-4') }}
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="pagination-result text-right pt-10 text-center--xs">
-                            <p class="mb-none">Page 1 of 4</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -89,21 +84,28 @@
                         </a>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
 </section>
+
 @endsection
 @section('js')
+<script>
+    var $window = $(window);
+    $(window).on('scroll', function() {
+        $topOffset = $(this).scrollTop();
+        console.log($topOffset);
+    });
+</script>
 <script>
 window.onscroll = function() {myFunction()};
 
 function myFunction() {
   if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    var footerElement = document.getElementById("asd");
+    var footerElement = document.getElementById("footerPost");
     var footerPosition = footerElement.offsetTop;
-    if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
+    if (document.documentElement.scrollTop > 700 && document.documentElement.scrollTop < (footerPosition- 500) ) {
       document.querySelector(".image-ads").style.position = "fixed";
     } else {
       document.querySelector(".image-ads").style.position = "";

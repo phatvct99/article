@@ -53,7 +53,7 @@
                                         <a href="post-style-3.html">Sports</a>
                                     </li>
                                     <li>
-                                        <a href="post-style-4.html">Fashion</a>
+                                        <a href="{{route('frontend.business.index')}}">Tra cứu doanh nghiệp</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -69,11 +69,6 @@
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </button>
                                     </form>
-                                </li>
-                                <li>
-                                    <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
-                                        <i class="fa fa-user" aria-hidden="true"></i>Sign in
-                                    </button>
                                 </li>
                                 <li>
                                     <div id="side-menu-trigger" class="offcanvas-menu-btn">

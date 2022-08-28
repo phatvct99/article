@@ -13,7 +13,7 @@ class PostsController extends Controller
     {
         Paginator::useBootstrap();
     }
-    
+
     public function details1()
     {
         $posts = Article::orderBy('id', 'DESC')->paginate(9);
@@ -21,7 +21,7 @@ class PostsController extends Controller
             'posts' => $posts,
             // 'query' => $posts->query()
         ];
-        return view('frontend.posts.details1',$viewData)->withArticles($posts);
+        return view('frontend.posts.details1', $viewData)->withArticles($posts);
     }
     public function details2()
     {
@@ -37,32 +37,47 @@ class PostsController extends Controller
         $posts = Article::find($id);
         $posts_related = Article::orderBy('id', 'DESC')->paginate(5);
 
-        $pattern = Constant::REGEX_CONTENT;
-
-        $regex = preg_match_all($pattern,$posts->content,$result);
-        $content = $result[0];
-
-        $html = '<img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">';
-        $replace = preg_replace($pattern, $html, $posts->content);
+        $content = SELF::replaceContent($posts);
 
         //dd($content);
         $viewData = [
             'posts' => $posts,
             'content' => $content,
             'posts_related' => $posts_related,
-            // 'html' => $html,
-            // 'replace' => $replace
         ];
 
-        return view('frontend.posts.postdetail',$viewData);
+        return view('frontend.posts.postdetail', $viewData);
     }
 
-    public function getCategory($id)
+    public function replaceContent($posts)
     {
-        $category = Category::find($id);
 
-        $articles = Article::where('category_id', $id)->orderBy('id', 'DESC')->paginate(20);
+        $patternScript = Constant::REGEX_SCRIPT;
 
-        return view('category')->withArticles($articles)->withCategory($category);
+        $patternStyle = Constant::REGEX_STYLE;
+
+        $blank = '';
+
+        if ($posts->content) {
+
+            $replaceScript = preg_replace($patternScript, $blank, $posts->content);
+
+            $replaceStyle = preg_replace($patternStyle, $blank, $replaceScript);
+        } else {
+
+            $replaceStyle = '<h2> No data.</h2>';
+        }
+
+        $result = $replaceStyle;
+        return $result;
     }
+
+    // public function getCategory($id)
+    // {
+    //     $category = Category::find($id);
+
+    //     $articles = Article::where('category_id', $id)->orderBy('id', 'DESC')->paginate(20);
+
+    //     return view('category')->withArticles($articles)->withCategory($category);
+    // }
 }

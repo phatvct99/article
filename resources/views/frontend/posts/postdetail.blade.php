@@ -1,23 +1,6 @@
 @extends('layouts.frontend')
 @section ('content')      
-<!-- News Info List Area End Here -->
-<!-- Breadcrumb Area Start Here -->
-<section class="breadcrumbs-area" style="background-image: url('../frontend/img/banner/breadcrumbs-banner.jpg');">
-    <div class="container">
-        <div class="breadcrumbs-content">
-            <h1>Business</h1>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a> -</li>
-                <li>
-                    <a href="#">Business</a> -</li>
-                <li>Single post style_01</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- Breadcrumb Area End Here -->
-<!-- News Details Page Area Start Here -->
+
 <section class="bg-body section-space-less30">
     <div class="container">
         <div class="row">
@@ -35,7 +18,7 @@
                     <h2 class="title-semibold-dark size-c30">{{$posts->title}}</h2>
                     
                     <div class="article-content">
-                        {!! $posts->content !!}
+                        {!! $content !!}
                     </div>
                     <ul class="blog-tags item-inline">
                         <li>Tags</li>
@@ -86,7 +69,7 @@
                         </ul>
                         
                     </div>
-                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center banner-ads">
+                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
                         <a href="#">
                             <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
                         </a>
@@ -124,9 +107,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
-                
+
                 <div class="sidebar-box">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
@@ -259,29 +241,52 @@
                 <div class="sidebar-box image-ads">
                         <div class="ne-banner-layout1 text-center">
                             <a href="#">
-                                <img src="../frontend/../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                                <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
                             </a>
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+<div id="banner-ads-bottom">
+    <div class="ne-banner-layout1 text-center">
+        <a href="#">
+            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
+        </a>
+    </div>
+</div>
 @endsection
 @section('js')
+<script>
+    var $window = $(window);
+    $(window).on('scroll', function() {
+        $topOffset = $(this).scrollTop();
+        console.log($topOffset);
+    });
+</script>
 <script>
 window.onscroll = function() {myFunction()};
 console.log(window.scrollY)
 function myFunction() {
-  if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    var footerElement = document.getElementById("footerPost");
-    var footerPosition = footerElement.offsetTop;
-    if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
-      document.querySelector(".image-ads").style.position = "fixed";
-    } else {
-      document.querySelector(".image-ads").style.position = "";
+    if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        var footerElement = document.getElementById("footerPost");
+        var footerPosition = footerElement.offsetTop;
+        if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
+        document.querySelector(".image-ads").style.position = "fixed";
+        } else {
+        document.querySelector(".image-ads").style.position = "";
+        }
     }
-  }
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            document.getElementById("banner-ads-bottom").style.top = "60px";
+            document.getElementById("banner-ads-bottom").style.position = "fixed";
+        } else {
+            document.getElementById("banner-ads-bottom").style.top = "-50px";
+        }
+    }
 }
 </script>
+
 @endsection

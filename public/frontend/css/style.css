@@ -901,6 +901,20 @@ ul.item2-inline li:last-child {
   top: 75px;
   bottom: auto;
 }
+
+.content-business {
+  padding: 20px;
+  border: 10px;
+  border-bottom: 1px solid lightskyblue;
+}
+.title-company{
+  margin:5px 0;
+}
+#banner-ads-bottom {
+  clear: both;
+  z-index: 99999;
+  background: white;
+}
 /* #preloader {
   background: #054ada url('img/preloader.gif') no-repeat scroll center center;
   height: 100%;
@@ -1403,6 +1417,9 @@ ul.item2-inline li:last-child {
   width: 100%;
   height: 2px;
 }
+.company-detail ul li{
+  line-height: 35px;
+}
 .topic-box {
   display: inline-block;
   position: relative;
@@ -1431,9 +1448,9 @@ ul.item2-inline li:last-child {
   display: inline-block;
   position: relative;
   color: #ffffff;
-  height: 40px;
-  padding: 0 20px;
-  line-height: 40px;
+  height: 35px;
+  padding: 0 10px;
+  line-height: 35px;
   text-align: center;
   text-transform: capitalize;
   font-weight: 600;
@@ -4873,7 +4890,7 @@ ul.address-info li i {
   margin-right: 5px;
   display: inline-block;
 }
-.pagination-btn-wrapper ul li a {
+.pagination-btn-wrapper ul li {
   font-weight: 600;
   font-size: 16px;
   background-color: #f8f8f8;
@@ -4888,30 +4905,22 @@ ul.address-info li i {
   -ms-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  padding: 5px;
 }
-
-.pagination-btn-wrapper ul li span {
-  font-weight: 600;
-  font-size: 16px;
-  background-color: #f8f8f8;
+.pagination-btn-wrapper ul li a{
   color: #111111;
-  display: inline-block;
-  height: 40px;
-  width: 44px;
-  text-align: center;
-  line-height: 30px;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -ms-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
 }
 
-.pagination-btn-wrapper ul li a:hover {
+.pagination-btn-wrapper ul li:hover {
   background-color: #054ada;
   color: #ffffff;
 }
-.pagination-btn-wrapper ul .active a {
+
+.pagination-btn-wrapper ul li a:hover {
+  color: #ffffff;
+}
+
+.pagination-btn-wrapper ul .active {
   background-color: #054ada;
   color: #ffffff;
 }

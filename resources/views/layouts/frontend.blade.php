@@ -31,22 +31,6 @@
             <!-- News Feed Area Start Here -->
             @include("frontend.container.header2")
             <!-- News Feed Area End Here -->
-            <!-- News Info List Area Start Here -->
-            <section class="bg-body">
-                <div class="container">
-                    <ul class="news-info-list text-center--md">
-                        <li>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>Australia</li>
-                        <li>
-                            <i class="fa fa-calendar" aria-hidden="true"></i><span id="current_date"></span></li>
-                        <li>
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>Last Update 11.30 am</li>
-                        <li>
-                            <i class="fa fa-cloud" aria-hidden="true"></i>29&#8451; Sydney, Australia</li>
-                    </ul>
-                </div>
-            </section>
-            <!-- News Info List Area End Here -->
             <!-- News Slider Area Start Here -->
               
             <!-- News Slider Area End Here -->
