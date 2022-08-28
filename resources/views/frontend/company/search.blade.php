@@ -6,40 +6,29 @@
 <section class="bg-body section-space-less30">
     <div class="container">
         <div class="row">
-        
             <div class="col-lg-8 col-md-12">
-            @if(isset($company))
-                <h1>Thông tin doanh nghiệp</h1>
                 <div class="bg-accent p-35-r mb-50 item-shadow-1">
-                   <div class="company-detail">
-                        <ul>
-                            <li>
-                                <h2>{{$company->name}}</h2>
-                            </li>
-                            <li>Mã số thuế: {{$company->tax}}</li>
-                            <li>Địa chỉ: {{$company->address}}</li>
-                        </ul>
-                   </div>
+                    <div class="media-body pt-10 media-margin30">
+                        <div class="newsletter-area bg-primary">
+                            <h2 class="title-medium-light size-xl pl-30 pr-30">Tra cứu thông tin doanh nghiệp trên toàn quốc!</h2>
+                            <p>Nhập mã số thuế, tên công ty, người đại diện</p>
+                            <form action="{{ route('search') }}" method="GET" >
+                                <div class="input-group stylish-input-group">
+                                    <input type="text" name="search" placeholder="Tìm kiếm" class="form-control" value={{old('search')}}>
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-accent p-35-r mb-50 item-shadow-1">
-                    <div class="company-detail">
-                        <ul>
-                            <li>Đại diện pháp luật: {{$company->chairman}}</li>
-                            <li>Điện thoại: {{$company->phone}}</li>
-                            <li>Ngày hoạt động: {{$company->date->format('d-m-Y')}}</li>
-                            @if($company->status != NULL)
-                            <li>Ngành nghề chính: {{$company->tax}}</li>
-                            @endif
-                            @if($company->status != NULL)
-                            <li>Trạng thái: {{$company->status}}</li>
-                            @endif
-                        </ul>
-                   </div>
-                </div>
-                @endif
                 <div class="row">
-                @if(isset($companyRelate))
-                @foreach($companyRelate as $com)
+                @if(isset($company))
+                @foreach($company as $com)
                     <div class="col-sm-12 col-12">
                         <div class="content-business">
                             <div class="company">
@@ -60,8 +49,8 @@
                 @endforeach
                 @endif
                 </div>
-            </div>
 
+            </div>
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
@@ -80,14 +69,15 @@
             </div>
         </div>
     </div>
-</section>
-<div id="banner-ads-bottom">
+    <div id="banner-ads-bottom">
     <div class="ne-banner-layout1 text-center">
         <a href="#">
             <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
         </a>
     </div>
 </div>
+</section>
+
 @endsection
 @section('js')
 <script>
@@ -111,7 +101,7 @@ function myFunction() {
         }
     }
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if ((document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) && document.documentElement.scrollTop < 2900) {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
             document.getElementById("banner-ads-bottom").style.top = "60px";
             document.getElementById("banner-ads-bottom").style.position = "fixed";
         } else {

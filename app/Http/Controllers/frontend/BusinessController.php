@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Business;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class BusinessController extends Controller
 {
     public function index(){
-        $company = Company::orderBy('date', 'DESC')->paginate(20);
+        $company = Business::orderBy('date', 'DESC')->paginate(20);
 
         $viewData = [
             'company' => $company,
@@ -22,14 +22,29 @@ class BusinessController extends Controller
 
     public function detail($tax, $slug){
 
-        $company = Company::where('tax', $tax)
+        $company = Business::where('tax', $tax)
                             ->where('slug', $slug)->first();
-        $companyRelate = Company::orderBy('date', 'DESC')->take(10)->get();
+        $companyRelate = Business::orderBy('date', 'DESC')->take(10)->get();
         $viewData = [
             'company' => $company,
             'companyRelate' => $companyRelate,
         ];
         // dd($companyRelate);
         return view('frontend.company.detail',$viewData);
+    }
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+        $business = Business::query()->where('tax','LIKE', "%{$search}%")
+                    ->orWhere('name','LIKE', "%{$search}%")
+                    ->orWhere('chairman','LIKE', "%{$search}%")->get();
+        $viewData = [
+            'company' => $business,
+            // 'query' => $posts->query()
+        ];
+        //dd($business);
+        return view('frontend.company.search',$viewData);
+
     }
 }

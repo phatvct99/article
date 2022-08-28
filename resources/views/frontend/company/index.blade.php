@@ -12,14 +12,17 @@
                         <div class="newsletter-area bg-primary">
                             <h2 class="title-medium-light size-xl pl-30 pr-30">Tra cứu thông tin doanh nghiệp trên toàn quốc!</h2>
                             <p>Nhập mã số thuế, tên công ty, người đại diện</p>
-                            <div class="input-group stylish-input-group">
-                                <input type="text" placeholder="Tìm kiếm" class="form-control">
-                                <span class="input-group-addon">
-                                    <button type="submit">
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </button>
-                                </span>
-                            </div>
+                            <form action="{{ route('search') }}" method="GET" >
+                                <div class="input-group stylish-input-group">
+                                    <input type="text" name="search" placeholder="Tìm kiếm" class="form-control" value={{old('search')}}>
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

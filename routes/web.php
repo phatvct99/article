@@ -32,6 +32,7 @@ Route::group(['namespace'=>'frontend'], function(){
         Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
         Route::get('/tra-cuu-doanh-nghiep','BusinessController@index')->name('frontend.business.index');
         Route::get('/tra-cuu-doanh-nghiep-{tax}-{slug}', 'BusinessController@detail')->name('frontend.business.detail');
+        Route::get('/tra-cuu', 'BusinessController@search')->name('search');
     });
     
     //Route::get('/category/{id}', [HomeController::class,'getCategory']);    
