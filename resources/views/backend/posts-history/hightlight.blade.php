@@ -31,7 +31,7 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
-                <h1>DIFF HIGHTLIGHT</h1>
+                <h1 class="card-header">DIFF HIGHTLIGHT</h1>
                 <div id=""></div>
             </div>
         </div>
@@ -54,6 +54,7 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
                             </div>
                         </div>
                     </div>
+                    @if($old->count() > 0)
                     <div class="row" style="background-color: #ccffd8;">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group" >
@@ -68,6 +69,9 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
                             </div>
                         </div>
                     </div>
+                    @endif
+                    <!-- <?php dump($old)?> -->
+                    @if($old->count() > 0)
                     <div class="row" style="background-color: #ccffd8;">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group" >
@@ -82,6 +86,7 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
@@ -154,6 +159,7 @@ ins {
 del {
     background-color: #ff00009c;
     color: #000000c7;
+    text-decoration: none !important;
 }
 .different-hightlight{
     display: block;

@@ -17,18 +17,20 @@
                                 <h2>{{$company->name}}</h2>
                             </li>
                             <li>Mã số thuế: {{$company->tax}}</li>
-                            <li>Địa chỉ: {{$company->address}}</li>
+                            <li>Địa chỉ: <a href="https://www.google.com/maps/place/{{$address}}" target="_blank">{{$company->address}}</a></li>
                         </ul>
                    </div>
                 </div>
                 <div class="bg-accent p-35-r mb-50 item-shadow-1">
                     <div class="company-detail">
                         <ul>
-                            <li>Đại diện pháp luật: {{$company->chairman}}</li>
+                        <ul>
+                            <li>Đại diện pháp luật: <strong>{{$company->chairman}}</strong></li>
                             <li>Điện thoại: {{$company->phone}}</li>
                             <li>Ngày hoạt động: {{$company->date->format('d-m-Y')}}</li>
-                            @if($company->status != NULL)
-                            <li>Ngành nghề chính: {{$company->tax}}</li>
+                            <li>Ngày cấp giấy phép: {{$company->date->format('d-m-Y')}}</li>
+                            @if($company->business != NULL)
+                            <li>Ngành nghề chính: <a href="">{{$company->business}}</a> </li>
                             @endif
                             @if($company->status != NULL)
                             <li>Trạng thái: {{$company->status}}</li>
@@ -66,16 +68,9 @@
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
                         </a>
                     </div>
-                </div>
-
-                <div class="sidebar-box">
-                    <div class="topic-border color-cod-gray mb-25">
-                        <div class="topic-box-lg color-cod-gray">Tỉnh thành</div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -84,19 +79,15 @@
 <div id="banner-ads-bottom">
     <div class="ne-banner-layout1 text-center">
         <a href="#">
-            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
+            <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
         </a>
     </div>
+    <br>
 </div>
+
 @endsection
 @section('js')
-<script>
-    var $window = $(window);
-    $(window).on('scroll', function() {
-        $topOffset = $(this).scrollTop();
-        console.log($topOffset);
-    });
-</script>
+
 <script>
 window.onscroll = function() {myFunction()};
 console.log(window.scrollY)
@@ -104,18 +95,18 @@ function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");
         var footerPosition = footerElement.offsetTop;
-        if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
+        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
         document.querySelector(".image-ads").style.position = "fixed";
         } else {
         document.querySelector(".image-ads").style.position = "";
         }
     }
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if ((document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) && document.documentElement.scrollTop < 2900) {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
             document.getElementById("banner-ads-bottom").style.top = "60px";
             document.getElementById("banner-ads-bottom").style.position = "fixed";
         } else {
-            document.getElementById("banner-ads-bottom").style.top = "-50px";
+            document.getElementById("banner-ads-bottom").style.top = "-60px";
         }
     }
 }

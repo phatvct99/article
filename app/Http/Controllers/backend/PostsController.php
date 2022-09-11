@@ -9,122 +9,156 @@ use Illuminate\Pagination\Paginator;
 use App\Models\Article;
 use App\Http\Requests\RequestPosts;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Constant;
+use Exception;
 
 class PostsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Article::orderBy('id', 'DESC')->paginate(10);
+        $posts = DB::table('article')
+            ->join('category', 'article.category_id', '=', 'category.id')
+            ->select('article.name', 'article.status', 'article.hot', 'article.total_view', 'article.image', 'article.id', 'category.title')
+            ->where('article.dlt_flg',0)
+            ->orderBy('article.updated_at', 'DESC')
+            ->get();
         $viewData = [
             'posts' => $posts,
-            // 'query' => $posts->query()
         ];
-        //dd($posts);
-        return view('backend.posts.index',$viewData)->withArticles($posts);
+        return view('backend.posts.index', $viewData);
     }
 
     public function create()
     {
-        $category = Category::get();
+        $category = Category::where('dlt_flg', 0)->get();
         $viewData = [
             'category' => $category
         ];
-        return view('backend.posts.create',$viewData);
+        return view('backend.posts.create', $viewData);
     }
 
-   
+
     public function add(RequestPosts $requestPost)
     {
-        $this -> InsertOrUpdate($requestPost);
+        $this->InsertOrUpdate($requestPost);
         return redirect('/admin/posts')->with('status', 'Thêm thành công!');
     }
 
     public function update(RequestPosts $requestPost, $id)
     {
-        $this -> InsertOrUpdate($requestPost, $id);
+        $this->InsertOrUpdate($requestPost, $id);
         return redirect('/admin/posts')->with('status', 'Cập nhật thành công!');
     }
 
     public function edit($id)
     {
         $posts = Article::find($id);
-        $category = Category::get();
+
+        $content = SELF::replaceContent($posts);
+
+        $category = Category::where('dlt_flg', 0)->get();
+
         $viewData = [
             'posts' => $posts,
-            'category' => $category
+            'category' => $category,
+            'content' => $content
         ];
-        //dd($category);
-        return view('backend.posts.update',$viewData);
+        return view('backend.posts.update', $viewData);
     }
 
-    public function InsertOrUpdate (RequestPosts $requestPost, $id = '')
+    public function InsertOrUpdate(RequestPosts $requestPost, $id = '')
     {
-        //Debugbar::disable();
-        $code=1;
-        try{
+        $code = 1;
+        try {
             $posts = new Article();
 
-            if ($id)
-            {
+            if ($id) {
                 $posts = Article::find($id);
             }
-            $posts -> name = $requestPost->name;
-            $posts -> slug = $requestPost->slug;
-            $posts -> title = $requestPost->title? $requestPost->title : $requestPost->name;
-            $posts -> keyword = $requestPost->keyword;
-            $posts -> excerpt = $requestPost->excerpt;
-            $posts -> content = $requestPost ->content;
-            $posts -> image = $requestPost ->image;
-            $posts -> category_id = $requestPost ->category_id;
-            $posts -> hot = $requestPost ->hot;
-            $posts -> status = $requestPost ->status;
-            ///$posts -> active = $requestPost ->active;
-             //dd($posts);
-            $posts -> save();
-        }
-        catch(Exception $exception)
-        {
-            Debugbar::addThrowable($exception);
+            $posts->name = $requestPost->name;
+            $posts->slug = $requestPost->slug;
+            $posts->title = $requestPost->title ? $requestPost->title : $requestPost->name;
+            $posts->keyword = $requestPost->keyword;
+            $posts->excerpt = $requestPost->excerpt;
+            $posts->content = $requestPost->content;
+            $posts->image = $requestPost->image;
+            $posts->category_id = $requestPost->category_id;
+            $posts->hot = $requestPost->hot;
+            $posts->status = $requestPost->status;
+            $posts->save();
+        } catch (Exception $exception) {
             return $code = 0;
-            //Debugbar::addThrowable($exception);
         };
-        
+
         return $code;
-
     }
-    public function action($action,$id)
+
+    public function action($action, $id)
     {
-       if ($action)
-       {
-           $posts = Article::find($id);
-           switch ($action)
-           {
-               case 'delete':
-                $posts ->delete();
-               break;
-           }
-       }
-        return redirect( route('backend.posts.index'))->with('status','Xóa bài viết thành công');
+        if ($action) {
+            $posts = Article::find($id);
+            switch ($action) {
+                case 'delete':
+                    $posts->dlt_flg = 1 ;
+                    $posts -> save();
+                    break;
+            }
+        }
+        return redirect(route('backend.posts.index'))->with('status', 'Xóa bài viết thành công');
     }
-    public function diff($id){
 
+
+    public function diff($id)
+    {
         $old = DB::table('article_log')
-                ->select('*')
-                ->where('article_id',$id)
-                ->limit(1)->get();
+            ->select('*')
+            ->where('article_id', $id)
+            ->limit(1)->get();
+
         $new = DB::table('article')
-            ->select('title','content')
-            ->where('id',$id)->get();
-        $a = json_encode($old, JSON_UNESCAPED_UNICODE);
+            ->select('title', 'content')
+            ->where('id', $id)->get();
+
         $viewData = [
             'old' => $old,
             'new' => $new,
-            'vip' => $a
         ];
-        //dd($a);
-        //dd($obj->{'old_row_data'});
         return view('backend.posts-history.hightlight', $viewData);
+    }
+
+    public function replaceContent($posts)
+    {
+        $patternScript = Constant::REGEX_SCRIPT;
+
+        $patternStyle = Constant::REGEX_STYLE;
+
+        $blank = '';
+
+        if ($posts->content) {
+
+            $replaceScript = preg_replace($patternScript, $blank, $posts->content);
+
+            $replaceStyle = preg_replace($patternStyle, $blank, $replaceScript);
+        } else {
+
+            $replaceStyle = '<h2> No data.</h2>';
+        }
+
+        $result = $replaceStyle;
+        return $result;
+    }
+
+    public function getHistory(){
+
+        $posts = DB::table('article_log')
+            ->select('*')
+            ->orderBy('article_log.timestamp_log', 'DESC')
+            ->get();
+        $viewData = [
+            'posts' => $posts,
+        ];
+        // dd($posts);
+        return view('backend.posts-history.index', $viewData);
     }
 }

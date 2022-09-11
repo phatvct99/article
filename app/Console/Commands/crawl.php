@@ -58,12 +58,12 @@ class crawl extends Command
     {
         //$client = new Client(HttpClient::create(['timeout' => 1]));
         try {
-            Company::truncate();
             foreach ($this->category as $category) {
                 print ("lay cua danh muc " . $category) . "\n";
-                for ($i = 1; $i < 1010; $i++) {
+                for ($i = 1; $i < 1562; $i++) {
                     print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
-                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2000/page-' . $i);
+                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2002/page-' . $i);
+                    sleep(1);
                     $linkPost = $crawler->filter('h3 a')->each(function ($node) {
                         return $node->attr("href");
                     });
@@ -144,27 +144,59 @@ class crawl extends Command
                 $nameStatus = NULL;
             }
 
-            $date = str_replace('/', '-', $dateCompany[0]);
+            if (isset($nameCompany[2])) {
+                $nameCompany = $nameCompany[2];
+            }else{
+                $nameCompany = NULL;
+            }
+
+            if (isset($addressCompany)) {
+                $addressCompany = $addressCompany[2];
+            }else{
+                $addressCompany = NULL;
+            }
+
+            if (isset($taxCompany[0])) {
+                $taxCompany = $taxCompany[0];
+            }else{
+                $taxCompany = NULL;
+            }
+
+            if (isset($phoneCompany[0])) {
+                $phoneCompany = $phoneCompany[0];
+            }else{
+                $phoneCompany = NULL;
+            }
+
+            if (isset($dateCompany[0])) {
+                $dateCompany = $dateCompany[0];
+            }else{
+                $dateCompany = NULL;
+            }
+
+            //isset($data['excerpt'][$k]) ? $data['excerpt'][$k] : "";
+
+            $date = str_replace('/', '-', $dateCompany);
             $slug = Str::slug($companyName, '-');
         $data = [
             'slug' => $slug,
             'name' => $companyName,
-            'tax' => $taxCompany[0],
-            'chairman' => $nameCompany[2],
-            'address' => $addressCompany[2],
-            'phone' => $phoneCompany[0],
+            'tax' => $taxCompany,
+            'chairman' => $nameCompany,
+            'address' => $addressCompany,
+            'phone' => $phoneCompany,
             'date' => date('Y-m-d', strtotime($date)),
             'business' => $nameBusiness,
             'status' => $nameStatus,
         ];
         Company::create($data);
         print("Import database thanh cong!" . "\n");
-        dump($taxCompany[0]);
-        dump($addressCompany[2]);
-        dump($nameCompany[2]);
-        dump($nameBusiness);
-        dump($slug);
-        dump($nameStatus);
+        dump($taxCompany);
+        // dump($addressCompany);
+        // dump($nameCompany);
+        // dump($nameBusiness);
+        // dump($slug);
+        // dump($nameStatus);
         }catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }

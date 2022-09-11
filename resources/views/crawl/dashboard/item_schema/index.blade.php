@@ -1,12 +1,17 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
     <div class="row">
         <div class="col-md-12">
+            @if(session()->has('status'))
+                <div class="p-3 mb-2 bg-danger text-white">
+                    <center>{{ session()->get('status') }}</center>
+                </div>
+            @endif
             <h2>Item Schema</h2>
 
-            <a href="{{ route('item-schema.create') }}" class="btn btn-warning pull-right">Add new</a>
+            <a href="{{ route('backend.item-schema.create') }}" class="btn btn-warning pull-right">Add new</a>
 
             @if(count($itemSchemas) > 0)
 
@@ -25,7 +30,8 @@
                             <td>{{ $item->is_full_url==1?"Yes":"No" }}</td>
                             <td>{{ $item->full_content_selector }}</td>
                             <td>
-                                <a href="{{ url('admin/crawl/item-schema/' . $item->id . '/edit') }}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.item-schema.edit',$item->id) }}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.item-schema.delete', $item->id)}}"><i class="glyphicon glyphicon-trash"></i> </a>
                             </td>
                         </tr>
                     @endforeach

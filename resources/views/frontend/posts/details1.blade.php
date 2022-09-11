@@ -1,17 +1,6 @@
 @extends('layouts.frontend')
 @section ('content')      
-<section class="breadcrumbs-area" style="background-image: url('frontend/img/banner/breadcrumbs-banner.jpg');">
-    <div class="container">
-        <div class="breadcrumbs-content">
-            <h1>Post Style_1</h1>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a> -</li>
-                <li>All Posts</li>
-            </ul>
-        </div>
-    </div>
-</section>
+
 <!-- Breadcrumb Area End Here -->
 <!-- Post Style 1 Page Area Start Here -->
 <section class="bg-body section-space-less30">
@@ -27,25 +16,28 @@
                                 <a href="single-news-1.html" class="img-opacity-hover img-overlay-70">
                                     <img src="frontend/img/news/news141.jpg" alt="news" class="img-fluid">
                                 </a>
-                                <div class="topic-box-top-xs">
-                                    <div class="topic-box-sm color-cod-gray mb-20">Adventure</div>
-                                </div>
+                                
                             </div>
                             <div class="media-body p-mb-none-child media-margin30">
                                 <div class="post-date-dark">
                                     <ul>
                                         <li>
                                             <span>by</span>
-                                            <a href="single-news-1.html">Adams</a>
+                                            <a href="single-news-1.html">KinhteZ</a>
                                         </li>
                                         <li>
                                             <span>
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>March 22, 2017</li>
+                                            </span>{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }}
+                                        </li>
                                     </ul>
                                 </div>
                                 <h3 class="title-semibold-dark size-lg mb-15">
-                                    <a href="{{ route('post-details',$post ->id)}}">{{ $post->title }}</a>
+                                    @if(isset($post->name))
+                                    <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }}</a>
+                                    @else
+                                    <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
+                                    @endif
                                 </h3>
                                 @if(!empty($post->excerpt))
                                     <article>
@@ -58,7 +50,6 @@
                     @endforeach
                     @endif
                 </div>
-
                 <div class="row mt-20-r mb-30">
                     <div class="col-sm-6 col-12">
                         <div class="pagination-btn-wrapper text-center--xs mb15--xs">
@@ -69,48 +60,47 @@
             </div>
 
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
-                <div class="sidebar-box">
-                    <div class="ne-banner-layout1 text-center">
-                        <a href="#">
-                            <img src="frontend/img/banner/banner3.jpg" alt="" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="banner-ads-bottom">
+        <div class="ne-banner-layout1 text-center">
+            <a href="#">
+                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            </a>
+        </div>
+    </div>
 </section>
-
 @endsection
 @section('js')
 <script>
-    var $window = $(window);
-    $(window).on('scroll', function() {
-        $topOffset = $(this).scrollTop();
-        console.log($topOffset);
-    });
-</script>
-<script>
 window.onscroll = function() {myFunction()};
-
+console.log(window.scrollY)
 function myFunction() {
-  if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    var footerElement = document.getElementById("footerPost");
-    var footerPosition = footerElement.offsetTop;
-    if (document.documentElement.scrollTop > 700 && document.documentElement.scrollTop < (footerPosition- 500) ) {
-      document.querySelector(".image-ads").style.position = "fixed";
-    } else {
-      document.querySelector(".image-ads").style.position = "";
+    if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        var footerElement = document.getElementById("footerPost");
+        var footerPosition = footerElement.offsetTop;
+        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
+        document.querySelector(".image-ads").style.position = "fixed";
+        } else {
+        document.querySelector(".image-ads").style.position = "";
+        }
     }
-  }
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            document.getElementById("banner-ads-bottom").style.top = "60px";
+            document.getElementById("banner-ads-bottom").style.position = "fixed";
+        } else {
+            document.getElementById("banner-ads-bottom").style.top = "-60px";
+        }
+    }
 }
 </script>
 @endsection

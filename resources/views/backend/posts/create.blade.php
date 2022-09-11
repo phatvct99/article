@@ -105,7 +105,7 @@
                <label class="col-12 col-sm-3 col-form-label text-sm-right">Meta Description</label>
                <div class="col-12 col-sm-8 col-lg-6">
                <div style="color:red" id="charNum"></div> 
-                  <textarea class="form-control" id="" onkeyup="countChar(this)" name="excerpt" value="{{ old('excerpt',isset($posts->excerpt)?$posts->excerpt:'')}}"></textarea>
+                  <textarea class="form-control" id="excerpt" onkeyup="countChar(this)" name="excerpt" value="{{ old('excerpt',isset($posts->excerpt)?$posts->excerpt:'')}}"></textarea>
                   <p style="color:red">{{ $errors->first('excerpt') }}</p>
 
                </div>
@@ -119,15 +119,15 @@
             </div>
 
             <div class="form-group">
-            <label class="col-12 col-sm-3 col-form-label text-sm-right">Trạng thái/ Nổi bật</label>
-            <select class="selectpicker" name="n_hot" data-style="btn-warning" id="" >
+            <label class="col-12 col-sm-3 col-form-label text-sm-right">Nổi bật/Trạng thái</label>
+            <select class="selectpicker" name="hot" data-style="btn-warning" id="" >
                <option  value="1"> Nổi bật</option>
                <option  value="0" >Bình thường</option>
 
             </select>
-            <select class="selectpicker" name="n_active" data-style="btn-info" id="" >
-               <option  value="1" >Hiển thị</option>
-               <option  value="0" >Tạm ẩn</option>
+            <select class="selectpicker" name="status" data-style="btn-info" id="" >
+               <option  value="1" >Kích hoạt</option>
+               <option  value="0" >Chưa kích hoạt</option>
             </select>
 
             <div class="form-group row text-right">

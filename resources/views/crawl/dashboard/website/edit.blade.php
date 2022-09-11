@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
@@ -30,9 +30,8 @@
 
             @endif
 
-            <form method="post" action="{{ route('websites.edit', $website->id) }}" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                {{ method_field("PUT") }}
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -53,20 +52,6 @@
 
                             <input type="text" name="url" value="{{ $website->url }}" class="form-control" />
 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    @if($website->logo != "")
-                        <img src="{{ url('uploads/' . $website->logo) }}" width="150" />
-                    @endif
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Logo:</strong>
-
-                            <input type="file" name="logo" class="form-control" />
                         </div>
                     </div>
                 </div>

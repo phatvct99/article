@@ -22,7 +22,6 @@
                                     </span>
                                 </div>
                             </form>
-                            
                         </div>
                     </div>
                 </div>
@@ -61,27 +60,26 @@
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
                         </a>
                     </div>
                 </div>
-
-                <div class="sidebar-box">
+                <!-- <div class="sidebar-box">
                     <div class="topic-border color-cod-gray mb-25">
                         <div class="topic-box-lg color-cod-gray">Tỉnh thành</div>
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
     <div id="banner-ads-bottom">
-    <div class="ne-banner-layout1 text-center">
-        <a href="#">
-            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
-        </a>
+        <div class="ne-banner-layout1 text-center">
+            <a href="#">
+                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            </a>
+        </div>
     </div>
-</div>
 </section>
 
 @endsection
@@ -100,7 +98,7 @@ function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");
         var footerPosition = footerElement.offsetTop;
-        if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
+        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
         document.querySelector(".image-ads").style.position = "fixed";
         } else {
         document.querySelector(".image-ads").style.position = "";
@@ -111,7 +109,7 @@ function myFunction() {
             document.getElementById("banner-ads-bottom").style.top = "60px";
             document.getElementById("banner-ads-bottom").style.position = "fixed";
         } else {
-            document.getElementById("banner-ads-bottom").style.top = "-50px";
+            document.getElementById("banner-ads-bottom").style.top = "-60px";
         }
     }
 }

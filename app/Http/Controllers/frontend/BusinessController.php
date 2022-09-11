@@ -27,6 +27,7 @@ class BusinessController extends Controller
         $companyRelate = Business::orderBy('date', 'DESC')->take(10)->get();
         $viewData = [
             'company' => $company,
+            'address' => urlencode($company->address),
             'companyRelate' => $companyRelate,
         ];
         // dd($companyRelate);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend\crawl;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -14,84 +15,54 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $cats = Category::orderBy('id', 'DESC')->paginate(10);
-
+        $cats = Category::where('dlt_flg', 0)->orderBy('id', 'DESC')->paginate(10);
         return view('crawl.dashboard.category.index')->withCategories($cats);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('crawl.dashboard.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
-
-        $cat = new Category;
-
-        $cat->title = $request->input('title');
-
-        $cat->save();
-
-        return redirect()->route('categories.index');
+        $this -> InsertOrUpdate($request);
+        return redirect()->route('backend.categories.index')->with('status', 'Thêm thành công!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function update(Request $request, $id)
     {
-        //
+        $this -> InsertOrUpdate($request, $id);
+        return redirect()->route('backend.categories.index')->with('status', 'Cập nhật thành công!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         return view('crawl.dashboard.category.edit')->withCategory(Category::find($id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function InsertOrUpdate (Request $request, $id = '')
     {
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
+        //Debugbar::disable();
+        $code=1;
+        try{
+            $cat = new Category();
 
-        $cat = Category::find($id);
-
-        $cat->title = $request->input('title');
-
-        $cat->save();
-
-        return redirect()->route('categories.index');
+            if ($id)
+            {
+                $cat = Category::find($id);
+            }
+            $cat -> title = $request->title;
+            $cat -> slug = Str::slug($request->title, '-');
+             //dd($posts);
+            $cat -> save();
+        }
+        catch(Exception $exception)
+        {
+            return $code = 0;
+        };
+        return $code;
     }
 
     /**
@@ -100,8 +71,19 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id, Request $request)
     {
-        //
+        $cat = Category::find($id);
+        //dd($cat->id);
+        if(!$cat) return;
+        if($cat->id < 7) {
+            return redirect()->route('backend.categories.index')->with('status', 'Không được xóa doanh mục này');
+        }
+
+        $cat->dlt_flg = 1 ;
+        $cat -> save();
+
+        return redirect()->route('backend.categories.index')->with('status', 'Xóa thành công!');
     }
+
 }

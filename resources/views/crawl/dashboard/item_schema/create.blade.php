@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
@@ -32,7 +32,7 @@
 
             @endif
 
-            <form method="post" action="{{ route('item-schema.store') }}" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="row">

@@ -12,14 +12,14 @@
       <div class="form-group row">
          <label class="col-12 col-sm-3 col-form-label text-sm-right">Tên tin tức</label>
          <div class="col-12 col-sm-8 col-lg-6">
-            <input  class="form-control" type="text" name="name" id = "title" value="{{ old('name',isset($posts->name)?$posts->name:'')}}" onkeyup="ChangeToSlug(); required">
+            <input  class="form-control" type="text" name="name" id = "title" value="{{ old('name',isset($posts->name)?$posts->name:$posts->title)}}" onkeyup="ChangeToSlug(); required">
             <p style="color:red">{{ $errors->first('n_name') }}</p>
          </div>
       </div>
       <div class="form-group row">
          <label class="col-12 col-sm-3 col-form-label text-sm-right">Link</label>
          <div class="col-12 col-sm-8 col-lg-6">
-            <input  class="form-control" type="text" name="slug"  id ="slug" value="{{ old('slug',isset($posts->slug)?$posts->slug:'')}}" required>
+            <input  class="form-control" type="text" name="slug"  id ="slug" value="{{ old('slug',isset($posts->slug)?$posts->slug:$posts->source_link)}}" required>
             <p style="color:red">{{ $errors->first('slug') }}</p>
          </div>
       </div>
@@ -54,27 +54,27 @@
          <label class="col-12 col-sm-3 col-form-label text-sm-right">Meta Description</label>
          <div class="col-12 col-sm-8 col-lg-6">
          <div style="color:red" id="charNum">Kí tự</div>
-               <textarea class="form-control" id="" onkeyup="countChar(this)" name="excerpt" value="{{ old('excerpt',isset($posts->excerpt)?$posts->excerpt:'')}}"></textarea>
+               <input class="form-control" id="excerpt" onkeyup="countChar(this)" name="excerpt" value="{{ old('excerpt',isset($posts->excerpt)?$posts->excerpt:'')}}"></input>
                <p style="color:red">{{ $errors->first('excerpt') }}</p>
          </div>
       </div>
       <div class="form-group row">
          <label class="col-12">Content</label>
          <div class="col-12">
-            <textarea class="form-control" id="content" name="content" value="{!! old('content',$posts->content)!!}"></textarea>
+            <textarea class="form-control" id="content" name="content" value="{!! old('content',$content)!!}"></textarea>
             <p style="color:red">{{ $errors->first('content') }}</p>
          </div>
       </div>
 
       <div class="form-group">
-      <label class="col-12 col-sm-3 col-form-label text-sm-right">Trạng thái/ Nổi bật</label>
-      <select class="selectpicker" name="n_hot" data-style="btn-warning" id="" >
+      <label class="col-12 col-sm-3 col-form-label text-sm-right">Nổi bật/Trạng thái</label>
+      <select class="selectpicker" name="hot" data-style="btn-warning" id="" >
          <option  value="1" {{ old('hot', $posts->hot) == 1 ? 'selected' : '' }}>Nổi bật</option>
          <option  value="0" {{ old('hot', $posts->hot) == 0 ? 'selected' : '' }}>Bình thường</option>
       </select>
-      <select class="selectpicker" name="n_active" data-style="btn-info" id="" >
-         <option  value="1" {{ old('active', $posts->status) == 1 ? 'selected' : '' }}>Hiển thị</option>
-         <option  value="0" {{ old('active', $posts->status) == 0 ? 'selected' : '' }}>Tạm ẩn</option>      
+      <select class="selectpicker" name="status" data-style="btn-info" id="" >
+         <option  value="1" {{ old('status', $posts->status) == 1 ? 'selected' : '' }}>Kích hoạt</option>
+         <option  value="0" {{ old('status', $posts->status) == 0 ? 'selected' : '' }}>Chưa kích hoạt</option>      
       </select>
 
       <div class="form-group row text-right">
@@ -86,6 +86,6 @@
 </form>
    <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
       <div class="content-demo">
-      {!! old('content',$posts->content)!!}
+      {!! old('content',$content)!!}
       </div>
    </div>

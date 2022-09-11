@@ -14,7 +14,7 @@ class WebsitesController extends Controller
      */
     public function index()
     {
-        $websites = Website::orderBy('id', 'DESC')->paginate(10);
+        $websites = Website::where('dlt_flg', 0)->orderBy('id', 'DESC')->paginate(10);
 
         return view('crawl.dashboard.website.index')->withWebsites($websites);
     }
@@ -29,42 +29,16 @@ class WebsitesController extends Controller
         return view('crawl.dashboard.website.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'url' => 'required',
-            'logo' => 'required'
-        ]);
-
-        $website = new Website;
-
-        $website->title = $request->input('title');
-
-        $website->url = $request->input('url');
-
-        $website->logo = $this->uploadFile('logo', public_path('uploads/'), $request)["filename"];
-
-        $website->save();
-
-        return redirect()->route('websites.index');
+        $this -> InsertOrUpdate($request);
+        return redirect()->route('backend.websites.index')->with('status', 'Thêm thành công!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function update(Request $request, $id)
     {
-        //
+        $this -> InsertOrUpdate($request, $id);
+        return redirect()->route('backend.websites.index')->with('status', 'Cập nhật thành công!');
     }
 
     /**
@@ -78,34 +52,28 @@ class WebsitesController extends Controller
         return view('crawl.dashboard.website.edit')->withWebsite(Website::find($id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function InsertOrUpdate (Request $request, $id = '')
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'url' => 'required'
-        ]);
+        //Debugbar::disable();
+        $code=1;
+        try{
+            $website = new Website();
 
-        $website = Website::find($id);
+            if ($id)
+            {
+                $website = Website::find($id);
 
-        $website->title = $request->input('title');
+            }
+            $website->title = $request->title;
 
-        $website->url = $request->input('url');
-
-        if($request->file('logo') != null) {
-
-            $website->logo = $this->uploadFile('logo', public_path('uploads/'), $request)["filename"];
+            $website->url = $request->url;
+            $website -> save();
         }
-
-        $website->save();
-
-        return redirect()->route('websites.index');
+        catch(Exception $exception)
+        {
+            return $code = 0;
+        };
+        return $code;
     }
 
     /**
@@ -114,25 +82,14 @@ class WebsitesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
-    }
-    function uploadFile($name, $destination, $request = null)
-    {
-        try {
+        $article = Website::find($id);
 
-            $image = $request->file($name);
+        if(!$article) return;
 
-            $fileName = time() . '.' . $image->getClientOriginalExtension();
-
-            $image->move($destination, $fileName);
-
-            return ["state" => 1, "filename" => $fileName];
-        } catch (\Exception $ex) {
-
-            return ["state" => 0, "filename" => ""];
-
-        }
+        $article->dlt_flg = 1 ;
+        $article -> save();
+        return redirect()->route('backend.websites.index')->with('status', 'Xóa thành công!');
     }
 }

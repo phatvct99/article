@@ -9,7 +9,7 @@
 <!-- WOW JS -->
 <script src="{{ asset('frontend/js/wow.min.js')}} "></script>
 <!-- Owl Cauosel JS -->
-<script src="vendor/OwlCarousel/owl.carousel.min.js')}} " type="text/javascript"></script>
+<script src="{{ asset('frontend/vendor/OwlCarousel/owl.carousel.min.js')}} " type="text/javascript"></script>
 <!-- Meanmenu Js -->
 <script src="{{ asset('frontend/js/jquery.meanmenu.min.js')}} " type="text/javascript"></script>
 <!-- Srollup js -->

@@ -28,7 +28,7 @@ Route::group(['namespace'=>'frontend'], function(){
 
     Route::group(['prefix'=>''],function()
     {
-        Route::get('/tin-tuc','PostsController@details1')->name('frontend.posts.details1'); 
+        Route::get('/danh-muc-{category}','PostsController@getArticleByCategory')->name('frontend.posts.details1'); 
         Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
         Route::get('/tra-cuu-doanh-nghiep','BusinessController@index')->name('frontend.business.index');
         Route::get('/tra-cuu-doanh-nghiep-{tax}-{slug}', 'BusinessController@detail')->name('frontend.business.detail');
@@ -51,6 +51,7 @@ Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:
         Route::get('/update/{id}','PostsController@edit')->name('backend.posts.edit');
         Route::post('/update/{id}','PostsController@update');
         Route::get('/{action}/{id}','PostsController@action')->name('backend.posts.delete');
+        Route::get('/history','PostsController@getHistory')->name('backend.posts.history');
     });
     Route::group(['namespace'=>'crawl','prefix'=>'crawl'],function()
     {
@@ -58,13 +59,41 @@ Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:
         Route::get('/article-details/{id}', [HomeController::class,'getArticleDetails']);
         Route::get('/category/{id}', [HomeController::class,'getCategory']);
 
-        Route::resource('/websites', WebsitesController::class);
-        Route::resource('/categories', CategoriesController::class);
+
+        Route::get('/websites','WebsitesController@index')->name('backend.websites.index');
+        Route::get('/websites/create','WebsitesController@create')->name('backend.websites.create');
+        Route::post('/websites/create','WebsitesController@add');
+        Route::get('/websites/update/{id}','WebsitesController@edit')->name('backend.websites.edit');
+        Route::post('/websites/update/{id}','WebsitesController@update');
+        Route::get('/websites/delete/{id}','WebsitesController@delete')->name('backend.websites.delete');
+
+
+        Route::get('/categories','CategoriesController@index')->name('backend.categories.index');
+        Route::get('/categories/create','CategoriesController@create')->name('backend.categories.create');
+        Route::post('/categories/create','CategoriesController@add');
+        Route::get('/categories/update/{id}','CategoriesController@edit')->name('backend.categories.edit');
+        Route::post('/categories/update/{id}','CategoriesController@update');
+        Route::get('/categories/delete/{id}','CategoriesController@delete')->name('backend.categories.delete');
+
+        // Route::resource('/categories', CategoriesController::class);
         Route::patch('/links/set-item-schema', [LinksController::class,'setItemSchema']);
         Route::post('/links/scrape',  'LinksController@scrape');
-        Route::get('/links', 'LinksController@index');
+        Route::get('/links', 'LinksController@index')->name('backend.links.index');;
+        Route::get('/links/create','LinksController@create')->name('backend.links.create');
+        Route::post('/links/create','LinksController@add');
+        Route::get('/links/update/{id}','LinksController@edit')->name('backend.links.edit');
+        Route::post('/links/update/{id}','LinksController@update');
+        Route::get('/links/delete/{id}','LinksController@delete')->name('backend.links.delete');
         //Route::resource('/links', LinksController::class);
-        Route::resource('/item-schema', ItemSchemaController::class);
+
+        //Route::resource('/item-schema', ItemSchemaController::class);
+        Route::get('/item-schema','ItemSchemaController@index')->name('backend.item-schema.index');
+        Route::get('/item-schema/create','ItemSchemaController@create')->name('backend.item-schema.create');
+        Route::post('/item-schema/create','ItemSchemaController@add');
+        Route::get('/item-schema/update/{id}','ItemSchemaController@edit')->name('backend.item-schema.edit');
+        Route::post('/item-schema/update/{id}','ItemSchemaController@update');
+        Route::get('/item-schema/delete/{id}','ItemSchemaController@delete')->name('backend.item-schema.delete');
+
         Route::resource('/articles', ArticlesController::class);
 
     });

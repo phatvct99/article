@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
@@ -30,10 +30,8 @@
 
             @endif
 
-            <form method="post" action="{{ route('categories.update', ['id' => $category->id]) }}" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                {{ method_field("PUT") }}
-
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6">
                         <div class="form-group">

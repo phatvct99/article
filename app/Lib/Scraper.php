@@ -4,6 +4,7 @@ namespace App\Lib;
 
 use App\Models\Article;
 use Goutte\Client as GoutteClient;
+use Illuminate\Support\Str;
 
 /**
  * Class Scraper
@@ -49,11 +50,11 @@ class Scraper
 
                     foreach ($translateExpre as $key => $val) {
 
-                        if($node->filter($val['selector'])->count() > 0) {
+                        if ($node->filter($val['selector'])->count() > 0) {
 
                             if ($val['is_attribute'] == false) {
 
-                                $data[$key][] = preg_replace("#\n|'|\"#",'', $node->filter($val['selector'])->text());
+                                $data[$key][] = preg_replace("#\n|'|\"#", '', $node->filter($val['selector'])->text());
                             } else {
                                 if ($key == 'source_link') {
 
@@ -114,12 +115,16 @@ class Scraper
         foreach ($data['title'] as $k => $val) {
 
             $checkExist = Article::where('source_link', $data['source_link'][$k])->first();
-
-            if(!isset($checkExist->id)) {
+            // dd($checkExist);
+            if (!isset($checkExist->id)) {
 
                 $article = new Article();
 
                 $article->title = $val;
+
+                $article->name = $val;
+
+                $article->slug = Str::slug($val, '-');
 
                 $article->excerpt = isset($data['excerpt'][$k]) ? $data['excerpt'][$k] : "";
 
@@ -133,6 +138,7 @@ class Scraper
 
                 $article->website_id = $data['website_id'][$k];
 
+                // dd($article);
                 $article->save();
 
                 $this->savedItems++;
@@ -162,7 +168,7 @@ class Scraper
 
             preg_match($regex, $subExpr, $matches);
 
-            if(isset($matches[1]) && isset($matches[2])) {
+            if (isset($matches[1]) && isset($matches[2])) {
 
                 $is_attribute = false;
 

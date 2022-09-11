@@ -86,6 +86,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('admin/crawl')}}" ><i class=" fas fa-arrow-alt-circle-down"></i>Crawl</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('backend.posts.history')}}" ><i class=" fas fa-history"></i>History</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fas fa-f fa-folder"></i>Menu Level</a>

@@ -14,7 +14,7 @@ class ItemSchemaController extends Controller
      */
     public function index()
     {
-        $itemSchema = ItemSchema::orderBy('id', 'DESC')->paginate(10);
+        $itemSchema = ItemSchema::where('dlt_flg', 0)->orderBy('id', 'DESC')->paginate(10);
 
         return view('crawl.dashboard.item_schema.index')->withItemSchemas($itemSchema);
     }
@@ -29,105 +29,66 @@ class ItemSchemaController extends Controller
         return view('crawl.dashboard.item_schema.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'css_expression' => 'required',
-            'full_content_selector' => 'required'
-        ]);
+        $this -> InsertOrUpdate($request);
+        return redirect()->route('backend.item-schema.index')->with('status', 'Thêm thành công!');
+    }
 
-        $itemSchema = new ItemSchema;
+    public function update(Request $request, $id)
+    {
+        $this -> InsertOrUpdate($request, $id);
+        return redirect()->route('backend.item-schema.index')->with('status', 'Cập nhật thành công!');
+    }
 
-        $itemSchema->title = $request->input('title');
+    public function InsertOrUpdate (Request $request, $id = '')
+    {
+        //Debugbar::disable();
+        $code=1;
+        try{
+            $itemSchema = new ItemSchema();
 
-        if($request->input('is_full_url') != null) {
+            if ($id)
+            {
+                $itemSchema = ItemSchema::find($id);
+            }
+            $itemSchema->title = $request->title;
 
-            $itemSchema->is_full_url = 1;
-        } else {
-            $itemSchema->is_full_url = 0;
+            if($request->is_full_url != null) {
+    
+                $itemSchema->is_full_url = 1;
+            } else {
+                $itemSchema->is_full_url = 0;
+            }
+    
+            $itemSchema->css_expression = $request->css_expression;
+    
+            $itemSchema->full_content_selector = $request->full_content_selector;
+             //dd($posts);
+            $itemSchema -> save();
         }
-
-        $itemSchema->css_expression = $request->input('css_expression');
-
-        $itemSchema->full_content_selector = $request->input('full_content_selector');
-
-        $itemSchema->save();
-
-        return redirect()->route('item-schema.index');
+        catch(Exception $exception)
+        {
+            return $code = 0;
+        };
+        return $code;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         return view('crawl.dashboard.item_schema.edit')->withItemSchema(ItemSchema::find($id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function delete($id, Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'css_expression' => 'required',
-            'full_content_selector' => 'required'
-        ]);
-
         $itemSchema = ItemSchema::find($id);
 
-        $itemSchema->title = $request->input('title');
+        if(!$itemSchema) return;
 
-        if($request->input('is_full_url') != null) {
+        $itemSchema->dlt_flg = 1 ;
+        $itemSchema -> save();
 
-            $itemSchema->is_full_url = 1;
-        } else {
-            $itemSchema->is_full_url = 0;
-        }
-
-        $itemSchema->css_expression = $request->input('css_expression');
-
-        $itemSchema->full_content_selector = $request->input('full_content_selector');
-
-        $itemSchema->save();
-
-        return redirect()->route('item-schema.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
+        return redirect()->route('backend.item-schema.index')->with('status', 'Xóa thành công!');
     }
 }

@@ -5,7 +5,7 @@
                 <div class="row no-gutters d-flex align-items-center">
                     <div class="col-lg-2 d-none d-lg-block">
                         <div class="logo-area">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="frontend/img/logo.png" alt="logo" class="img-fluid">
                             </a>
                         </div>
@@ -14,46 +14,26 @@
                         <div class="ne-main-menu">
                             <nav id="dropdown">
                                 <ul>
-                                    <li class="active">
-                                        <a href="#">Home</a>
+                                    <li>
+                                        <a href="/danh-muc-kinh-te">Kinh tế</a>
                                     </li>
                                     <li>
-                                        <a href="#">Post</a>
+                                        <a href="/danh-muc-tai-chinh">Tài chính</a>
                                     </li>
                                     <li>
-                                        <a href="#">Pages</a>
-                                        <ul class="ne-dropdown-menu">
-                                            <li>
-                                                <a href="author-post.html">Author Post Page</a>
-                                            </li>
-                                            <li>
-                                                <a href="archive.html">Archive Page</a>
-                                            </li>
-                                            <li>
-                                                <a href="gallery-style-1.html">Gallery Style 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="gallery-style-2.html">Gallery Style 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="404.html">404 Error Page</a>
-                                            </li>
-                                            <li>
-                                                <a href="contact.html">Contact Page</a>
-                                            </li>
-                                        </ul>
+                                        <a href="/danh-muc-bat-dong-san">Bất động sản</a>
                                     </li>
                                     <li>
-                                        <a href="post-style-1.html">Politics</a>
+                                        <a href="/danh-muc-cong-nghe">Công nghệ</a>
                                     </li>
                                     <li>
-                                        <a href="post-style-2.html">Business</a>
+                                        <a href="/danh-muc-xa-hoi">Xã hội</a>
                                     </li>
                                     <li>
-                                        <a href="post-style-3.html">Sports</a>
+                                        <a href="/danh-muc-crypto">Blockchain</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('frontend.business.index')}}">Tra cứu doanh nghiệp</a>
+                                        <a href="{{route('frontend.business.index')}}">Doanh nghiệp</a>
                                     </li>
                                 </ul>
                             </nav>

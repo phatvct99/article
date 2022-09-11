@@ -50,6 +50,7 @@
 <body>
     <div class="container">
         <div class="row">
+            <br>
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -59,7 +60,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{url('/')}}">Web Scraper</a>
+                        <a class="navbar-brand" href="{{url('/admin')}}">Admin</a>
                     </div>
 
                     <div class="collapse navbar-collapse">
@@ -67,7 +68,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ url('admin/crawl//websites') }}">Websites</a></li>
+                                    <li><a href="{{ url('admin/crawl/websites') }}">Websites</a></li>
                                     <li><a href="{{ url('admin/crawl/categories') }}">Categories</a></li>
                                     <li><a href="{{ url('admin/crawl/links') }}">Links</a></li>
                                     <li><a href="{{ url('admin/crawl/item-schema') }}">Item Schema</a></li>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
@@ -30,12 +30,10 @@
 
             @endif
 
-            <form method="post" action="{{ route('item-schema.edit', $itemSchema->id) }}" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                {{ method_field("PUT") }}
-
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
 
                             <strong>Title:</strong>
@@ -46,7 +44,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
 
                             <strong>CSS Expression:</strong>
@@ -58,7 +56,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
 
                             <strong>Is Full Url To Article/Partial Url:</strong>

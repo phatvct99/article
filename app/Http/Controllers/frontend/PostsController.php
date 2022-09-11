@@ -5,41 +5,48 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Category;
 use App\Constant;
+use App\Lib\Location;
+use Illuminate\Support\Facades\DB;
+
 
 class PostsController extends Controller
 {
-    public function boot()
-    {
-        Paginator::useBootstrap();
-    }
 
-    public function details1()
+    public function getArticleByCategory($category)
     {
-        $posts = Article::orderBy('id', 'DESC')->paginate(9);
+        $posts = DB::table('article')
+            ->join('category', 'article.category_id', '=', 'category.id')
+            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at')
+            ->where('category.slug', $category)->where('article.dlt_flg', 0)
+            ->orderBy('article.updated_at', 'DESC')
+            ->paginate(10);
+
         $viewData = [
             'posts' => $posts,
-            // 'query' => $posts->query()
         ];
         return view('frontend.posts.details1', $viewData)->withArticles($posts);
     }
+
     public function details2()
     {
-        //$articles = Article::orderBy('id', 'DESC')->paginate(20);
-
-        //return view('home')->withArticles($articles);
         return view('frontend.posts.details2');
     }
 
-    public function getArticleDetails($id)
+
+    public function getArticleDetails($slug)
     {
-        Article::find($id)->increment('total_view');
-        $posts = Article::find($id);
-        $posts_related = Article::orderBy('id', 'DESC')->paginate(5);
+        Article::where('slug', $slug)->increment('total_view');
 
-        $content = SELF::replaceContent($posts);
+        $posts = Article::where('slug', $slug)->get();
+        foreach ($posts as $k => $post) {
 
-        //dd($content);
+            $content = SELF::replaceContent($post);
+        }
+        $posts_related = Article::orderBy('id', 'DESC')->paginate(15);
+
+        // dd($posts);
         $viewData = [
             'posts' => $posts,
             'content' => $content,
@@ -71,13 +78,4 @@ class PostsController extends Controller
         $result = $replaceStyle;
         return $result;
     }
-
-    // public function getCategory($id)
-    // {
-    //     $category = Category::find($id);
-
-    //     $articles = Article::where('category_id', $id)->orderBy('id', 'DESC')->paginate(20);
-
-    //     return view('category')->withArticles($articles)->withCategory($category);
-    // }
 }

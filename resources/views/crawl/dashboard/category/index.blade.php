@@ -1,12 +1,17 @@
-@extends('layout')
+@extends('crawl.layout')
 
 @section('content')
 
     <div class="row">
         <div class="col-md-12">
+            @if(session()->has('status'))
+                <div class="p-3 mb-2 bg-danger text-white">
+                    <center>{{ session()->get('status') }}</center>
+                </div>
+            @endif
             <h2>Categories</h2>
 
-            <a href="{{ route('categories.create') }}" class="btn btn-warning pull-right">Add new</a>
+            <a href="{{ route('backend.categories.create') }}" class="btn btn-warning pull-right">Add new</a>
 
             @if(count($categories) > 0)
 
@@ -19,7 +24,8 @@
                         <tr>
                             <td>{{ $cat->title }}</td>
                             <td>
-                                <a href="{{ url('admin/crawl/categories/' . $cat->id . '/edit') }}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.categories.edit', $cat->id)}}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.categories.delete', $cat->id)}}"><i class="glyphicon glyphicon-trash"></i> </a>
                             </td>
                         </tr>
                     @endforeach

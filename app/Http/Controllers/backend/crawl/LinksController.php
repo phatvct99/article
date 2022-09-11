@@ -19,9 +19,9 @@ class LinksController extends Controller
      */
     public function index()
     {
-        $links = Link::orderBy('id', 'DESC')->paginate(10);
+        $links = Link::where('dlt_flg', 0)->orderBy('id', 'DESC')->paginate(100);
 
-        $itemSchemas = ItemSchema::all();
+        $itemSchemas = ItemSchema::where('dlt_flg', 0)->get();
 
         return view('crawl.dashboard.link.index')->withLinks($links)->withItemSchemas($itemSchemas);
     }
@@ -33,10 +33,22 @@ class LinksController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $websites = Website::all();
+        $categories = Category::where('dlt_flg', 0)->get();
+        $websites = Website::where('dlt_flg', 0)->get();
 
         return view('crawl.dashboard.link.create')->withCategories($categories)->withWebsites($websites);
+    }
+
+    public function add(Request $request)
+    {
+        $this -> InsertOrUpdate($request);
+        return redirect()->route('backend.links.index')->with('status', 'Thêm thành công!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this -> InsertOrUpdate($request, $id);
+        return redirect()->route('backend.links.index')->with('status', 'Cập nhật thành công!');
     }
 
     /**
@@ -69,71 +81,52 @@ class LinksController extends Controller
         return redirect()->route('links.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function InsertOrUpdate (Request $request, $id = '')
     {
-        //
+        $code=1;
+        try{
+            $link = new Link();
+
+            if ($id)
+            {
+                $link = Link::find($id);
+            }
+            $link->url = $request->url;
+
+            $link->main_filter_selector = $request->main_filter_selector;
+
+            $link->website_id = $request->website_id;
+
+            $link->category_id = $request->category_id;
+            // dd($link);
+            $link -> save();
+        }
+        catch(Exception $exception)
+        {
+            return $code = 0;
+        };
+        return $code;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        $categories = Category::all();
-        $websites = Website::all();
-
+        $categories = Category::where('dlt_flg', 0)->get();
+        $websites = Website::where('dlt_flg', 0)->get();
         return view('crawl.dashboard.link.edit')->withLink(Link::find($id))->withCategories($categories)->withWebsites($websites);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function delete($id, Request $request)
     {
-        $this->validate($request, [
-            'url' => 'required',
-            'main_filter_selector' => 'required',
-            'website_id' => 'required',
-            'category_id' => 'required'
-        ]);
+        $cat = Link::find($id);
 
-        $link = Link::find($id);
+        if(!$cat) return;
 
-        $link->url = $request->input('url');
+        $cat->dlt_flg = 1 ;
+        $cat -> save();
 
-        $link->main_filter_selector = $request->input('main_filter_selector');
-
-        $link->website_id = $request->input('website_id');
-
-        $link->category_id = $request->input('category_id');
-
-        $link->save();
-
-        return redirect()->route('links.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('backend.links.index')->with('status', 'Xóa thành công!');
     }
 
 

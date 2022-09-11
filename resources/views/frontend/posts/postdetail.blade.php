@@ -7,18 +7,19 @@
             <div class="col-lg-8 col-md-12 mb-30">
                 <div class="news-details-layout1">
                     @if(isset($posts))
-                        @if(isset($posts->image))
                         <div class="position-relative mb-30">
-                            <img src="frontend/../frontend/img/news/news177.jpg" alt="news-details" class="img-fluid">
-                            <div class="topic-box-top-sm">
-                                <div class="topic-box-sm color-cinnabar mb-20">Business</div>
-                            </div>
+                            <a href="">
+                                <img src="../frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
+                            </a>
                         </div>
-                        @endif
-                    <h2 class="title-semibold-dark size-c30">{{$posts->title}}</h2>
-                    
+                        
+                        @foreach ($posts as $k => $post)
+                        <h1 class="title-semibold-dark size-c30">{{$post->title}}</h1>
+                        @endforeach
                     <div class="article-content">
+                        @if(isset($content))
                         {!! $content !!}
+                        @endif
                     </div>
                     <ul class="blog-tags item-inline">
                         <li>Tags</li>
@@ -71,7 +72,7 @@
                     </div>
                     <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
                         <a href="#">
-                            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
                         </a>
                     </div>
 
@@ -85,13 +86,14 @@
                                         <a href="single-news-1.html" class="img-opacity-hover img-overlay-70">
                                             <img src="frontend/img/news/news141.jpg" alt="news" class="img-fluid">
                                         </a>
-                                        <div class="topic-box-top-xs">
-                                            <div class="topic-box-sm color-cod-gray mb-20">Adventure</div>
-                                        </div>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
                                         <h3 class="title-semibold-dark size-lg mb-15">
-                                            <a href="{{ route('post-details',$post ->id)}}">{{ $post->title }}</a>
+                                        @if(isset($post->name))
+                                        <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }}</a>
+                                        @else
+                                        <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
+                                        @endif
                                         </h3>
                                         @if(isset($post->excerpt))
                                             <article>
@@ -112,150 +114,30 @@
                 <div class="sidebar-box">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads5.png" alt="ad" class="img-fluid">
                         </a>
-                    </div>
-                </div>
-
-                <div class="sidebar-box">
-                    <div class="topic-border color-cod-gray mb-30">
-                        <div class="topic-box-lg color-cod-gray">Most Reviews</div>
-                    </div>
-                    <div class="position-relative mb30-list bg-body">
-                        <div class="topic-box-top-xs">
-                            <div class="topic-box-sm color-cod-gray mb-20">Apple</div>
-                        </div>
-                        <div class="media">
-                            <a class="img-opacity-hover" href="single-news-1.html">
-                                <img src="../frontend/img/news/news117.jpg" alt="news" class="img-fluid">
-                            </a>
-                            <div class="media-body">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>February 10, 2017</li>
-                                    </ul>
-                                </div>
-                                <h3 class="title-medium-dark mb-none">
-                                    <a href="single-news-2.html">Can Be Monit roade year with Program.</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-relative mb30-list bg-body">
-                        <div class="topic-box-top-xs">
-                            <div class="topic-box-sm color-cod-gray mb-20">Gadgets</div>
-                        </div>
-                        <div class="media">
-                            <a class="img-opacity-hover" href="single-news-2.html">
-                                <img src="../frontend/img/news/news118.jpg" alt="news" class="img-fluid">
-                            </a>
-                            <div class="media-body">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>June 06, 2017</li>
-                                    </ul>
-                                </div>
-                                <h3 class="title-medium-dark mb-none">
-                                    <a href="single-news-3.html">Can Be Monit roade year with Program.</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-relative mb30-list bg-body">
-                        <div class="topic-box-top-xs">
-                            <div class="topic-box-sm color-cod-gray mb-20">Software</div>
-                        </div>
-                        <div class="media">
-                            <a class="img-opacity-hover" href="single-news-3.html">
-                                <img src="../frontend/img/news/news119.jpg" alt="news" class="img-fluid">
-                            </a>
-                            <div class="media-body">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>August 22, 2017</li>
-                                    </ul>
-                                </div>
-                                <h3 class="title-medium-dark mb-none">
-                                    <a href="single-news-1.html">Can Be Monit roade year with Program.</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-relative mb30-list bg-body">
-                        <div class="topic-box-top-xs">
-                            <div class="topic-box-sm color-cod-gray mb-20">Tech</div>
-                        </div>
-                        <div class="media">
-                            <a class="img-opacity-hover" href="single-news-1.html">
-                                <img src="../frontend/img/news/news120.jpg" alt="news" class="img-fluid">
-                            </a>
-                            <div class="media-body">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>February 10, 2017</li>
-                                    </ul>
-                                </div>
-                                <h3 class="title-medium-dark mb-none">
-                                    <a href="single-news-2.html">Can Be Monit roade year with Program.</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-relative mb30-list bg-body">
-                        <div class="topic-box-top-xs">
-                            <div class="topic-box-sm color-cod-gray mb-20">Ipad</div>
-                        </div>
-                        <div class="media">
-                            <a class="img-opacity-hover" href="single-news-1.html">
-                                <img src="../frontend/img/news/news121.jpg" alt="news" class="img-fluid">
-                            </a>
-                            <div class="media-body">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>February 10, 2017</li>
-                                    </ul>
-                                </div>
-                                <h3 class="title-medium-dark mb-none">
-                                    <a href="single-news-2.html">Can Be Monit roade year with Program.</a>
-                                </h3>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="sidebar-box image-ads">
                         <div class="ne-banner-layout1 text-center">
                             <a href="#">
-                                <img src="../frontend/img/banner/banner3.jpg" alt="ad" class="img-fluid">
+                                <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
                             </a>
                         </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<div id="banner-ads-bottom">
-    <div class="ne-banner-layout1 text-center">
-        <a href="#">
-            <img src="../frontend/img/banner/banner2.jpg" alt="ad" class="img-fluid">
-        </a>
+    <div id="banner-ads-bottom">
+        <div class="ne-banner-layout1 text-center">
+            <a href="#">
+                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            </a>
+        </div>
     </div>
-</div>
+</section>
+
 @endsection
 @section('js')
 <script>
@@ -272,7 +154,7 @@ function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");
         var footerPosition = footerElement.offsetTop;
-        if (document.documentElement.scrollTop > 1500 && document.documentElement.scrollTop < (footerPosition- 500) ) {
+        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
         document.querySelector(".image-ads").style.position = "fixed";
         } else {
         document.querySelector(".image-ads").style.position = "";
@@ -283,7 +165,7 @@ function myFunction() {
             document.getElementById("banner-ads-bottom").style.top = "60px";
             document.getElementById("banner-ads-bottom").style.position = "fixed";
         } else {
-            document.getElementById("banner-ads-bottom").style.top = "-50px";
+            document.getElementById("banner-ads-bottom").style.top = "-60px";
         }
     }
 }

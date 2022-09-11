@@ -4,11 +4,16 @@
 
     <div class="row">
         <div class="col-md-12">
+            @if(session()->has('status'))
+                <div class="p-3 mb-2 bg-danger text-white">
+                    <center>{{ session()->get('status') }}</center>
+                </div>
+            @endif
             <h2>Links</h2>
 
             <div class="alert alert-success" style="display: none"></div>
 
-            <a href="" class="btn btn-warning pull-right">Add new</a>
+            <a href="{{route('backend.links.create')}}" class="btn btn-warning pull-right">Add new</a>
 
             @if(count($links) > 0)
 
@@ -45,7 +50,8 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ url('admin/crawl/links/' . $link->id . '/edit') }}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.links.edit',$link->id) }}"><i class="glyphicon glyphicon-edit"></i> </a>
+                                <a href="{{ route('backend.links.delete',$link->id) }}"><i class="glyphicon glyphicon-trash"></i> </a>
                             </td>
                         </tr>
                     @endforeach
