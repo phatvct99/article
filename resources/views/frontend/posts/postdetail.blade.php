@@ -75,6 +75,17 @@
                             <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
                         </a>
                     </div>
+                    @if((new \Jenssegers\Agent\Agent())->isMobile())
+
+                    <div class="sidebar-box image-ads">
+                        <div class="ne-banner-layout1 text-center">
+                            <a href="#">
+                                <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    @endif
 
                     <div class="col-lg-12 col-md-12">
                         <div class="row">
@@ -137,8 +148,8 @@
         </div>
     </div>
 </section>
-
 @endsection
+
 @section('js')
 <script>
     var $window = $(window);
@@ -170,5 +181,4 @@ function myFunction() {
     }
 }
 </script>
-
 @endsection
