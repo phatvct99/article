@@ -18,15 +18,15 @@ class PostsController extends Controller
     {
         $posts = DB::table('article')
             ->join('category', 'article.category_id', '=', 'category.id')
-            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at')
+            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at','article.image')
             ->where('category.slug', $category)->where('article.dlt_flg', 0)
             ->orderBy('article.updated_at', 'DESC')
-            ->paginate(10);
+            ->paginate(20);
 
         $viewData = [
             'posts' => $posts,
         ];
-        return view('frontend.posts.details1', $viewData)->withArticles($posts);
+        return view('frontend.posts.details1', $viewData);
     }
 
     public function details2()
@@ -44,7 +44,7 @@ class PostsController extends Controller
 
             $content = SELF::replaceContent($post);
         }
-        $posts_related = Article::orderBy('id', 'DESC')->paginate(15);
+        $posts_related = Article::where('category_id',$post->category_id)->orderBy('id', 'DESC')->paginate(15);
 
         // dd($posts);
         $viewData = [

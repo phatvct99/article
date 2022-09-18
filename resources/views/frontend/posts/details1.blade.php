@@ -13,8 +13,12 @@
                     <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
                         <div class="media media-none--lg mb-30">
                             <div class="position-relative width-40">
-                                <a href="single-news-1.html" class="img-opacity-hover img-overlay-70">
-                                    <img src="frontend/img/news/news141.jpg" alt="news" class="img-fluid">
+                                <a href="{{ route('post-details',$post ->slug)}}">
+                                    @if(!empty($post->image))
+                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid">
+                                    @else
+                                    <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="img-fluid">
+                                    @endif
                                 </a>
                                 
                             </div>
@@ -62,9 +66,19 @@
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
-                        <a href="#">
-                            <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
+                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                            <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
                         </a>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -72,9 +86,19 @@
     </div>
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
-            <a href="#">
-                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
             </a>
+            @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @else
+                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @endif
         </div>
     </div>
 </section>

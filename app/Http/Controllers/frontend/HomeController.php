@@ -22,7 +22,7 @@ class HomeController extends Controller
             ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.category_id')
             ->where('article.dlt_flg', 0)
             ->orderBy('article.updated_at', 'DESC')
-            ->paginate(10);
+            ->paginate(30);
 
         $postBusiness = Article::where('dlt_flg', 0)->where('category_id',1)->orderBy('updated_at', 'DESC')->take(3)->get();
         $postFinance = Article::where('dlt_flg', 0)->where('category_id',2)->orderBy('updated_at', 'DESC')->take(3)->get();
@@ -40,7 +40,10 @@ class HomeController extends Controller
             'postSociety' => $postSociety,
             'postCrypto' => $postCrypto,
         ];
-        // dd($postAll);
+        $agent = new Agent();
+        $agent->is('iPhone');
+        $device = $agent->platform();
+        // dd($device);
         return view('frontend.index', $viewData);
     }
 

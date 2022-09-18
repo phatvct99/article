@@ -13,7 +13,7 @@
          <label class="col-12 col-sm-3 col-form-label text-sm-right">Tên tin tức</label>
          <div class="col-12 col-sm-8 col-lg-6">
             <input  class="form-control" type="text" name="name" id = "title" value="{{ old('name',isset($posts->name)?$posts->name:$posts->title)}}" onkeyup="ChangeToSlug(); required">
-            <p style="color:red">{{ $errors->first('n_name') }}</p>
+            <p style="color:red">{{ $errors->first('name') }}</p>
          </div>
       </div>
       <div class="form-group row">
@@ -32,6 +32,7 @@
             </a>
             </span>
             <input id="thumbnail" class="form-control" type="text" name="image" value="{{ old('image',isset($posts->image)?$posts->image:'')}}">
+            <p style="color:red">{{ $errors->first('image') }}</p>
          </div>
          <img id="holder" style="margin-top:15px;max-height:100px;">
       </div>
@@ -40,6 +41,7 @@
          <label class="col-12 col-sm-3 col-form-label text-sm-right">Title</label>
          <div class="col-12 col-sm-8 col-lg-6">
             <input  type="text" class="form-control"  name="title" value="{{ old('title',isset($posts->title)?$posts->title:'')}}" >
+            <p style="color:red">{{ $errors->first('title') }}</p>
          </div>
       </div>
 
@@ -59,8 +61,8 @@
          </div>
       </div>
       <div class="form-group row">
-         <label class="col-12">Content</label>
-         <div class="col-12">
+         <label class="col-12 col-sm-3 col-form-label text-sm-right">Content</label>
+         <div class="col-12 col-sm-8 col-lg-6">
             <textarea class="form-control" id="content" name="content" value="{!! old('content',$content)!!}"></textarea>
             <p style="color:red">{{ $errors->first('content') }}</p>
          </div>
@@ -84,8 +86,10 @@
          </div>
       </div>
 </form>
-   <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+<div class="form-group row">
+   <div class="col-12 col-sm-8 col-lg-6">
       <div class="content-demo">
       {!! old('content',$content)!!}
       </div>
+   </div>
    </div>

@@ -35,8 +35,10 @@
                                     <a href="{{ route('frontend.business.detail',['tax' => $com->tax, 'slug' => $com->slug])}}">{{$com->name}}</a>
                                 </h3>
                                 <div>
+                                    @if($com->chairman != NULL)
                                     <span>Người đại diện: {{$com->chairman}}</span>
                                     <br>
+                                    @endif
                                     <span>Mã số thuế: {{$com->tax}}</span>
                                     <br>
                                     <em>Địa chỉ:</em> 
@@ -58,11 +60,19 @@
             </div>
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
                 <div class="sidebar-box image-ads">
-                    <div class="ne-banner-layout1 text-center">
-                        <a href="#">
-                            <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
+                    @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                            <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
                         </a>
-                    </div>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @endif
                 </div>
                 <!-- <div class="sidebar-box">
                     <div class="topic-border color-cod-gray mb-25">
@@ -75,25 +85,28 @@
     </div>
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
-            <a href="#">
-                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
             </a>
+            @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @else
+                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @endif
         </div>
     </div>
 </section>
 
 @endsection
 @section('js')
-<script>
-    var $window = $(window);
-    $(window).on('scroll', function() {
-        $topOffset = $(this).scrollTop();
-        console.log($topOffset);
-    });
-</script>
+
 <script>
 window.onscroll = function() {myFunction()};
-console.log(window.scrollY)
 function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");

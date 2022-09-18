@@ -1492,12 +1492,12 @@ ul.item2-inline li:last-child {
   position: relative;
   color: #ffffff;
   height: 26px;
-  padding: 0 15px;
+  padding: 0 5px;
   line-height: 26px;
   text-align: center;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 8px;
   z-index: 2;
 }
 .topic-box-sm:before {
@@ -1948,7 +1948,7 @@ ul.item2-inline li:last-child {
 }
 .topic-box-top-xs {
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 10px;
 }
 .post-date-light ul {
@@ -3327,14 +3327,13 @@ div#wrapper.open > .offcanvas-mask {
 .modal:before {
   content: '';
   display: inline-block;
-  height: 100%;
+  height: 20%;
   vertical-align: middle;
 }
 .modal-header {
   display: block;
 }
 .modal-dialog {
-  width: 500px;
   display: inline-block;
   text-align: left;
   vertical-align: middle;

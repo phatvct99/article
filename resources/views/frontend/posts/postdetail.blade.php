@@ -8,11 +8,20 @@
                 <div class="news-details-layout1">
                     @if(isset($posts))
                         <div class="position-relative mb-30">
-                            <a href="">
-                                <img src="../frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
+                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                            <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
+                        </a>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                            <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
                             </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                            <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
+                            </a>
+                        @endif
                         </div>
-                        
                         @foreach ($posts as $k => $post)
                         <h1 class="title-semibold-dark size-c30">{{$post->title}}</h1>
                         @endforeach
@@ -21,18 +30,6 @@
                         {!! $content !!}
                         @endif
                     </div>
-                    <ul class="blog-tags item-inline">
-                        <li>Tags</li>
-                        <li>
-                            <a href="#">#Business</a>
-                        </li>
-                        <li>
-                            <a href="#">#Magazine</a>
-                        </li>
-                        <li>
-                            <a href="#">#Lifestyle</a>
-                        </li>
-                    </ul>
                     @endif
                     <div class="post-share-area mb-40 item-shadow-1">
                         <p>You can share this post!</p>
@@ -68,25 +65,44 @@
                                 </a>
                             </li>
                         </ul>
-                        
                     </div>
+                    @if((new \Jenssegers\Agent\Agent())->isDesktop())
                     <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
-                        <a href="#">
-                            <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                            <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
                         </a>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @endif
                     </div>
+                    @endif
                     @if((new \Jenssegers\Agent\Agent())->isMobile())
-
                     <div class="sidebar-box image-ads">
                         <div class="ne-banner-layout1 text-center">
-                            <a href="#">
-                                <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
+                            @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
                             </a>
+                            @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                                <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                                </a>
+                            @else
+                                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                                </a>
+                            @endif
                         </div>
                     </div>
                     <br>
                     @endif
-
                     <div class="col-lg-12 col-md-12">
                         <div class="row">
                             @if(isset($posts_related))
@@ -94,8 +110,12 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="media media-none--lg mb-30">
                                     <div class="position-relative width-40">
-                                        <a href="single-news-1.html" class="img-opacity-hover img-overlay-70">
-                                            <img src="frontend/img/news/news141.jpg" alt="news" class="img-fluid">
+                                        <a href="{{ route('post-details',$post ->slug)}}">
+                                        @if(!empty($post->image))
+                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid">
+                                        @else
+                                        <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="img-fluid">
+                                        @endif
                                         </a>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
@@ -124,43 +144,68 @@
 
                 <div class="sidebar-box">
                     <div class="ne-banner-layout1 text-center">
-                        <a href="#">
-                            <img src="../frontend/img/ads/ads5.png" alt="ad" class="img-fluid">
+                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                            <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
                         </a>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
+                            </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
+                            </a>
+                        @endif
                     </div>
                 </div>
 
                 <div class="sidebar-box image-ads">
-                        <div class="ne-banner-layout1 text-center">
-                            <a href="#">
-                                <img src="../frontend/img/ads/ads4.png" alt="ad" class="img-fluid">
+                    <div class="ne-banner-layout1 text-center">
+                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
                             </a>
-                        </div>
+                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
-            <a href="#">
-                <img src="../frontend/img/ads/ads1.png" alt="ad" class="img-fluid">
+            @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
             </a>
+            @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @else
+                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                </a>
+            @endif
         </div>
     </div>
 </section>
+
 @endsection
 
 @section('js')
-<script>
-    var $window = $(window);
-    $(window).on('scroll', function() {
-        $topOffset = $(this).scrollTop();
-        console.log($topOffset);
-    });
-</script>
+
 <script>
 window.onscroll = function() {myFunction()};
-console.log(window.scrollY)
+console.log(window.scrollY);
 function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");

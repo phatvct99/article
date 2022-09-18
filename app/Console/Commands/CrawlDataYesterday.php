@@ -13,14 +13,14 @@ use Illuminate\Support\Str;
 
 
 
-class crawl extends Command
+class CrawlDataYesterday extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'crawl:data';
+    protected $signature = 'CrawlDataYesterday:data';
 
     /**
      * The console command description.
@@ -29,9 +29,6 @@ class crawl extends Command
      */
     protected $description = 'Command description';
 
-    protected $category = [
-        'https://hosocongty.vn/nam-2000',
-    ];
     protected $client;
     public $results = [];
 
@@ -57,30 +54,21 @@ class crawl extends Command
      */
     public function handle()
     {
-        //$client = new Client(HttpClient::create(['timeout' => 1]));
         try {
-            // $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2003/page-');
-            // $page = $crawler->filter('.next-page a')->each(function ($node) {
-            //     return $node->attr("href");
-            // });
-            // $numPage = array_pop($page);
-            // $num = substr($numPage, -4);
-            foreach ($this->category as $category) {
-                print ("lay cua danh muc " . $category) . "\n";
-                for ($i = 1; $i < 1000; $i++) {
-                    print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
-                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2003/page-' . $i);
-                    sleep(1);
-                    $linkPost = $crawler->filter('h3 a')->each(function ($node) {
-                        return $node->attr("href");
-                    });
-                    ///dump($linkPost);
-                    foreach ($linkPost as $link) {
-                        $l = "https://hosocongty.vn/" . $link;
-                        self::crawlPost($l);
-                    }
+            $date = Carbon::yesterday()->format('d/m/Y');
+            for ($i = 1; $i < 1562; $i++) {
+                print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
+                $crawler = $this->client->request('GET', 'https://hosocongty.vn/ngay-'.$date.'page-'. $i);
+                // sleep(1);
+                $linkPost = $crawler->filter('h3 a')->each(function ($node) {
+                    return $node->attr("href");
+                });
+                foreach ($linkPost as $link) {
+                    $l = "https://hosocongty.vn/" . $link;
+                    self::crawlPost($l);
                 }
             }
+
         } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
@@ -111,7 +99,6 @@ class crawl extends Command
             $companyDescription = $companyDescription[0];
         }
 
-        //business
         $business = $crawler->filter('ul.nnkd')->each(function ($node) {
             return $node->text();
         });
@@ -136,7 +123,7 @@ class crawl extends Command
             $name = preg_match($patternName, $companyDescription, $nameCompany);
             $dt = preg_match($patternDate, $companyDescription, $dateCompany);
             $phone = preg_match($patternPhone, $companyDescription, $phoneCompany);
-            $business = preg_match($patternBusiness, $companyDescription, $nameBusiness);
+            $business1 = preg_match($patternBusiness, $companyDescription, $nameBusiness);
             $status = preg_match($patternStatus, $companyDescription, $nameStatus);
 
             $nameBusiness = isset($nameBusiness[2]) ? $nameBusiness[2] : NULL;
@@ -162,14 +149,15 @@ class crawl extends Command
             'business' => $nameBusiness,
             'status' => $nameStatus,
         ];
-        Company::create($data);
+        // Company::create($data);
         print("Import database thanh cong!" . "\n");
+        dump($nameBusiness);
         dump($taxCompany);
         dump($addressCompany);
         dump($nameCompany);
-        dump($nameBusiness);
+        dump($phoneCompany);
+        dump($dateCompany);
         dump($nameStatus);
-        dump($date);
         }catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }

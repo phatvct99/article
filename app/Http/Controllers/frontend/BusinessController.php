@@ -24,7 +24,7 @@ class BusinessController extends Controller
 
         $company = Business::where('tax', $tax)
                             ->where('slug', $slug)->first();
-        $companyRelate = Business::orderBy('date', 'DESC')->take(10)->get();
+        $companyRelate = Business::orderBy('date', 'DESC')->take(20)->get();
         $viewData = [
             'company' => $company,
             'address' => urlencode($company->address),
