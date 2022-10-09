@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <a href="index.html" class="footer-logo img-fluid">
-                        <img src="frontend/img/logo.png" alt="logo" class="img-fluid">
+                        <img src="frontend/img/logo/logo-kinhtez-black.png" alt="logo" class="img-fluid">
                     </a>
                     <ul class="footer-social">
                         <li>
@@ -38,13 +38,8 @@
                                 <i class="fa fa-rss" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" title="vimeo">
-                                <i class="fa fa-vimeo" aria-hidden="true"></i>
-                            </a>
-                        </li>
                     </ul>
-                    <p>© 2017 newsedge Designed by RadiusTheme. All Rights Reserved</p>
+                    <p>© 2022 Trang thông tin tổng hợp</p>
                 </div>
             </div>
         </div>

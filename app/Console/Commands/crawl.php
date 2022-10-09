@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Goutte;
 use App\Constant;
 use App\Models\Company;
+use App\Models\Business;
 use Goutte\Client;
 use Symfony\Component\HttpClient\HttpClient;
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class crawl extends Command
     protected $description = 'Command description';
 
     protected $category = [
-        'https://hosocongty.vn/nam-2000',
+        'https://hosocongty.vn/nam-2004',
     ];
     protected $client;
     public $results = [];
@@ -57,25 +58,20 @@ class crawl extends Command
      */
     public function handle()
     {
-        //$client = new Client(HttpClient::create(['timeout' => 1]));
         try {
-            // $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2003/page-');
-            // $page = $crawler->filter('.next-page a')->each(function ($node) {
-            //     return $node->attr("href");
-            // });
-            // $numPage = array_pop($page);
-            // $num = substr($numPage, -4);
             foreach ($this->category as $category) {
                 print ("lay cua danh muc " . $category) . "\n";
-                for ($i = 1; $i < 1000; $i++) {
+                for ($i = 2000; $i <3000; $i++) {
                     print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
-                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2003/page-' . $i);
-                    sleep(1);
+                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2015/page-' . $i);
+                    sleep(0.3);
                     $linkPost = $crawler->filter('h3 a')->each(function ($node) {
                         return $node->attr("href");
                     });
+
                     ///dump($linkPost);
                     foreach ($linkPost as $link) {
+                        // dump($link);
                         $l = "https://hosocongty.vn/" . $link;
                         self::crawlPost($l);
                     }
@@ -90,28 +86,44 @@ class crawl extends Command
     {
         $crawler = $this->client->request('GET', $url);
 
-        $companyName = $crawler->filter('ul.hsdn li h1')->each(function ($node) {
+        $companyName = $crawler->filter('ul.hsct li h1')->each(function ($node) {
             return $node->text();
         });
         if (isset($companyName[0])) {
             $companyName = $companyName[0];
         }
+        // dump($companyName);
 
-        $companyProfile = $crawler->filter('ul.hsdn li div')->each(function ($node) {
+        $companyProfile = $crawler->filter('ul.hsct')->eq(1)->each(function ($node) {
             return $node->text();
         });
         if (isset($companyProfile[0])) {
             $companyProfile = $companyProfile[0];
         }
+        // dump($companyProfile);
 
-        $companyDescription = $crawler->filter('ul.hsdn li')->eq(1)->each(function ($node) {
+        //Mã số thuế
+        $mst = $crawler->filter('ul.hsct li')->eq(2)->each(function ($node) {
             return $node->text();
         });
-        if (isset($companyDescription[0])) {
-            $companyDescription = $companyDescription[0];
-        }
+        $mst = isset($mst[0]) ? $mst[0] : NULL;
+        // dump($mst);
 
-        //business
+        //Đại diện pháp luật
+        $ddpl = $crawler->filter('ul.hsct li')->eq(4)->each(function ($node) {
+            return $node->text();
+        });
+        $ddpl = isset($ddpl[0]) ? $ddpl[0] : NULL;
+        // dump($ddpl);
+
+        $companyDescription = $crawler->filter('ul.hsct')->eq(2)->each(function ($node) {
+            return $node->text();
+        });
+        $companyDescription = isset($companyDescription[0]) ? $companyDescription[0] : NULL;
+        // dump($companyDescription);
+
+
+        // //business
         $business = $crawler->filter('ul.nnkd')->each(function ($node) {
             return $node->text();
         });
@@ -131,7 +143,9 @@ class crawl extends Command
             if(!empty($companyDescription)){
                 $name = preg_match($patternName, $companyDescription, $nameCompany);
             }
-            $tax = preg_match($patternTax, $companyProfile, $taxCompany);
+            if(!empty($companyProfile)){
+                $tax = preg_match($patternTax, $companyProfile, $taxCompany);
+            }
             $address = preg_match($patternAddress, $companyProfile, $addressCompany);
             $name = preg_match($patternName, $companyDescription, $nameCompany);
             $dt = preg_match($patternDate, $companyDescription, $dateCompany);
@@ -143,8 +157,8 @@ class crawl extends Command
             $nameStatus = isset($nameStatus[2]) ? $nameStatus[2] : NULL;
             $nameCompany = isset($nameCompany[2]) ? $nameCompany[2] : NULL;
             $addressCompany = isset($addressCompany[2]) ? $addressCompany[2] : NULL;
-            $taxCompany = isset($taxCompany[0]) ? $taxCompany[0] : NULL;
-            $phoneCompany = isset($phoneCompany[0]) ? $phoneCompany[0] : NULL;
+            $taxCompany = isset($taxCompany[0]) ? $taxCompany[0] : '1234567890';
+            $phoneCompany = isset($phoneCompany[2]) ? $phoneCompany[2] : NULL;
             $dateCompany = isset($dateCompany[0]) ? $dateCompany[0] : NULL;
 
             //isset($data['excerpt'][$k]) ? $data['excerpt'][$k] : "";
@@ -162,14 +176,17 @@ class crawl extends Command
             'business' => $nameBusiness,
             'status' => $nameStatus,
         ];
-        Company::create($data);
+        Business::create($data);
+
         print("Import database thanh cong!" . "\n");
+        // dump($companyName);
         dump($taxCompany);
-        dump($addressCompany);
-        dump($nameCompany);
-        dump($nameBusiness);
-        dump($nameStatus);
-        dump($date);
+        // dump($nameCompany);
+        // dump($addressCompany);
+        // dump($phoneCompany);
+        // dump($nameBusiness);
+        // dump($nameStatus);
+        // dump($date);
         }catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }

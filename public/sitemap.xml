@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/vendor/sitemap/styles/sitemapindex.xsl" type="text/xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-article-0.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-business-0.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-business-1.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-business-2.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-business-3.xml</loc>
+		</sitemap>
+	<sitemap>
+		<loc>https://kinhtez.com/sitemap-business-4.xml</loc>
+		</sitemap>
+</sitemapindex>

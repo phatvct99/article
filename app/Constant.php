@@ -14,13 +14,13 @@ class Constant
 
     const REGEX_DATE = '/\d{2}\/\d{2}\/\d{4}/';
 
-    const REGEX_PHONE = '/(\s*[0-9]+)+/';
+    const REGEX_PHONE = '/(.*)thoại:(.*) Ngày(.*)/';
 
-    const REGEX_ADDRESS_COMPANY = '/(.*)chỉ: (.*). Xem(.*)/';
+    const REGEX_ADDRESS_COMPANY = '/(.*)thuế: (.*)/';
 
-    const REGEX_NAME_COMPANY = '/(.*)luật: (.*)Điện(.*)/';
+    const REGEX_NAME_COMPANY = '/(.*)luật:(.*) Điện(.*)/';
 
-    const REGEX_NAME_BUSINESS = '/(.*)chính: (.*)Cập(.*)/';
+    const REGEX_NAME_BUSINESS = '/(.*)chính: (.*)Trạng(.*)/';
 
-    const REGEX_NAME_STATUS = '/(.*)thái: (.*)Cập(.*)/';
+    const REGEX_NAME_STATUS = '/(.*)thái:(.*) Mọi(.*)/';
 }

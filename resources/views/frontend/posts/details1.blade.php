@@ -1,6 +1,9 @@
 @extends('layouts.frontend')
-@section ('content')      
-
+@section ('seo')
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+@endsection
+@section ('content')
 <!-- Breadcrumb Area End Here -->
 <!-- Post Style 1 Page Area Start Here -->
 <section class="bg-body section-space-less30">
@@ -15,7 +18,7 @@
                             <div class="position-relative width-40">
                                 <a href="{{ route('post-details',$post ->slug)}}">
                                     @if(!empty($post->image))
-                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid">
+                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid width-100">
                                     @else
                                     <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="img-fluid">
                                     @endif
@@ -27,7 +30,7 @@
                                     <ul>
                                         <li>
                                             <span>by</span>
-                                            <a href="single-news-1.html">KinhteZ</a>
+                                            <a href="/">KinhteZ</a>
                                         </li>
                                         <li>
                                             <span>

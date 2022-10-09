@@ -1,6 +1,9 @@
 @extends('layouts.frontend')
-@section ('content')      
-
+@section ('seo')
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+@endsection
+@section ('content')
 <!-- Breadcrumb Area End Here -->
 <!-- Author Post Page Area Start Here -->
 <section class="bg-body section-space-less30">

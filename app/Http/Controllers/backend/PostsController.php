@@ -19,8 +19,8 @@ class PostsController extends Controller
     {
         $posts = DB::table('article')
             ->join('category', 'article.category_id', '=', 'category.id')
-            ->select('article.name', 'article.status', 'article.hot', 'article.total_view', 'article.image', 'article.id', 'category.title')
-            ->where('article.dlt_flg',0)
+            ->select('article.name', 'article.status', 'article.hot', 'article.total_view', 'article.image', 'article.id', 'category.title','article.status')
+            ->where('article.dlt_flg', 0)
             ->orderBy('article.updated_at', 'DESC')
             ->get();
         $viewData = [
@@ -100,8 +100,8 @@ class PostsController extends Controller
             $posts = Article::find($id);
             switch ($action) {
                 case 'delete':
-                    $posts->dlt_flg = 1 ;
-                    $posts -> save();
+                    $posts->dlt_flg = 1;
+                    $posts->save();
                     break;
             }
         }
@@ -149,7 +149,21 @@ class PostsController extends Controller
         return $result;
     }
 
-    public function getHistory(){
+    public function setStatus(Request $request)
+    {
+        if(!$request->status && !$request->link_id)
+            return;
+        $link = Article::find($request->link_id);
+        
+        $link->status = $request->status;
+        
+        $link->save();
+
+        return response()->json(['msg' => 'Link updated!']);
+    }
+
+    public function getHistory()
+    {
 
         $posts = DB::table('article_log')
             ->select('*')

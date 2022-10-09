@@ -95,7 +95,7 @@
      jQuery MeanMenu activation code
      --------------------------------------*/
     $('nav#dropdown').meanmenu({
-        siteLogo: "<div class='mobile-menu-nav-back'><a href='/' class='logo-mobile'><img src='img/logo.png'/></a></div>"
+        siteLogo: "<div class='mobile-menu-nav-back'><a href='/' class='logo-mobile'><img src='/frontend/img/logo/logo-kinhtez.png'/></a></div>"
     });
 
     /*-------------------------------------

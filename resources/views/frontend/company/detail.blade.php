@@ -1,13 +1,33 @@
 @extends('layouts.frontend')
-@section ('content')      
-
-<!-- Breadcrumb Area End Here -->
-<!-- Author Post Page Area Start Here -->
+@section ('seo')
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+@endsection
+@section ('content')
 <section class="bg-body section-space-less30">
     <div class="container">
         <div class="row">
         
             <div class="col-lg-8 col-md-12">
+                <div class="bg-accent p-35-r mb-50 item-shadow-1">
+                    <div class="media-body pt-10 media-margin30">
+                        <div class="newsletter-area bg-primary">
+                            <h2 class="title-medium-light size-xl pl-30 pr-30">Tra cứu thông tin doanh nghiệp trên toàn quốc!</h2>
+                            <p>Nhập mã số thuế, tên công ty, người đại diện</p>
+                            <form action="{{ route('search') }}" method="GET" >
+                                <div class="input-group stylish-input-group">
+                                    <input type="text" name="search" placeholder="Tìm kiếm" class="form-control" value={{old('search')}}>
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
             @if(isset($company))
                 <h1>Thông tin doanh nghiệp</h1>
                 <div class="bg-accent p-35-r mb-50 item-shadow-1">
@@ -16,19 +36,14 @@
                             <li>
                                 <h2>{{$company->name}}</h2>
                             </li>
-                            <li>Mã số thuế: {{$company->tax}}</li>
-                            <li>Địa chỉ: <a href="https://www.google.com/maps/place/{{$address}}" target="_blank">{{$company->address}}</a></li>
-                        </ul>
-                   </div>
-                </div>
-                <div class="bg-accent p-35-r mb-50 item-shadow-1">
-                    <div class="company-detail">
-                        <ul>
-                        <ul>
                             @if($company->chairman != NULL)
                             <li>Đại diện pháp luật: <strong>{{$company->chairman}}</strong></li>
                             @endif
+                            <li>Mã số thuế: {{$company->tax}}</li>
+                            <li>Địa chỉ: <a href="https://www.google.com/maps/place/{{$address}}" target="_blank">{{$company->address}}</a></li>
+                            @if(strlen($company->phone) > 8)
                             <li>Điện thoại: {{$company->phone}}</li>
+                            @endif
                             <li>Ngày hoạt động: {{$company->date->format('d-m-Y')}}</li>
                             <li>Ngày cấp giấy phép: {{$company->date->format('d-m-Y')}}</li>
                             @if($company->business != NULL)
@@ -37,6 +52,10 @@
                             @if($company->status != NULL)
                             <li>Trạng thái: {{$company->status}}</li>
                             @endif
+                            <br>
+                            <li>Ghi chú: Thông tin trên chỉ mang tính tham khảo, có thể doanh nghiệp mới làm thủ tục thay đổi thông tin nên hệ thống chưa cập nhật kịp thời,
+                            Quý khách có thể liên hệ trực tiếp với <strong>{{$company->name}}</strong> tại địa chỉ <a href="https://www.google.com/maps/place/{{$address}}" target="_blank">{{$company->address}}</a> để có thông tin chính xác nhất.
+                            </li>
                         </ul>
                    </div>
                 </div>

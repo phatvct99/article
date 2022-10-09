@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\crawl\CategoriesController;
 use App\Http\Controllers\backend\crawl\HomeController;
 use App\Http\Controllers\backend\crawl\ItemSchemaController;
 use App\Http\Controllers\backend\crawl\LinksController;
+use App\Http\Controllers\backend\PostsController;
 use App\Http\Controllers\backend\crawl\WebsitesController;
 use Goutte\Client;
 /*
@@ -48,6 +49,7 @@ Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:
         Route::get('/diff/{id}','PostsController@diff')->name('backend.posts.diff');
         Route::get('/create','PostsController@create')->name('backend.posts.create');
         Route::post('/create','PostsController@add');
+        Route::patch('/set-status', [PostsController::class,'setStatus']);
         Route::get('/update/{id}','PostsController@edit')->name('backend.posts.edit');
         Route::post('/update/{id}','PostsController@update');
         Route::get('/{action}/{id}','PostsController@action')->name('backend.posts.delete');

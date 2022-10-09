@@ -1,25 +1,19 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi" xml:lang="vi">
+<html lang="vi" xml:lang="vi">
 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Finance79</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
+        <meta name="robots" content="index, follow"/>
+        <meta name="Language" content="vi"/>
+        <meta name="distribution" content="Global"/>
         @yield('seo')
         @yield('styles')
         @include("frontend.container.css")
     </head>
 
     <body>
-        <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an 
-        <strong>outdated</strong> browser. Please 
-        <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-    </p>
-    <![endif]-->
         <!-- Add your site or application content here -->
         <!-- Preloader Start Here -->
         <div id="preloader"></div>

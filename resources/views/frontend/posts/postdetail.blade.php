@@ -1,6 +1,9 @@
 @extends('layouts.frontend')
-@section ('content')      
-
+@section ('seo')
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+@endsection
+@section ('content')
 <section class="bg-body section-space-less30">
     <div class="container">
         <div class="row">
@@ -112,7 +115,7 @@
                                     <div class="position-relative width-40">
                                         <a href="{{ route('post-details',$post ->slug)}}">
                                         @if(!empty($post->image))
-                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid">
+                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid width-100">
                                         @else
                                         <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="img-fluid">
                                         @endif
@@ -205,7 +208,6 @@
 
 <script>
 window.onscroll = function() {myFunction()};
-console.log(window.scrollY);
 function myFunction() {
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         var footerElement = document.getElementById("footerPost");

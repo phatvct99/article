@@ -24,13 +24,12 @@ class RequestPosts extends FormRequest
     public function rules()
     {
         return [           
-            'name' => 'required|min:5|max:250',
+            'name' => 'required',
             'slug' => 'required',
             'title' => 'required',
             'keyword' => 'required',
             'excerpt' => 'required',
             'image' => 'required',
-            'category_id ' => 'required'
         ];
     }
     public function messages()
@@ -42,7 +41,6 @@ class RequestPosts extends FormRequest
             'keyword.required' => 'Vui lòng không để trống',
             'excerpt.required' => 'Vui lòng không để trống',
             'image.required' => 'Vui lòng không để trống',
-            'category_id.required' => 'Vui lòng không để trống'
         ];
     }
 }
