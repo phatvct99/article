@@ -4922,6 +4922,17 @@ ul.address-info li i {
 .pagination-btn-wrapper ul li a{
   color: #111111;
 }
+.thumbnail-image {
+  width: 100%;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
 .pagination-btn-wrapper ul li:hover {
   background-color: #2EBF6C;

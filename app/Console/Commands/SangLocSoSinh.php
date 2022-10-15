@@ -14,14 +14,14 @@ use Illuminate\Support\Str;
 
 
 
-class crawl extends Command
+class SanLocSoSinh extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'crawl:data';
+    protected $signature = 'crawl:sosinh';
 
     /**
      * The console command description.
@@ -30,9 +30,6 @@ class crawl extends Command
      */
     protected $description = 'Command description';
 
-    protected $category = [
-        'https://hosocongty.vn/nam-2004',
-    ];
     protected $client;
     public $results = [];
 
@@ -59,24 +56,9 @@ class crawl extends Command
     public function handle()
     {
         try {
-            foreach ($this->category as $category) {
-                print ("lay cua danh muc " . $category) . "\n";
-                for ($i = 1000; $i <2000; $i++) {
-                    print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
-                    $crawler = $this->client->request('GET', 'https://hosocongty.vn/nam-2016/page-' . $i);
-                    sleep(0.3);
-                    $linkPost = $crawler->filter('h3 a')->each(function ($node) {
-                        return $node->attr("href");
-                    });
 
-                    dump($linkPost);
-                    foreach ($linkPost as $link) {
-                        // dump($link);
-                        $l = "https://hosocongty.vn/" . $link;
-                        self::crawlPost($l);
-                    }
-                }
-            }
+                $crawler = $this->client->request('GET', 'http://sanglocsosinh.com/#!/login');
+
         } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
@@ -176,17 +158,12 @@ class crawl extends Command
             'business' => $nameBusiness,
             'status' => $nameStatus,
         ];
-        // Business::create($data);
+        Business::create($data);
 
         print("Import database thanh cong!" . "\n");
         // dump($companyName);
-        // dump($taxCompany);
-        // dump($nameCompany);
-        // dump($addressCompany);
-        // dump($phoneCompany);
-        // dump($nameBusiness);
-        // dump($nameStatus);
-        dump($date);
+        dump($taxCompany);
+
         }catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }

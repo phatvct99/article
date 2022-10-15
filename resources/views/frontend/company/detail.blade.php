@@ -67,15 +67,15 @@
                         <div class="ne-banner-layout1 text-center">
                             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
                             <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
                             </a>
                             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
                                 <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
                                 </a>
                             @else
                                 <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="img-fluid" loading="lazy">
+                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
                                 </a>
                             @endif
                         </div>
@@ -113,7 +113,7 @@
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/ads/ads4.gif" alt="ad" class="img-fluid">
+                            <img src="../frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image">
                         </a>
                     </div>
                 </div>
@@ -124,15 +124,15 @@
         <div class="ne-banner-layout1 text-center">
             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
             <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
             </a>
             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
                 <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
                 </a>
             @else
                 <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="img-fluid" loading="lazy">
+                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
                 </a>
             @endif
         </div>

@@ -29,36 +29,22 @@ class HomeController extends Controller
             $artilces = '';
             if ($request->ajax()) {
                 foreach ($posts as $post) {
-                    // $artilces.='<div class="card mb-2"> <div class="card-body">'
-                    //                 .$post->category_id.
-                    //                 ' <h5 class="card-title">'.$post->title.'</h5> '
-                    //                 .$post->excerpt.'</div>
-                    //             </div>';
+
                     $artilces.='<div class="row politics">
                                     <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
                                         <div class="media media-none--lg mb-30">
                                             <div class="position-relative width-40">
                                                 <a href="" class="img-opacity-hover">
-                                                    <img src="frontend/img/news/news141.jpg"  class="img-fluid">
+                                                    <img src="'.$post->image.'"  class="thumbnail-image">
                                                 </a>
                                         </div>
                                         <div class="media-body p-mb-none-child media-margin30">
-                                            <div class="post-date-dark">
-                                                <ul>
-                                                    <li>
-                                                        <span>by</span>
-                                                        <a href="/">KinhteZ</a>
-                                                    </li>
-                                                    <li>
-                                                        <span>
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                             <h3 class="title-semibold-dark size-lg mb-15">
-                                                <a href="">'.$post->title.'</a>
+                                                <a href="/tin-tuc-'.$post->slug.'">'.$post->title.'</a>
                                             </h3>
+                                            <article>
+                                                <p>'.$post->excerpt.'</p>
+                                            </article>
                                         </div>
                                     </div>
                                 </div>
@@ -110,13 +96,4 @@ class HomeController extends Controller
         return view('frontend.index', $viewData);
     }
 
-    public function getArticleByCategory($category)
-    {
-        $posts = DB::table('article')
-            ->join('category', 'article.category_id', '=', 'category.id')
-            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at')
-            ->where('category.slug', $category)->where('article.dlt_flg', 0)
-            ->orderBy('article.updated_at', 'DESC')
-            ->take(4)->get();
-    }
 }

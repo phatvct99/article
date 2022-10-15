@@ -12,15 +12,15 @@
                     @if(isset($posts))
                         <div class="position-relative mb-30">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
                             </a>
                         @else
-                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
                             </a>
                         @endif
@@ -72,16 +72,16 @@
                     @if((new \Jenssegers\Agent\Agent())->isDesktop())
                     <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                         @else
-                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                         @endif
                     </div>
@@ -90,16 +90,16 @@
                     <div class="sidebar-box image-ads">
                         <div class="ne-banner-layout1 text-center">
                             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                                <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                                 </a>
                             @else
-                                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                                 </a>
                             @endif
                         </div>
@@ -115,9 +115,9 @@
                                     <div class="position-relative width-40">
                                         <a href="{{ route('post-details',$post ->slug)}}">
                                         @if(!empty($post->image))
-                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="img-fluid width-100">
+                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                                         @else
-                                        <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="img-fluid">
+                                        <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                                         @endif
                                         </a>
                                     </div>
@@ -148,16 +148,16 @@
                 <div class="sidebar-box">
                     <div class="ne-banner-layout1 text-center">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                            <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
                             </a>
                         @else
-                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                <img src="/frontend/img/ads/ads6.jpg" alt="ad" class="img-fluid">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
                             </a>
                         @endif
                     </div>
@@ -166,16 +166,16 @@
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                         @else
-                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="ad" class="img-fluid" loading="lazy">
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                         @endif
                     </div>
@@ -186,16 +186,16 @@
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
             </a>
             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                 </a>
             @else
-                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="img-fluid" loading="lazy">
+                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                 </a>
             @endif
         </div>
@@ -219,7 +219,7 @@ function myFunction() {
         }
     }
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+        if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
             document.getElementById("banner-ads-bottom").style.top = "60px";
             document.getElementById("banner-ads-bottom").style.position = "fixed";
         } else {
