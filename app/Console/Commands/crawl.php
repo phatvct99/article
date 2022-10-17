@@ -69,9 +69,9 @@ class crawl extends Command
                         return $node->attr("href");
                     });
 
-                    dump($linkPost);
+                    // dump($linkPost);
                     foreach ($linkPost as $link) {
-                        // dump($link);
+                        dump($link);
                         $l = "https://hosocongty.vn/" . $link;
                         self::crawlPost($l);
                     }
@@ -179,13 +179,13 @@ class crawl extends Command
         // Business::create($data);
 
         print("Import database thanh cong!" . "\n");
-        // dump($companyName);
-        // dump($taxCompany);
-        // dump($nameCompany);
-        // dump($addressCompany);
-        // dump($phoneCompany);
-        // dump($nameBusiness);
-        // dump($nameStatus);
+        dump($companyName);
+        dump($taxCompany);
+        dump($nameCompany);
+        dump($addressCompany);
+        dump($phoneCompany);
+        dump($nameBusiness);
+        dump($nameStatus);
         dump($date);
         }catch (\Exception $ex) {
             $this->status = $ex->getMessage();
