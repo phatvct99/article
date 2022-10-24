@@ -10,24 +10,24 @@
             <div class="col-lg-8 col-md-12 mb-30">
                 <div class="news-details-layout1">
                     @if(isset($posts))
-                        <div class="position-relative mb-30">
+                    <div class="position-relative mb-30">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
                         <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
-                            </a>
+                        </a>
                         @else
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
                             <img src="/frontend/img/ads/banner-555x320.jpg" alt="news-details" class="img-ads-top">
-                            </a>
+                        </a>
                         @endif
-                        </div>
-                        @foreach ($posts as $k => $post)
-                        <h1 class="title-semibold-dark size-c30">{{$post->title}}</h1>
-                        @endforeach
+                    </div>
+                    @foreach ($posts as $k => $post)
+                    <h1 class="title-semibold-dark size-c30">{{$post->title}}</h1>
+                    @endforeach
                     <div class="article-content">
                         @if(isset($content))
                         {!! $content !!}
@@ -76,13 +76,13 @@
                             <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                        </a>
                         @else
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                        </a>
                         @endif
                     </div>
                     @endif
@@ -94,13 +94,13 @@
                                 <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
                             </a>
                             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                                </a>
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                            </a>
                             @else
-                                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                    <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                                </a>
+                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                            </a>
                             @endif
                         </div>
                     </div>
@@ -114,25 +114,25 @@
                                 <div class="media media-none--lg mb-30">
                                     <div class="position-relative width-40">
                                         <a href="{{ route('post-details',$post ->slug)}}">
-                                        @if(!empty($post->image))
-                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
-                                        @else
-                                        <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image">
-                                        @endif
+                                            @if(!empty($post->image))
+                                            <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                                            @else
+                                            <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image">
+                                            @endif
                                         </a>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
                                         <h3 class="title-semibold-dark size-lg mb-15">
-                                        @if(isset($post->name))
-                                        <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }}</a>
-                                        @else
-                                        <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
-                                        @endif
+                                            @if(isset($post->name))
+                                            <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }}</a>
+                                            @else
+                                            <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
+                                            @endif
                                         </h3>
                                         @if(isset($post->excerpt))
-                                            <article>
-                                                <p>{{ $post->excerpt }}</p>
-                                            </article>
+                                        <article>
+                                            <p>{{ $post->excerpt }}</p>
+                                        </article>
                                         @endif
                                     </div>
                                 </div>
@@ -152,13 +152,13 @@
                             <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
+                        </a>
                         @else
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads6.jpg" alt="Đăng kí tài khoản binance" class="thumbnail-image">
+                        </a>
                         @endif
                     </div>
                 </div>
@@ -166,17 +166,17 @@
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                        </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                        </a>
                         @else
-                            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                                <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                            <img src="/frontend/img/ads/ads-binance-right.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+                        </a>
                         @endif
                     </div>
                 </div>
@@ -190,13 +190,13 @@
                 <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
             </a>
             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                </a>
+            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+            </a>
             @else
-                <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
-                    <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
-                </a>
+            <a href="https://accounts.binance.com/en/register?ref=37118031" target="_blank">
+                <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản binance" class="thumbnail-image" loading="lazy">
+            </a>
             @endif
         </div>
     </div>
@@ -207,25 +207,28 @@
 @section('js')
 
 <script>
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        var footerElement = document.getElementById("footerPost");
-        var footerPosition = footerElement.offsetTop;
-        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
-        document.querySelector(".image-ads").style.position = "fixed";
-        } else {
-        document.querySelector(".image-ads").style.position = "";
+    window.onscroll = function() {
+        myFunction()
+    };
+
+    function myFunction() {
+        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            var footerElement = document.getElementById("footerPost");
+            var footerPosition = footerElement.offsetTop;
+            if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition - 900)) {
+                document.querySelector(".image-ads").style.position = "fixed";
+            } else {
+                document.querySelector(".image-ads").style.position = "";
+            }
+        }
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+                document.getElementById("banner-ads-bottom").style.top = "60px";
+                document.getElementById("banner-ads-bottom").style.position = "fixed";
+            } else {
+                document.getElementById("banner-ads-bottom").style.top = "-60px";
+            }
         }
     }
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
-            document.getElementById("banner-ads-bottom").style.top = "60px";
-            document.getElementById("banner-ads-bottom").style.position = "fixed";
-        } else {
-            document.getElementById("banner-ads-bottom").style.top = "-60px";
-        }
-    }
-}
 </script>
 @endsection

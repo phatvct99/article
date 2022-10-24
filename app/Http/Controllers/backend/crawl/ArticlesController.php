@@ -30,7 +30,7 @@ class ArticlesController extends Controller
     {
         $article = Article::find($id);
 
-        if(!$article) return;
+        if (!$article) return;
 
         $article->delete();
 

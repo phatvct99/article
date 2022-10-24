@@ -31,44 +31,41 @@ class ItemSchemaController extends Controller
 
     public function add(Request $request)
     {
-        $this -> InsertOrUpdate($request);
+        $this->InsertOrUpdate($request);
         return redirect()->route('backend.item-schema.index')->with('status', 'Thêm thành công!');
     }
 
     public function update(Request $request, $id)
     {
-        $this -> InsertOrUpdate($request, $id);
+        $this->InsertOrUpdate($request, $id);
         return redirect()->route('backend.item-schema.index')->with('status', 'Cập nhật thành công!');
     }
 
-    public function InsertOrUpdate (Request $request, $id = '')
+    public function InsertOrUpdate(Request $request, $id = '')
     {
         //Debugbar::disable();
-        $code=1;
-        try{
+        $code = 1;
+        try {
             $itemSchema = new ItemSchema();
 
-            if ($id)
-            {
+            if ($id) {
                 $itemSchema = ItemSchema::find($id);
             }
             $itemSchema->title = $request->title;
 
-            if($request->is_full_url != null) {
-    
+            if ($request->is_full_url != null) {
+
                 $itemSchema->is_full_url = 1;
             } else {
                 $itemSchema->is_full_url = 0;
             }
-    
+
             $itemSchema->css_expression = $request->css_expression;
-    
+
             $itemSchema->full_content_selector = $request->full_content_selector;
-             //dd($posts);
-            $itemSchema -> save();
-        }
-        catch(Exception $exception)
-        {
+            //dd($posts);
+            $itemSchema->save();
+        } catch (Exception $exception) {
             return $code = 0;
         };
         return $code;
@@ -84,10 +81,10 @@ class ItemSchemaController extends Controller
     {
         $itemSchema = ItemSchema::find($id);
 
-        if(!$itemSchema) return;
+        if (!$itemSchema) return;
 
-        $itemSchema->dlt_flg = 1 ;
-        $itemSchema -> save();
+        $itemSchema->dlt_flg = 1;
+        $itemSchema->save();
 
         return redirect()->route('backend.item-schema.index')->with('status', 'Xóa thành công!');
     }

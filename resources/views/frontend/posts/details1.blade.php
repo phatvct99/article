@@ -23,7 +23,7 @@
                                     <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                                     @endif
                                 </a>
-                                
+
                             </div>
                             <div class="media-body p-mb-none-child media-margin30">
                                 <div class="post-date-dark">
@@ -47,9 +47,9 @@
                                     @endif
                                 </h3>
                                 @if(!empty($post->excerpt))
-                                    <article>
-                                        <p>{{ $post->excerpt }}</p>
-                                    </article>
+                                <article>
+                                    <p>{{ $post->excerpt }}</p>
+                                </article>
                                 @endif
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                 <div class="row mt-20-r mb-30">
                     <div class="col-sm-6 col-12">
                         <div class="pagination-btn-wrapper text-center--xs mb15--xs">
-                        {{ $posts->links('vendor.pagination.bootstrap-4') }}
+                            {{ $posts->links('vendor.pagination.bootstrap-4') }}
                         </div>
                     </div>
                 </div>
@@ -74,13 +74,13 @@
                             <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
                         </a>
                         @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                            <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
+                        </a>
                         @else
-                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                            </a>
+                        <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                            <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
+                        </a>
                         @endif
                     </div>
                 </div>
@@ -94,13 +94,13 @@
                 <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
             </a>
             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                </a>
+            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
+            </a>
             @else
-                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                    <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                </a>
+            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
+            </a>
             @endif
         </div>
     </div>
@@ -108,26 +108,29 @@
 @endsection
 @section('js')
 <script>
-window.onscroll = function() {myFunction()};
-console.log(window.scrollY)
-function myFunction() {
-    if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        var footerElement = document.getElementById("footerPost");
-        var footerPosition = footerElement.offsetTop;
-        if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition- 900) ) {
-        document.querySelector(".image-ads").style.position = "fixed";
-        } else {
-        document.querySelector(".image-ads").style.position = "";
+    window.onscroll = function() {
+        myFunction()
+    };
+    console.log(window.scrollY)
+
+    function myFunction() {
+        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            var footerElement = document.getElementById("footerPost");
+            var footerPosition = footerElement.offsetTop;
+            if (document.documentElement.scrollTop > 300 && document.documentElement.scrollTop < (footerPosition - 900)) {
+                document.querySelector(".image-ads").style.position = "fixed";
+            } else {
+                document.querySelector(".image-ads").style.position = "";
+            }
+        }
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                document.getElementById("banner-ads-bottom").style.top = "60px";
+                document.getElementById("banner-ads-bottom").style.position = "fixed";
+            } else {
+                document.getElementById("banner-ads-bottom").style.top = "-60px";
+            }
         }
     }
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-            document.getElementById("banner-ads-bottom").style.top = "60px";
-            document.getElementById("banner-ads-bottom").style.position = "fixed";
-        } else {
-            document.getElementById("banner-ads-bottom").style.top = "-60px";
-        }
-    }
-}
 </script>
 @endsection

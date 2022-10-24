@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Exception;
 
 
 class PostsController extends Controller
@@ -19,30 +20,52 @@ class PostsController extends Controller
 
     public function getArticleByCategory($category)
     {
-        $posts = DB::table('article')
-            ->join('category', 'article.category_id', '=', 'category.id')
-            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.image',
-                     'category.title as title_category','category.keyword as keyword_category', 'category.description as description_category', 'category.slug as slug_category')
-            ->where('category.slug', $category)->where('article.dlt_flg', 0)
-            ->orderBy('article.updated_at', 'DESC')
-            ->paginate(15);
-        foreach ($posts as $k => $post) {
-            //SEO
-            SEOMeta::setTitle('Tin tức hay '.$post->title_category);
-            SEOMeta::setDescription($post->description_category);
+        try {
+            $posts = DB::table('article')
+                ->join('category', 'article.category_id', '=', 'category.id')
+                ->select(
+                    'article.title',
+                    'article.excerpt',
+                    'article.slug',
+                    'article.updated_at',
+                    'article.image',
+                    'category.title as title_category',
+                    'category.keyword as keyword_category',
+                    'category.description as description_category',
+                    'category.slug as slug_category'
+                )
+                ->where('category.slug', $category)
+                ->where('article.dlt_flg', 0)
+                ->where('article.status', 1)
+                ->orderBy('article.updated_at', 'DESC')
+                ->paginate(15);
 
-            OpenGraph::setDescription($post->keyword_category);
-            OpenGraph::setTitle('Tin tức hay '.$post->title_category);
-            OpenGraph::setUrl('https://kinhtez.com/danh-muc-'.$post->slug_category);
+            foreach ($posts as $k => $post) {
+                //SEO
+                SEOMeta::setTitle('Tin tức hay ' . $post->title_category);
+                SEOMeta::setDescription($post->description_category);
+
+                OpenGraph::setDescription($post->keyword_category);
+                OpenGraph::setTitle('Tin tức hay ' . $post->title_category);
+                OpenGraph::setUrl('https://kinhtez.com/danh-muc-' . $post->slug_category);
+            }
+
+            SEOMeta::addKeyword($post->keyword_category);
+
+            $viewData = [
+                'posts' => $posts,
+            ];
+
+            if ($category == 'cong-nghe' || $category == 'crypto') {
+
+                return view('frontend.posts.crypto', $viewData);
+            }
+
+            return view('frontend.posts.details1', $viewData);
+        } catch (Exception $e) {
+
+            return response()->view('frontend.container.404', [], 404);
         }
-        SEOMeta::addKeyword($post->keyword_category);
-        $viewData = [
-            'posts' => $posts,
-        ];
-        if($category == 'cong-nghe' || $category == 'crypto'){
-            return view('frontend.posts.crypto', $viewData);
-        }
-        return view('frontend.posts.details1', $viewData);
     }
 
     public function details2()
@@ -53,11 +76,11 @@ class PostsController extends Controller
 
     public function getArticleDetails($slug)
     {
-        try{
+        try {
             Article::where('slug', $slug)->increment('total_view');
             $posts = Article::where('slug', $slug)->get();
             foreach ($posts as $k => $post) {
-    
+
                 $content = SELF::replaceContent($post);
                 //SEO
                 SEOMeta::setTitle($post->title);
@@ -66,9 +89,9 @@ class PostsController extends Controller
                 SEOMeta::addKeyword($post->keyword);
                 OpenGraph::setDescription($post->excerpt);
                 OpenGraph::setTitle($post->title);
-                OpenGraph::setUrl('https://kinhtez.com/tin-tuc-'.$post->slug);
-                OpenGraph::addImage(['url' => 'https://kinhtez.com'.$post->image, 'size' => 300]);
-                OpenGraph::addImage('https://kinhtez.com'.$post->image, ['height' => 320, 'width' => 500]);
+                OpenGraph::setUrl('https://kinhtez.com/tin-tuc-' . $post->slug);
+                OpenGraph::addImage(['url' => 'https://kinhtez.com' . $post->image, 'size' => 300]);
+                OpenGraph::addImage('https://kinhtez.com' . $post->image, ['height' => 320, 'width' => 500]);
             }
             // dd($posts);
             $posts_related = Article::where('category_id', $post->category_id)->orderBy('id', 'DESC')->paginate(15);
@@ -79,16 +102,17 @@ class PostsController extends Controller
                 'content' => $content,
                 'posts_related' => $posts_related,
             ];
-            if($post->category_id == '4'){
+            if ($post->category_id == '4') {
+
                 return view('frontend.posts.postdetail-crypto', $viewData);
             }
             return view('frontend.posts.postdetail', $viewData);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
 
             return response()->view('frontend.container.404', [], 404);
         }
     }
+
     public function replaceContent($posts)
     {
 

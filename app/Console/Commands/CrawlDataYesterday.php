@@ -58,7 +58,7 @@ class CrawlDataYesterday extends Command
             $date = Carbon::yesterday()->format('d/m/Y');
             for ($i = 1; $i < 1562; $i++) {
                 print ("--------------------------lay cua trang " . $i . "--------------------------") . "\n";
-                $crawler = $this->client->request('GET', 'https://hosocongty.vn/ngay-'.$date.'page-'. $i);
+                $crawler = $this->client->request('GET', 'https://hosocongty.vn/ngay-' . $date . 'page-' . $i);
                 // sleep(1);
                 $linkPost = $crawler->filter('h3 a')->each(function ($node) {
                     return $node->attr("href");
@@ -68,7 +68,6 @@ class CrawlDataYesterday extends Command
                     self::crawlPost($l);
                 }
             }
-
         } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
@@ -114,8 +113,8 @@ class CrawlDataYesterday extends Command
         $patternBusiness = Constant::REGEX_NAME_BUSINESS;
         $patternStatus = Constant::REGEX_NAME_STATUS;
 
-        try{
-            if(!empty($companyDescription)){
+        try {
+            if (!empty($companyDescription)) {
                 $name = preg_match($patternName, $companyDescription, $nameCompany);
             }
             $tax = preg_match($patternTax, $companyProfile, $taxCompany);
@@ -138,27 +137,27 @@ class CrawlDataYesterday extends Command
 
             $date = str_replace('/', '-', $dateCompany);
             $slug = Str::slug($companyName, '-');
-        $data = [
-            'slug' => $slug,
-            'name' => $companyName,
-            'tax' => $taxCompany,
-            'chairman' => $nameCompany,
-            'address' => $addressCompany,
-            'phone' => $phoneCompany,
-            'date' => date('Y-m-d', strtotime($date)),
-            'business' => $nameBusiness,
-            'status' => $nameStatus,
-        ];
-        // Company::create($data);
-        print("Import database thanh cong!" . "\n");
-        dump($nameBusiness);
-        dump($taxCompany);
-        dump($addressCompany);
-        dump($nameCompany);
-        dump($phoneCompany);
-        dump($dateCompany);
-        dump($nameStatus);
-        }catch (\Exception $ex) {
+            $data = [
+                'slug' => $slug,
+                'name' => $companyName,
+                'tax' => $taxCompany,
+                'chairman' => $nameCompany,
+                'address' => $addressCompany,
+                'phone' => $phoneCompany,
+                'date' => date('Y-m-d', strtotime($date)),
+                'business' => $nameBusiness,
+                'status' => $nameStatus,
+            ];
+            // Company::create($data);
+            print("Import database thanh cong!" . "\n");
+            dump($nameBusiness);
+            dump($taxCompany);
+            dump($addressCompany);
+            dump($nameCompany);
+            dump($phoneCompany);
+            dump($dateCompany);
+            dump($nameStatus);
+        } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
     }

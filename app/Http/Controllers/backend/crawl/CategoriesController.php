@@ -26,13 +26,13 @@ class CategoriesController extends Controller
 
     public function add(Request $request)
     {
-        $this -> InsertOrUpdate($request);
+        $this->InsertOrUpdate($request);
         return redirect()->route('backend.categories.index')->with('status', 'Thêm thành công!');
     }
 
     public function update(Request $request, $id)
     {
-        $this -> InsertOrUpdate($request, $id);
+        $this->InsertOrUpdate($request, $id);
         return redirect()->route('backend.categories.index')->with('status', 'Cập nhật thành công!');
     }
 
@@ -42,24 +42,21 @@ class CategoriesController extends Controller
     }
 
 
-    public function InsertOrUpdate (Request $request, $id = '')
+    public function InsertOrUpdate(Request $request, $id = '')
     {
         //Debugbar::disable();
-        $code=1;
-        try{
+        $code = 1;
+        try {
             $cat = new Category();
 
-            if ($id)
-            {
+            if ($id) {
                 $cat = Category::find($id);
             }
-            $cat -> title = $request->title;
-            $cat -> slug = Str::slug($request->title, '-');
-             //dd($posts);
-            $cat -> save();
-        }
-        catch(Exception $exception)
-        {
+            $cat->title = $request->title;
+            $cat->slug = Str::slug($request->title, '-');
+            //dd($posts);
+            $cat->save();
+        } catch (Exception $exception) {
             return $code = 0;
         };
         return $code;
@@ -75,15 +72,14 @@ class CategoriesController extends Controller
     {
         $cat = Category::find($id);
         //dd($cat->id);
-        if(!$cat) return;
-        if($cat->id < 7) {
+        if (!$cat) return;
+        if ($cat->id < 7) {
             return redirect()->route('backend.categories.index')->with('status', 'Không được xóa doanh mục này');
         }
 
-        $cat->dlt_flg = 1 ;
-        $cat -> save();
+        $cat->dlt_flg = 1;
+        $cat->save();
 
         return redirect()->route('backend.categories.index')->with('status', 'Xóa thành công!');
     }
-
 }

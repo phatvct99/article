@@ -31,13 +31,13 @@ class WebsitesController extends Controller
 
     public function add(Request $request)
     {
-        $this -> InsertOrUpdate($request);
+        $this->InsertOrUpdate($request);
         return redirect()->route('backend.websites.index')->with('status', 'Thêm thành công!');
     }
 
     public function update(Request $request, $id)
     {
-        $this -> InsertOrUpdate($request, $id);
+        $this->InsertOrUpdate($request, $id);
         return redirect()->route('backend.websites.index')->with('status', 'Cập nhật thành công!');
     }
 
@@ -52,25 +52,21 @@ class WebsitesController extends Controller
         return view('crawl.dashboard.website.edit')->withWebsite(Website::find($id));
     }
 
-    public function InsertOrUpdate (Request $request, $id = '')
+    public function InsertOrUpdate(Request $request, $id = '')
     {
         //Debugbar::disable();
-        $code=1;
-        try{
+        $code = 1;
+        try {
             $website = new Website();
 
-            if ($id)
-            {
+            if ($id) {
                 $website = Website::find($id);
-
             }
             $website->title = $request->title;
 
             $website->url = $request->url;
-            $website -> save();
-        }
-        catch(Exception $exception)
-        {
+            $website->save();
+        } catch (Exception $exception) {
             return $code = 0;
         };
         return $code;
@@ -86,10 +82,10 @@ class WebsitesController extends Controller
     {
         $article = Website::find($id);
 
-        if(!$article) return;
+        if (!$article) return;
 
-        $article->dlt_flg = 1 ;
-        $article -> save();
+        $article->dlt_flg = 1;
+        $article->save();
         return redirect()->route('backend.websites.index')->with('status', 'Xóa thành công!');
     }
 }

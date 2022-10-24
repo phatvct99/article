@@ -15,7 +15,8 @@
                                 <li>
                                     <span>
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
-                                    </span>February 10, 2017</li>
+                                    </span>February 10, 2017
+                                </li>
                             </ul>
                         </div>
                         <h1 class="title-medium-light">

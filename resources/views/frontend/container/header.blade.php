@@ -30,7 +30,7 @@
                                         <a href="/danh-muc-xa-hoi">Xã hội</a>
                                     </li>
                                     <li>
-                                        <a href="/danh-muc-crypto">Blockchain</a>
+                                        <a href="/danh-muc-crypto">Crypto</a>
                                     </li>
                                     <li>
                                         <a href="{{route('frontend.business.index')}}">Doanh nghiệp</a>

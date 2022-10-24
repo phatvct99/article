@@ -41,13 +41,13 @@ class LinksController extends Controller
 
     public function add(Request $request)
     {
-        $this -> InsertOrUpdate($request);
+        $this->InsertOrUpdate($request);
         return redirect()->route('backend.links.index')->with('status', 'Thêm thành công!');
     }
 
     public function update(Request $request, $id)
     {
-        $this -> InsertOrUpdate($request, $id);
+        $this->InsertOrUpdate($request, $id);
         return redirect()->route('backend.links.index')->with('status', 'Cập nhật thành công!');
     }
 
@@ -81,14 +81,13 @@ class LinksController extends Controller
         return redirect()->route('links.index');
     }
 
-    public function InsertOrUpdate (Request $request, $id = '')
+    public function InsertOrUpdate(Request $request, $id = '')
     {
-        $code=1;
-        try{
+        $code = 1;
+        try {
             $link = new Link();
 
-            if ($id)
-            {
+            if ($id) {
                 $link = Link::find($id);
             }
             $link->url = $request->url;
@@ -99,10 +98,8 @@ class LinksController extends Controller
 
             $link->category_id = $request->category_id;
             // dd($link);
-            $link -> save();
-        }
-        catch(Exception $exception)
-        {
+            $link->save();
+        } catch (Exception $exception) {
             return $code = 0;
         };
         return $code;
@@ -121,10 +118,10 @@ class LinksController extends Controller
     {
         $cat = Link::find($id);
 
-        if(!$cat) return;
+        if (!$cat) return;
 
-        $cat->dlt_flg = 1 ;
-        $cat -> save();
+        $cat->dlt_flg = 1;
+        $cat->save();
 
         return redirect()->route('backend.links.index')->with('status', 'Xóa thành công!');
     }
@@ -135,7 +132,7 @@ class LinksController extends Controller
      */
     public function setItemSchema(Request $request)
     {
-        if(!$request->item_schema_id && !$request->link_id)
+        if (!$request->item_schema_id && !$request->link_id)
             return;
 
         $link = Link::find($request->link_id);
@@ -155,12 +152,12 @@ class LinksController extends Controller
      */
     public function scrape(Request $request)
     {
-        if(!$request->link_id)
+        if (!$request->link_id)
             return;
 
         $link = Link::find($request->link_id);
 
-        if(empty($link->main_filter_selector) && (empty($link->item_schema_id) || $link->item_schema_id == 0)) {
+        if (empty($link->main_filter_selector) && (empty($link->item_schema_id) || $link->item_schema_id == 0)) {
             return;
         }
 
@@ -168,7 +165,7 @@ class LinksController extends Controller
 
         $scraper->handle($link);
 
-        if($scraper->status == 1) {
+        if ($scraper->status == 1) {
             return response()->json(['status' => 1, 'msg' => 'Scraping done']);
         } else {
             return response()->json(['status' => 2, 'msg' => $scraper->status]);

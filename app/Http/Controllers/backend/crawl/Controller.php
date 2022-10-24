@@ -24,7 +24,6 @@ class Controller extends BaseController
         } catch (\Exception $ex) {
 
             return ["state" => 0, "filename" => ""];
-
         }
     }
 }

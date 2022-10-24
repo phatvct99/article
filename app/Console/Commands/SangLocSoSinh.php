@@ -57,8 +57,7 @@ class SanLocSoSinh extends Command
     {
         try {
 
-                $crawler = $this->client->request('GET', 'http://sanglocsosinh.com/#!/login');
-
+            $crawler = $this->client->request('GET', 'http://sanglocsosinh.com/#!/login');
         } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
@@ -121,11 +120,11 @@ class SanLocSoSinh extends Command
         $patternBusiness = Constant::REGEX_NAME_BUSINESS;
         $patternStatus = Constant::REGEX_NAME_STATUS;
 
-        try{
-            if(!empty($companyDescription)){
+        try {
+            if (!empty($companyDescription)) {
                 $name = preg_match($patternName, $companyDescription, $nameCompany);
             }
-            if(!empty($companyProfile)){
+            if (!empty($companyProfile)) {
                 $tax = preg_match($patternTax, $companyProfile, $taxCompany);
             }
             $address = preg_match($patternAddress, $companyProfile, $addressCompany);
@@ -147,24 +146,23 @@ class SanLocSoSinh extends Command
 
             $date = str_replace('/', '-', $dateCompany);
             $slug = Str::slug($companyName, '-');
-        $data = [
-            'slug' => $slug,
-            'name' => $companyName,
-            'tax' => $taxCompany,
-            'chairman' => $nameCompany,
-            'address' => $addressCompany,
-            'phone' => $phoneCompany,
-            'date' => date('Y-m-d', strtotime($date)),
-            'business' => $nameBusiness,
-            'status' => $nameStatus,
-        ];
-        Business::create($data);
+            $data = [
+                'slug' => $slug,
+                'name' => $companyName,
+                'tax' => $taxCompany,
+                'chairman' => $nameCompany,
+                'address' => $addressCompany,
+                'phone' => $phoneCompany,
+                'date' => date('Y-m-d', strtotime($date)),
+                'business' => $nameBusiness,
+                'status' => $nameStatus,
+            ];
+            Business::create($data);
 
-        print("Import database thanh cong!" . "\n");
-        // dump($companyName);
-        dump($taxCompany);
-
-        }catch (\Exception $ex) {
+            print("Import database thanh cong!" . "\n");
+            // dump($companyName);
+            dump($taxCompany);
+        } catch (\Exception $ex) {
             $this->status = $ex->getMessage();
         }
     }

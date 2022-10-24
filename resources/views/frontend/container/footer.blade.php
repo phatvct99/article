@@ -1,6 +1,5 @@
-
 <footer>
-    <div class="footer-area-bottom" id ="footerPost">
+    <div class="footer-area-bottom" id="footerPost">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">

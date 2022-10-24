@@ -1,12 +1,13 @@
 @extends('layouts.frontend')
-@section ('content')      
+@section ('content')
 <section class="breadcrumbs-area" style="background-image: url('img/banner/breadcrumbs-banner.jpg');">
     <div class="container">
         <div class="breadcrumbs-content">
             <h1>404 Error Page</h1>
             <ul>
                 <li>
-                    <a href="index.html">Home</a> -</li>
+                    <a href="index.html">Home</a> -
+                </li>
                 <li>404</li>
             </ul>
         </div>

@@ -73,7 +73,7 @@ class CreateSiteMap extends Command
             }
 
             // add product to items array
-            $sitemap->add(URL::to('tin-tuc-'.$p ->slug), $p->updated_at, 0.8, 'daily');
+            $sitemap->add(URL::to('tin-tuc-' . $p->slug), $p->updated_at, 0.8, 'daily');
             // count number of elements
             $counter++;
         }
@@ -103,7 +103,7 @@ class CreateSiteMap extends Command
             }
 
             // add product to items array
-            $sitemap->add(URL::to('tra-cuu-doanh-nghiep-'.$bus ->tax.'-'.$bus ->slug), $p->updated_at, 0.8, 'daily');
+            $sitemap->add(URL::to('tra-cuu-doanh-nghiep-' . $bus->tax . '-' . $bus->slug), $p->updated_at, 0.8, 'daily');
             // count number of elements
             $counter++;
         }
@@ -115,7 +115,7 @@ class CreateSiteMap extends Command
             $sitemap->addSitemap(secure_url('sitemap-business-' . $sitemapCounter . '.xml'));
             // reset items array
             $sitemap->model->resetItems();
-        } 
+        }
         $sitemap->store('sitemapindex', 'sitemap');
         // this will generate file mysitemap.xml to your public folder
         dump("Create Sitemap Success");

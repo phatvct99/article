@@ -346,7 +346,7 @@
             <div class="col-lg-4 col-md-12">
                 @if(isset($postCrypto))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
-                    <div class="topic-box-lg color-cutty-sark">Blockchain</div>
+                    <div class="topic-box-lg color-cutty-sark">Crypto</div>
                 </div>
                 @foreach ($postCrypto as $post)
                 @if ($loop->first)
@@ -560,7 +560,7 @@
     var page = 1;
     infinteLoadMore(page);
     $(window).scroll(function() {
-        if ($(window).scrollTop() >  $(document).height() - $(window).height() - 250) {
+        if ($(window).scrollTop() > $(document).height() - $(window).height() - 250) {
             page++;
             infinteLoadMore(page);
         }
