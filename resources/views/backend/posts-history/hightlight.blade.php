@@ -166,7 +166,7 @@ del {
     width: 100%;
     font-size: 15px;
     line-height: 1.42857143;
-    color: #0e0c28;
+    color: #000;
     background-color: #fff;
     background-image: none;
     border: 1px solid #d2d2e4;
