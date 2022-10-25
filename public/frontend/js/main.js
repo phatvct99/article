@@ -85,8 +85,6 @@
                     opacity: 1
                 }, 1000);
             });
-        } else {
-            _this.text('No more item to display');
         }
         return false;
     });

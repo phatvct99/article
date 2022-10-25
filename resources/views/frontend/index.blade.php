@@ -429,13 +429,6 @@
                 </div>
             </div>
         </div>
-        @endif
-    </div>
-</section>
-<!-- Latest News Area End Here -->
-<!-- More News Area Start Here -->
-<section class="bg-accent section-space-less30">
-    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="featuredContainer">
@@ -443,13 +436,15 @@
                         <!-- Results -->
                     </div>
                     <!-- Data Loader -->
-                    <div class="auto-load text-center">
-                        <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-                            <path fill="#000" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-                                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="360 50 50" repeatCount="indefinite" />
-                            </path>
-                        </svg>
+                    <div class="row mt-30">
+                        <div class="col-12">
+                            <div class="loadmore text-center">
+                                <a href="#" class="btn-gtf-dtp-50" onclick='loadMore()'>
+                                    Xem thêm ...</a>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- Data  -->
                 </div>
             </div>
@@ -475,6 +470,7 @@
 
             </div>
         </div>
+        @endif
     </div>
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
@@ -494,7 +490,8 @@
         </div>
     </div>
 </section>
-<!-- More News Area End Here -->
+<!-- Latest News Area End Here -->
+
 
 @endsection
 @section('js')
@@ -502,7 +499,6 @@
     window.onscroll = function() {
         myFunction()
     };
-
     function myFunction() {
         if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             var footerElement = document.getElementById("footerPost");
@@ -554,17 +550,15 @@
         window.addEventListener("orientationChange", lazyload);
     });
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     var ENDPOINT = "{{ url('/') }}";
     var page = 1;
     infinteLoadMore(page);
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > $(document).height() - $(window).height() - 250) {
-            page++;
-            infinteLoadMore(page);
-        }
-    });
+
+    function loadMore() {
+        page++;
+        infinteLoadMore(page);
+    };
 
     function infinteLoadMore(page) {
         $.ajax({
@@ -580,7 +574,6 @@
                     $('.auto-load').html("We don't have more data to display :(");
                     return;
                 }
-                $('.auto-load').hide();
                 $("#data-wrapper").append(response);
             })
             .fail(function(jqXHR, ajaxOptions, thrownError) {

@@ -3815,6 +3815,9 @@ div#wrapper.open > .offcanvas-mask {
   .header-style6 .header-action-item ul li .search-button i {
     color: #111111;
   }
+  .loadmore{
+    margin-bottom: 10px;
+  }
 }
 .header-style6 .offcanvas-menu-btn a.menu-bar {
   left: -30px;
