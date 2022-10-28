@@ -63,12 +63,12 @@ class HomeController extends Controller
             ->where('article.status', 1)
             ->orderBy('article.total_view', 'DESC')
             ->take(4)->get();
-        $postBusiness = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 1)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postFinance = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 2)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postLand = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 3)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postTech = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 4)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postSociety = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 5)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postCrypto = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 6)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postBusiness = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 1)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postFinance = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 2)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postLand = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 3)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postTech = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 4)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postSociety = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 5)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postCrypto = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->where('category_id', 6)->orderBy('updated_at', 'DESC')->take(3)->get();
 
         // SEO
         SEOMeta::setTitle('KinhteZ - Thông tin kinh doanh, Doanh nhân, Kiến thức tài chính, Bất động sản, Công nghệ, Crypto, Blockchain, Xã hội');
