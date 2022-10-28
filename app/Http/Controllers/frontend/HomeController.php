@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // phat
+        // phat 123
         try {
             $posts = DB::table('article')
                 ->join('category', 'article.category_id', '=', 'category.id')
