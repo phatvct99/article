@@ -68,12 +68,6 @@ class PostsController extends Controller
         }
     }
 
-    public function details2()
-    {
-        return view('frontend.posts.details2');
-    }
-
-
     public function getArticleDetails($slug)
     {
         try {
@@ -102,7 +96,7 @@ class PostsController extends Controller
                 'content' => $content,
                 'posts_related' => $posts_related,
             ];
-            if ($post->category_id == '4') {
+            if ($post->category_id == '4' || $post->category_id == '6') {
 
                 return view('frontend.posts.postdetail-crypto', $viewData);
             }
