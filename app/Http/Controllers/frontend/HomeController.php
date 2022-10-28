@@ -79,7 +79,6 @@ class HomeController extends Controller
         OpenGraph::setUrl('https://kinhtez.com/');
         OpenGraph::addImage('https://kinhtez.com/frontend/img/logo/logo-kinhtez.png', ['height' => 42, 'width' => 130]);
 
-        // dd($postTop);
         $viewData = [
             'posts' => $posts,
             'post_new' => $post_new,
