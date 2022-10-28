@@ -21,52 +21,54 @@ class HomeController extends Controller
 
         $posts = DB::table('article')
             ->join('category', 'article.category_id', '=', 'category.id')
-            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.category_id','article.image')
+            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.category_id', 'article.image')
             ->where('article.dlt_flg', 0)
+            ->where('article.status', 1)
             ->orderBy('article.updated_at', 'DESC')
             ->paginate(30);
 
-            $artilces = '';
-            if ($request->ajax()) {
-                foreach ($posts as $post) {
+        $artilces = '';
+        if ($request->ajax()) {
+            foreach ($posts as $post) {
 
-                    $artilces.='<div class="row politics">
+                $artilces .= '<div class="row politics">
                                     <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
                                         <div class="media media-none--lg mb-30">
                                             <div class="position-relative width-40">
                                                 <a href="" class="img-opacity-hover">
-                                                    <img src="'.$post->image.'"  class="thumbnail-image">
+                                                    <img src="' . $post->image . '"  class="thumbnail-image">
                                                 </a>
                                         </div>
                                         <div class="media-body p-mb-none-child media-margin30">
                                             <h3 class="title-semibold-dark size-lg mb-15">
-                                                <a href="/tin-tuc-'.$post->slug.'">'.$post->title.'</a>
+                                                <a href="/tin-tuc-' . $post->slug . '">' . $post->title . '</a>
                                             </h3>
                                             <article>
-                                                <p>'.$post->excerpt.'</p>
+                                                <p>' . $post->excerpt . '</p>
                                             </article>
                                         </div>
                                     </div>
                                 </div>
                             </div>';
-                }
-                return $artilces;
             }
+            return $artilces;
+        }
 
 
-        $postTop = Article::select('title','name','image','slug')->where('dlt_flg', 0)->orderBy('total_view', 'DESC')->take(1)->get();
+        $postTop = Article::select('title', 'name', 'image', 'slug')->where('article.status', 1)->where('dlt_flg', 0)->orderBy('total_view', 'DESC')->take(1)->get();
 
         $post_new = DB::table('article')
-            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.category_id','article.image')
+            ->select('article.title', 'article.excerpt', 'article.slug', 'article.updated_at', 'article.category_id', 'article.image')
             ->where('article.dlt_flg', 0)
+            ->where('article.status', 1)
             ->orderBy('article.total_view', 'DESC')
             ->take(4)->get();
-        $postBusiness = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',1)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postFinance = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',2)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postLand = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',3)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postTech = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',4)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postSociety = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',5)->orderBy('updated_at', 'DESC')->take(3)->get();
-        $postCrypto = Article::select('title','name','image','slug')->where('dlt_flg', 0)->where('category_id',6)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postBusiness = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 1)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postFinance = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 2)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postLand = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 3)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postTech = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 4)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postSociety = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 5)->orderBy('updated_at', 'DESC')->take(3)->get();
+        $postCrypto = Article::select('title', 'name', 'image', 'slug')->where('dlt_flg', 0)->where('category_id', 6)->orderBy('updated_at', 'DESC')->take(3)->get();
 
         // SEO
         SEOMeta::setTitle('KinhteZ - Thông tin kinh doanh, Doanh nhân, Kiến thức tài chính, Bất động sản, Công nghệ, Crypto, Blockchain, Xã hội');
@@ -76,7 +78,7 @@ class HomeController extends Controller
         OpenGraph::setTitle('Kinh tế mới, câu chuyện kinh doanh, tin bất động sản, thị trường chứng khoản, tiền ảo, tin công nghệ mới nhất, chuyển đổi số, genZ | KinhteZ');
         OpenGraph::setUrl('https://kinhtez.com/');
         OpenGraph::addImage('https://kinhtez.com/frontend/img/logo/logo-kinhtez.png', ['height' => 42, 'width' => 130]);
-            
+
         // dd($postTop);
         $viewData = [
             'posts' => $posts,
@@ -95,5 +97,4 @@ class HomeController extends Controller
         // dd($device);
         return view('frontend.index', $viewData);
     }
-
 }
