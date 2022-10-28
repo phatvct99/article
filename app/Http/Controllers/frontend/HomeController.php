@@ -17,9 +17,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // $location = new LocationIp();
-        // $location->getLocation($request);
-
+        // phat
         try {
             $posts = DB::table('article')
                 ->join('category', 'article.category_id', '=', 'category.id')
