@@ -25,7 +25,7 @@ class HomeController extends Controller
                 ->where('article.dlt_flg', 0)
                 ->where('article.status', 1)
                 ->orderBy('article.updated_at', 'DESC')
-                ->paginate(30);
+                ->paginate(15);
 
             $artilces = '';
             if ($request->ajax()) {
@@ -35,7 +35,7 @@ class HomeController extends Controller
                                         <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
                                             <div class="media media-none--lg mb-30">
                                                 <div class="position-relative width-40">
-                                                    <a href="" class="img-opacity-hover">
+                                                    <a href="/tin-tuc-' . $post->slug . '" class="img-opacity-hover">
                                                         <img src="' . $post->image . '"  class="thumbnail-image">
                                                     </a>
                                             </div>

@@ -26,19 +26,6 @@
 
                             </div>
                             <div class="media-body p-mb-none-child media-margin30">
-                                <div class="post-date-dark">
-                                    <ul>
-                                        <li>
-                                            <span>by</span>
-                                            <a href="/">KinhteZ</a>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }}
-                                        </li>
-                                    </ul>
-                                </div>
                                 <h3 class="title-semibold-dark size-lg mb-15">
                                     @if(isset($post->name))
                                     <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }}</a>
