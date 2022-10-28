@@ -12,8 +12,6 @@ use Symfony\Component\HttpClient\HttpClient;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
-
-
 class crawl extends Command
 {
     /**
