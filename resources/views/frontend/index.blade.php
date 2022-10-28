@@ -13,23 +13,23 @@
                     <div class="Container">
                         <div class="row politics">
                             <div class="col-md-6 col-sm-12">
-                                @if(isset($postTop))
+                                @if(!empty($postTop))
                                 @foreach($postTop as $post)
                                 <div class="img-overlay-70 img-scale-animate mb-30">
                                     <a href="{{ route('post-details',$post ->slug)}}">
-                                        @if(isset($post->image))
-                                        @if((new \Jenssegers\Agent\Agent())->isMobile())
-                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
-                                        @else
-                                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" style="width:350px; height:506px;" class="thumbnail-image">
-                                        @endif
+                                        @if(!empty($post->image))
+                                            @if((new \Jenssegers\Agent\Agent())->isMobile())
+                                                <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                                                @else
+                                                <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" style="width:350px; height:506px;" class="thumbnail-image">
+                                            @endif
                                         @else
                                         <img src="frontend/img/news/news5.jpg" alt="news" class="thumbnail-image width-100">
                                         @endif
                                     </a>
                                     <div class="mask-content-lg">
                                         <h2 class="title-medium-light size-lg">
-                                            @if(isset($post->name))
+                                            @if(!empty($post->name))
                                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                                             @else
                                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -41,11 +41,11 @@
                                 @endif
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                @if(isset($post_new))
+                                @if(!empty($post_new))
                                 @foreach($post_new as $post)
                                 <div class="media mb-30">
                                     <a class="width38-lg width40-md img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                                        @if(isset($post->image))
+                                        @if(!empty($post->image))
                                         <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                                         @else
                                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -62,7 +62,7 @@
                                             </ul>
                                         </div>
                                         <h3 class="title-medium-dark size-md mb-none">
-                                            @if(isset($post->name))
+                                            @if(!empty($post->name))
                                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                                             @else
                                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -119,7 +119,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-12">
-                @if(isset($postBusiness))
+                @if(!empty($postBusiness))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Kinh doanh</div>
                 </div>
@@ -128,14 +128,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -144,7 +144,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -152,7 +152,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -164,7 +164,7 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-12">
-                @if(isset($postFinance))
+                @if(!empty($postFinance))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Tài chính</div>
                 </div>
@@ -173,14 +173,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -189,7 +189,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -197,7 +197,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -209,7 +209,7 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-12">
-                @if(isset($postLand))
+                @if(!empty($postLand))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Bất động sản</div>
                 </div>
@@ -218,14 +218,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -234,7 +234,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -242,7 +242,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -254,7 +254,7 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-12">
-                @if(isset($postTech))
+                @if(!empty($postTech))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Công nghệ</div>
                 </div>
@@ -263,14 +263,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -279,7 +279,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -287,7 +287,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -299,7 +299,7 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-12">
-                @if(isset($postSociety))
+                @if(!empty($postSociety))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Xã hội</div>
                 </div>
@@ -308,14 +308,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -324,7 +324,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -332,7 +332,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
@@ -344,7 +344,7 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-12">
-                @if(isset($postCrypto))
+                @if(!empty($postCrypto))
                 <div class="topic-border color-cutty-sark mb-30 width-100">
                     <div class="topic-box-lg color-cutty-sark">Crypto</div>
                 </div>
@@ -353,14 +353,14 @@
                 <div class="img-overlay-70 img-scale-animate mb-30">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
                             @endif
                         </h3>
                     </div>
-                    @if(isset($post->image))
+                    @if(!empty($post->image))
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
                     @else
                     <img src="frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -369,7 +369,7 @@
                 @endif
                 <div class="media mb-30">
                     <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
-                        @if(isset($post->image))
+                        @if(!empty($post->image))
                         <img src="{{ asset($post->image) }}" loading="lazy" alt="{{ $post->title }}" style="width:144px; height:101px;" class="thumbnail-image">
                         @else
                         <img src="frontend/img/news/news6.jpg" alt="{{ $post->title }}" class="thumbnail-image">
@@ -377,7 +377,7 @@
                     </a>
                     <div class="media-body">
                         <h3 class="title-medium-dark size-md mb-none">
-                            @if(isset($post->name))
+                            @if(!empty($post->name))
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->name }} </a>
                             @else
                             <a href="{{ route('post-details',$post ->slug)}}">{{ $post->title }}</a>
