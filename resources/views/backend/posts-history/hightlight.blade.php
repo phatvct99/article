@@ -2,27 +2,25 @@
 @section('script')
 <script src="{{ URL::asset('backend/htmldiff.js') }}"></script>
 <script>
+    var data = <?php echo json_encode($old, JSON_UNESCAPED_UNICODE); ?>;
 
-var data = <?php echo json_encode($old,JSON_UNESCAPED_UNICODE); ?>;
 
+    var newPost = JSON.parse(JSON.stringify({!!$new!!}));
+    var oldPost = JSON.parse(JSON.stringify({!!$old!!}));
 
-var newPost = JSON.parse(JSON.stringify({!!$new!!}));
-var oldPost = JSON.parse(JSON.stringify({!!$old!!}));
+    let newTitleHTML = newPost[0]['title'];
+    let oldTitleHTML = oldPost[0]['title'];
 
-let newTitleHTML = newPost[0]['title'];
-let oldTitleHTML = oldPost[0]['title'];
+    let newContentHTML = newPost[0]['content'];
+    let oldContentHTML = oldPost[0]['content'];
+    // Diff HTML strings
+    let output = htmldiff(oldContentHTML, newContentHTML);
 
-let newContentHTML = newPost[0]['content'];
-let oldContentHTML = oldPost[0]['content'];
-// Diff HTML strings
-let output = htmldiff(oldContentHTML, newContentHTML);
+    let outputTitle = htmldiff(oldTitleHTML, newTitleHTML);
+    // Show HTML diff output as HTML (crazy right?)!
+    document.getElementById("output").innerHTML = output;
 
-let outputTitle = htmldiff(oldTitleHTML, newTitleHTML);
-// Show HTML diff output as HTML (crazy right?)!
-document.getElementById("output").innerHTML = output;
-
-document.getElementById("outputTitle").innerHTML = outputTitle;
-
+    document.getElementById("outputTitle").innerHTML = outputTitle;
 </script>
 @endsection
 @section('content')
@@ -57,7 +55,7 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
                     @if($old->count() > 0)
                     <div class="row" style="background-color: #ccffd8;">
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label for="opacity">Title</label>
                                 <div class="different-hightlight">{!! $old[0] -> title !!}</div>
                             </div>
@@ -70,11 +68,11 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
                         </div>
                     </div>
                     @endif
-                    <!-- <?php dump($old)?> -->
+                    <!-- <?php dump($old) ?> -->
                     @if($old->count() > 0)
                     <div class="row" style="background-color: #ccffd8;">
                         <div class="col-sm-12 col-md-6">
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label for="opacity">Content</label>
                                 <div class="different-hightlight">{!! $old[0] -> content !!}</div>
                             </div>
@@ -147,33 +145,32 @@ document.getElementById("outputTitle").innerHTML = outputTitle;
             </div>
         </div>
     </div>
-</div>  
+</div>
 @endsection
 @section('css')
 <style>
-ins {
-    text-decoration: none !important;
-    background-color: #5af82b94;
-}
+    ins {
+        text-decoration: none !important;
+        background-color: #5af82b94;
+    }
 
-del {
-    background-color: #ff00009c;
-    color: #000000c7;
-    text-decoration: none !important;
-}
-.different-hightlight{
-    display: block;
-    width: 100%;
-    font-size: 15px;
-    line-height: 1.42857143;
-    color: #000;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #d2d2e4;
-    border-radius: 2px;
-    padding: 0.375rem 0.75rem;
-}
+    del {
+        background-color: #ff00009c;
+        color: #000000c7;
+        text-decoration: none !important;
+    }
+
+    .different-hightlight {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        line-height: 1.42857143;
+        color: #000;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #d2d2e4;
+        border-radius: 2px;
+        padding: 0.375rem 0.75rem;
+    }
 </style>
 @endsection
-
-

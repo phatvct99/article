@@ -25,7 +25,7 @@ class HomeController extends Controller
                 ->where('article.dlt_flg', 0)
                 ->where('article.status', 1)
                 ->orderBy('article.updated_at', 'DESC')
-                ->paginate(15);
+                ->paginate(20);
 
             $artilces = '';
             if ($request->ajax()) {

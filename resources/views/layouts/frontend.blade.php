@@ -11,28 +11,30 @@
     @yield('seo')
     @yield('styles')
     @include("frontend.container.css")
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-247594747-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-247594747-1');
+    </script>
 </head>
 
 <body>
-    <!-- Add your site or application content here -->
-    <!-- Preloader Start Here -->
-    <div id="preloader"></div>
-    <!-- Preloader End Here -->
-    <div id="wrapper" class="wrapper">
-        <!-- Header Area Start Here -->
-        @include("frontend.container.header")
-        <!-- Header Area End Here -->
-        <!-- News Feed Area Start Here -->
-        @include("frontend.container.header2")
-        <!-- News Feed Area End Here -->
-        <!-- News Slider Area Start Here -->
 
-        <!-- News Slider Area End Here -->
+    <div id="preloader"></div>
+    <div id="wrapper" class="wrapper">
+        @include("frontend.container.header")
+
+        @include("frontend.container.header2")
         @yield('content')
-        <!-- Footer Area Start Here -->
         @include("frontend.container.footer")
-        <!-- Footer Area End Here -->
-        <!-- Modal Start-->
+
         <div class="modal fade" id="showModalAds" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -65,10 +67,9 @@
                 </div>
             </div>
         </div>
-        <!-- Modal End-->
 
     </div>
-    <!-- Wrapper End -->
+
     @include("frontend.container.javascripts")
     @yield('js')
 </body>

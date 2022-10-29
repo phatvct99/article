@@ -72,7 +72,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" ><i class="fas fa-fw fa-chart-pie"></i>Thống kê google analyst</a>
+                        <a class="nav-link" href="{{ route ('backend.statistic')}}" ><i class="fas fa-fw fa-chart-pie"></i>Thống kê google analyst</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" ><i class="fas fa-chart-area"></i>Thống kê google bài viết</a>

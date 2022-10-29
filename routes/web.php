@@ -42,6 +42,7 @@ Route::group(['namespace'=>'frontend'], function(){
 //Backend
 Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:sanctum', 'verified'], function(){
     Route::get('/','DashboardController@index')->name('backend.index');
+    Route::get('/statistic','StatisticController@index')->name('backend.statistic');
 
     Route::group(['prefix'=>'posts'],function()
     {

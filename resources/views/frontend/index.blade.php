@@ -400,28 +400,9 @@
         </div>
         <br>
         @endif
-        @if((new \Jenssegers\Agent\Agent())->isDesktop())
-        <div class="row">
-            <div class="col-12">
-                <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
-                    @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                    <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                        <img src="../frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image">
-                    </a>
-                    @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                    <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                        <img src="../frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image">
-                    </a>
-                    @else
-                    <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                        <img src="../frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image">
-                    </a>
-                    @endif
-                </div>
-            </div>
-        </div>
-        @endif
+        
     </div>
+
     <div id="banner-ads-bottom">
         <div class="ne-banner-layout1 text-center">
             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
@@ -440,6 +421,7 @@
         </div>
     </div>
 </section>
+
 <section class="bg-accent section-space-less30">
     <div class="container">
     <div class="row">
@@ -495,21 +477,21 @@
     };
 
     function myFunction() {
-        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            var footerElement = document.getElementById("footerPost");
-            var footerPosition = footerElement.offsetTop;
-            if (document.documentElement.scrollTop > 2200 && document.documentElement.scrollTop < (footerPosition - 900)) {
-                document.querySelector(".image-ads").style.position = "fixed";
-            } else {
-                document.querySelector(".image-ads").style.position = "";
-            }
-        }
+        var footerElement = document.getElementById("footerPost");
+        var footerPosition = footerElement.offsetTop;
+
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
                 document.getElementById("banner-ads-bottom").style.top = "60px";
                 document.getElementById("banner-ads-bottom").style.position = "fixed";
             } else {
                 document.getElementById("banner-ads-bottom").style.top = "-60px";
+            }
+        }else{
+            if (document.documentElement.scrollTop > 2200 && document.documentElement.scrollTop < (footerPosition - 900)) {
+                document.querySelector(".image-ads").style.position = "fixed";
+            } else {
+                document.querySelector(".image-ads").style.position = "";
             }
         }
     }
