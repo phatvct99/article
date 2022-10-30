@@ -76,6 +76,9 @@
 
             });
         }
+
+
+
         if ($('#morris_udateing').length) {
             var nReloads = 0;
 
