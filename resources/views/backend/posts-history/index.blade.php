@@ -14,13 +14,14 @@
 
       <div class="card-body">
          <div class="table-responsive">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-striped table-bordered second" style="width:100%">
                <thead>
                   <tr class="border">
-                     <th class="border">article_id</th>
-                     <th class="border">name</th>
-                     <th class="border">type_log</th>
-                     <th class="border">timestamp_log</th>
+                     <th class="border">ID article</th>
+                     <th class="border">Name article</th>
+                     <th class="border">Diff</th>
+                     <th class="border">Type log</th>
+                     <th class="border">Time update</th>
                   </tr>
                </thead>
                <tbody>
@@ -29,6 +30,11 @@
                   <tr>
                      <td>{{ $post->article_id }}</td>
                      <td>{{ $post->name }}</td>
+                     <td>
+                        <div class="btn-group ml-auto">
+                           <button class="btn btn-sm btn-outline-light"><a href="{{route ('backend.posts.diff',$post->article_id) }}"><i class="fas fa-eye"></i></a></button>
+                        </div>
+                     </td>
                      <td>
                         @if($post->type_log == 'INSERT' )
                         <span class="badge badge-success">{{ $post->type_log }}</span>

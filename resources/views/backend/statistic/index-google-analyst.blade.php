@@ -131,7 +131,7 @@
                                                     <tr>
                                                         <td>{{$key+1}}</td>
                                                         <td>
-                                                            {{$item["url"]}}
+                                                            <span class="badge badge-light">{{$item["url"]}}</span>
                                                         </td>
                                                         <td>{{$item["pageTitle"]}} </td>
                                                         <td>{{$item["pageViews"]}} </td>

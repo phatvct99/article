@@ -89,7 +89,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label for="opacity">Title</label>
-                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="#766fa8">
+                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="">
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
@@ -131,13 +131,13 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label for="opacity">Content</label>
-                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="#766fa8">
+                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="">
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label for="opacity">Opacity</label>
-                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="#766fa8">
+                                <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="">
                             </div>
                         </div>
                     </div>
