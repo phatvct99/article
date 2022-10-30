@@ -132,7 +132,7 @@
                                                         <td>{{$key+1}}</td>
                                                         <td><span class="badge badge-danger">{{$item["pageViews"]}} </td>
                                                         <td><span class="badge badge-info">{{$item["url"]}}</span></td> 
-                                                        <td><span class="badge badge-warning">{{$item["pageTitle"]}}</span></td>
+                                                        <td><span class="badge badge-warning">{{$item["pageTitle"]}}</span></td> 
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

@@ -1,68 +1,50 @@
-@extends('crawl.layout')
+@extends('layouts.backend')
 
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Add Website</h2>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h3 class="card-header">Add website</h3>
 
-            @if(session('error')!='')
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+        @if(session('error')!='')
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
 
-            @if (count($errors) > 0)
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
-                <div class="alert alert-danger">
-
-                    <ul>
-
-                        @foreach ($errors->all() as $error)
-
-                            <li>{{ $error }}</li>
-
-                        @endforeach
-
-                    </ul>
-
-                </div>
-
-            @endif
-
+        <div class="card-body">
             <form method="post" action="" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Title:</strong>
-
-                            <input type="text" name="title" class="form-control" />
-                        </div>
+                @csrf
+                <div class="form-group row">
+                    <label class="col-12 col-sm-3 col-form-label text-sm-right">Title</label>
+                    <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" type="text" name="title" required>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Url:</strong>
-
-                            <input type="text" name="url" class="form-control" />
-
-                        </div>
+                <div class="form-group row">
+                    <label class="col-12 col-sm-3 col-form-label text-sm-right">URL</label>
+                    <div class="col-12 col-sm-8 col-lg-6">
+                        <input class="form-control" type="text" name="url" required>
                     </div>
                 </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                    <button type="submit" class="btn btn-primary" id="btn-save">Create</button>
-
+                <div class="form-group row text-right">
+                    <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                        <button type="submit" class="btn btn-space btn-primary">Create</button>
+                    </div>
                 </div>
 
             </form>
         </div>
     </div>
-
+</div>
 @endsection

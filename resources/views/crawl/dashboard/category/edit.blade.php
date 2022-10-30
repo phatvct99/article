@@ -1,10 +1,10 @@
-@extends('crawl.layout')
+@extends('layouts.backend')
 
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Update Category #{{$category->id}}</h2>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h3 class="card-header">Add Category</h3>
 
             @if(session('error')!='')
                 <div class="alert alert-danger">
@@ -13,43 +13,31 @@
             @endif
 
             @if (count($errors) > 0)
-
                 <div class="alert alert-danger">
-
                     <ul>
-
                         @foreach ($errors->all() as $error)
-
                             <li>{{ $error }}</li>
-
                         @endforeach
-
                     </ul>
-
                 </div>
-
             @endif
 
-            <form method="post" action="" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Title:</strong>
-
-                            <input type="text" name="title" value="{{ $category->title }}" class="form-control" />
+            <div class="card-body">
+                <form method="post" action="" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Title</label>
+                        <div class="col-12 col-sm-8 col-lg-6">
+                            <input class="form-control" type="text" name="title" value="{{ $category->title }}" required>
+                        </div>
+                    </div> 
+                    <div class="form-group row text-right">
+                        <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                            <button type="submit" class="btn btn-space btn-primary">Update</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                    <button type="submit" class="btn btn-primary" id="btn-save">Update</button>
-
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -1,10 +1,10 @@
-@extends('crawl.layout')
+@extends('layouts.backend')
 
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Update Link #{{$link->id}}</h2>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h3 class="card-header">Add Link</h3>
 
             @if(session('error')!='')
                 <div class="alert alert-danger">
@@ -13,90 +13,57 @@
             @endif
 
             @if (count($errors) > 0)
-
                 <div class="alert alert-danger">
-
                     <ul>
-
                         @foreach ($errors->all() as $error)
-
                             <li>{{ $error }}</li>
-
                         @endforeach
-
                     </ul>
-
                 </div>
-
             @endif
-
-            <form method="post" action="" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Url:</strong>
-
-                            <input type="text" name="url" value="{{ $link->url }}" class="form-control" />
+            <div class="card-body">
+                <form method="post" action="" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Url</label>
+                        <div class="col-12 col-sm-8 col-lg-6">
+                            <input class="form-control" type="text" name="url"  value="{{ $link->url }}" required>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Main Filter Selector:</strong>
-
-                            <input type="text" name="main_filter_selector" value="{{ $link->main_filter_selector }}" class="form-control" />
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Main Filter Selector</label>
+                        <div class="col-12 col-sm-8 col-lg-6">
+                            <input class="form-control" type="text" name="main_filter_selector"  value="{{ $link->main_filter_selector }}" required>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Website</label>
+                        <select name="website_id" class="selectpicker" data-style="btn-success">
+                            <option value="">select</option>
 
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
+                            @foreach($websites as $website)
+                                <option value="{{ $website->id }}" {{ $website->id==$link->website_id?"selected":"" }}>{{ $website->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Full content selector</label>
+                        <select name="category_id" class="selectpicker" data-style="btn-success">
+                            <option value="">select</option>
 
-                            <strong>Website:</strong>
-
-                            <select name="website_id" class="form-control">
-                                <option value="">select</option>
-
-                                @foreach($websites as $website)
-                                    <option value="{{ $website->id }}" {{ $website->id==$link->website_id?"selected":"" }}>{{ $website->title }}</option>
-                                @endforeach
-                            </select>
-
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id==$link->category_id?"selected":"" }}>{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group row text-right">
+                        <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                            <button type="submit" class="btn btn-space btn-primary">Update</button>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
-                        <div class="form-group">
-
-                            <strong>Category:</strong>
-
-                            <select name="category_id" class="form-control">
-                                <option value="">select</option>
-
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id==$link->category_id?"selected":"" }}>{{ $category->title }}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                    <button type="submit" class="btn btn-primary" id="btn-save">Update</button>
-
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
