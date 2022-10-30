@@ -25,6 +25,7 @@ Route::get('/clear-cache', function() {
     return "<h1>Cache is cleared</h1>";
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
