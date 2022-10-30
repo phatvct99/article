@@ -120,9 +120,9 @@
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
                                                         <th class="border-0">#</th>
+                                                        <th class="border-0">View</th>
                                                         <th class="border-0">URL</th>
                                                         <th class="border-0">Page Title</th>
-                                                        <th class="border-0">Pages View</th>
 
                                                     </tr>
                                                 </thead>
@@ -130,11 +130,9 @@
                                                     @foreach($topurl as $key=>$item)
                                                     <tr>
                                                         <td>{{$key+1}}</td>
-                                                        <td>
-                                                            <span class="badge badge-light">{{$item["url"]}}</span>
-                                                        </td>
-                                                        <td>{{$item["pageTitle"]}} </td>
-                                                        <td>{{$item["pageViews"]}} </td>
+                                                        <td><span class="badge badge-danger">{{$item["pageViews"]}} </td>
+                                                        <td><span class="badge badge-info">{{$item["url"]}}</span></td>
+                                                        <td><span class="badge badge-warning">{{$item["pageTitle"]}}</span></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
