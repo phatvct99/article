@@ -28,14 +28,14 @@ class StatisticController extends Controller
         $topref = Analytics::fetchTopReferrers(Period::days(29));
         $topbrowsers= Analytics::fetchTopBrowsers(Period::days(29));
         $sum_sessions = ($topbrowsers->pluck('sessions')->sum());
-        // $avg= substr(floatval($sum_pages/$sum_sessions),0,4);
+        $avg= substr(floatval($sum_pages/$sum_sessions),0,4);
         
         $data = [
             'dates' => $dates,
             'visitors' => $visitors,
             'pageViews' => $pageViews,
             'topurl' => $topurl,
-            // 'avg' => $avg,
+            'avg' => $avg,
             'topbrowsers' => $topbrowsers,
             'sum_sessions' => $sum_sessions,
             'sum_pages' => $sum_pages,
