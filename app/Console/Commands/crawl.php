@@ -180,7 +180,7 @@ class crawl extends Command
             print("Import database thanh cong!" . "\n");
             dump($companyName);
             dump($taxCompany);
-            dump($nameCompany);
+            dump($nameCompany); 
             dump($addressCompany);
             dump($phoneCompany);
             dump($nameBusiness);

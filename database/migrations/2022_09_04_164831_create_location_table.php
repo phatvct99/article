@@ -15,8 +15,8 @@ class CreateLocationTable extends Migration
     {
         Schema::create('location', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ip',50)->nullable();;
-            $table->string('country_name',30)->nullable();;
+            $table->string('ip',50)->nullable();
+            $table->string('country_name',30)->nullable();
             $table->string('country_code',15)->nullable();
             $table->string('region_name',30)->nullable();
             $table->string('city_name',30)->nullable();

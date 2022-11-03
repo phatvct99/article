@@ -50,7 +50,9 @@ class CreateSiteMap extends Command
         $sitemap = App::make('sitemap');
 
         // get all products from db (or wherever you store them)
-        $article = Article::all();
+        $article = Article::where('article.dlt_flg', 0)
+                            ->where('article.status', 1)
+                            ->orderBy('updated_at', 'DESC');
 
         //dd($products);
         // counters
