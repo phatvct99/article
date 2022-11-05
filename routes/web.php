@@ -104,10 +104,18 @@ Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:
         Route::get('/item-schema/delete/{id}','ItemSchemaController@delete')->name('backend.item-schema.delete');
 
         Route::resource('/articles', ArticlesController::class);
+        
 
     });
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:sanctum']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+Route::get('/cron', function() {
+    Artisan::call('cron:test');
+});
+Route::get('/sitemap-create', function() {
+    Artisan::call('sitemap:create');
+    return "<h1>Site map created successfully</h1>";
 });
