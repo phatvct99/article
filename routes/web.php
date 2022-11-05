@@ -119,3 +119,5 @@ Route::get('/sitemap-create', function() {
     Artisan::call('sitemap:create');
     return "<h1>Site map created successfully</h1>";
 });
+
+//INSERT INTO `business` (`id`, `tax`, `slug`, `name`, `chairman`, `phone`, `address`, `business`, `status`, `date`, `created_at`, `updated_at`) VALUES
