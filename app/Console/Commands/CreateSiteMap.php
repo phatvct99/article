@@ -50,8 +50,8 @@ class CreateSiteMap extends Command
         $sitemap = App::make('sitemap');
 
         // get all products from db (or wherever you store them)
-        $article = Article::where('article.dlt_flg', 0)
-                            ->where('article.status', 1)
+        $article = Article::where('dlt_flg', 0)
+                            ->where('status', 1)
                             ->orderBy('updated_at', 'DESC');
 
         //dd($products);
@@ -61,7 +61,7 @@ class CreateSiteMap extends Command
 
         // add every product to multiple sitemaps with one sitemap index
         foreach ($article as $p) {
-            if ($counter == 50000) {
+            if ($counter == 49999) {
                 // generate new sitemap file
                 $sitemap->store('xml', 'sitemap-article-' . $sitemapCounter);
                 // add the file to the sitemaps array
@@ -91,11 +91,11 @@ class CreateSiteMap extends Command
 
         $business = Business::all();
         foreach ($business as $bus) {
-            if ($counter == 50000) {
+            if ($counter == 49999) {
                 // generate new sitemap file
-                $sitemap->store('xml', 'sitemap-business-' . $sitemapCounter);
+                $sitemap->store('xml', 'sitemap-ho-so-cong-ty-' . $sitemapCounter);
                 // add the file to the sitemaps array
-                $sitemap->addSitemap(secure_url('sitemap-business-' . $sitemapCounter . '.xml'));
+                $sitemap->addSitemap(secure_url('sitemap-ho-so-cong-ty-' . $sitemapCounter . '.xml'));
                 // reset items array (clear memory)
                 $sitemap->model->resetItems();
                 // reset the counter
@@ -112,13 +112,13 @@ class CreateSiteMap extends Command
         // you need to check for unused items
         if (!empty($sitemap->model->getItems())) {
             // generate sitemap with last items
-            $sitemap->store('xml', 'sitemap-business-' . $sitemapCounter);
+            $sitemap->store('xml', 'sitemap-ho-so-cong-ty-' . $sitemapCounter);
             // add sitemap to sitemaps array
-            $sitemap->addSitemap(secure_url('sitemap-business-' . $sitemapCounter . '.xml'));
+            $sitemap->addSitemap(secure_url('sitemap-ho-so-cong-ty-' . $sitemapCounter . '.xml'));
             // reset items array
             $sitemap->model->resetItems();
         }
-        $sitemap->store('sitemapindex', 'sitemap');
+        $sitemap->store('sitemapindex', 'mysitemap');
         // this will generate file mysitemap.xml to your public folder
         dump("Create Sitemap Success");
     }

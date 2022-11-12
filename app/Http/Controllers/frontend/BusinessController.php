@@ -88,7 +88,7 @@ class BusinessController extends Controller
 
             $viewData = [
                 'company' => $business,
-                //'query' => $posts->query()
+            //'query' => $posts->query()
             ];
             //dd($business);
             return view('frontend.company.search', $viewData);
