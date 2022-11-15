@@ -91,7 +91,7 @@ class CreateSiteMap extends Command
 
         $business = Business::all();
         foreach ($business as $bus) {
-            if ($counter == 49999) {
+            if ($counter == 30000) {
                 // generate new sitemap file
                 $sitemap->store('xml', 'sitemap-ho-so-cong-ty-' . $sitemapCounter);
                 // add the file to the sitemaps array
