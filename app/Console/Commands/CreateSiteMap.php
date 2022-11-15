@@ -105,7 +105,7 @@ class CreateSiteMap extends Command
             }
 
             // add product to items array
-            $sitemap->add(URL::to('tra-cuu-doanh-nghiep-' . $bus->tax . '-' . $bus->slug), $bus->updated_at, 0.8, 'daily');
+            $sitemap->add(URL::to('tra-cuu-doanh-nghiep-' . $bus->tax . '-' . $bus->slug), $bus->updated_at, 0.7);
             // count number of elements
             $counter++;
         }
