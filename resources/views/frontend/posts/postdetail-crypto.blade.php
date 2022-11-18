@@ -25,9 +25,6 @@
                         </a>
                         @endif
                     </div>
-                    @foreach ($posts as $k => $post)
-                    <h1 class="title-semibold-dark size-c30">{{$post->title}}</h1>
-                    @endforeach
                     <div class="article-content">
                         @if(isset($content))
                         {!! $content !!}
