@@ -37,6 +37,7 @@ Route::group(['namespace'=>'frontend'], function(){
     {
         Route::get('/danh-muc-{category}','PostsController@getArticleByCategory')->name('frontend.posts.details1'); 
         Route::get('/tin-tuc-{id}', 'PostsController@getArticleDetails')->name('post-details');
+        Route::get('/muc-luc-tin-tuc', 'PostsController@getArticleSitemap')->name('post-sitemap');
         Route::get('/tra-cuu-doanh-nghiep','BusinessController@index')->name('frontend.business.index');
         Route::get('/tra-cuu-doanh-nghiep-{tax}-{slug}', 'BusinessController@detail')->name('frontend.business.detail');
         Route::get('/tra-cuu', 'BusinessController@search')->name('search');

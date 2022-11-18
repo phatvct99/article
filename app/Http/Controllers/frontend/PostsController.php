@@ -68,6 +68,31 @@ class PostsController extends Controller
         }
     }
 
+    public function getArticleSitemap(){
+        try {
+            $posts = DB::table('article')
+               
+                ->select(
+                    'article.title',
+                    'article.slug',
+                    'article.updated_at',
+                )
+                ->where('article.dlt_flg', 0)
+                ->where('article.status', 1)
+                ->orderBy('article.updated_at', 'DESC')
+                ->get();
+
+            $viewData = [
+                'posts' => $posts,
+            ];
+
+            return view('frontend.posts.sitemap', $viewData);
+        } catch (Exception $e) {
+
+            return response()->view('frontend.container.404', [], 404);
+        }
+    }
+
     public function getArticleDetails($slug)
     {
         try {
