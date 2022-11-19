@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
 Sitemap: https://www.kinhtez.com/sitemap_index.xml
+Disallow: /admin
