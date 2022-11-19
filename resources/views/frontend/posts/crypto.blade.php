@@ -17,14 +17,14 @@
                             <div class="position-relative mb-20">
                                 <a class="img-opacity-hover" href="{{ route('post-details',$post ->slug)}}">
                                     @if(!empty($post->image))
-                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                                     @else
-                                    <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image">
+                                    <img src="frontend/img/news/news141.jpg" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                                     @endif
                                 </a>
                             </div>
                             <div class="post-date-dark">
-                                <ul>
+                                <!-- <ul>
                                     <li>
                                         <span>by</span>
                                         <a href="/">KinhteZ</a>
@@ -34,7 +34,7 @@
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </span>{{ \Carbon\Carbon::parse($post->updated_at)->format('d/m/Y') }}
                                     </li>
-                                </ul>
+                                </ul> -->
                             </div>
                             <h3 class="title-medium-dark size-lg mb-none">
                                 @if(isset($post->name))
