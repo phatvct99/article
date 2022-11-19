@@ -118,7 +118,7 @@ class CreateSiteMap extends Command
             // reset items array
             $sitemap->model->resetItems();
         }
-        $sitemap->store('sitemapindex', 'sitemapindex');
+        $sitemap->store('sitemapindex', 'sitemap_index');
         // this will generate file mysitemap.xml to your public folder
         dump("Create Sitemap Success");
     }
