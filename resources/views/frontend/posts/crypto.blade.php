@@ -1,4 +1,8 @@
 @extends('layouts.frontend')
+@section ('seo')
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+@endsection
 @section ('content')
 <!-- Author Post Page Area Start Here -->
 <section class="bg-body section-space-less30">
