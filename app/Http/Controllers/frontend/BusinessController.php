@@ -51,7 +51,10 @@ class BusinessController extends Controller
             OpenGraph::setTitle('Mã số thuế ' . $company->tax . ' - ' . $company->name);
             OpenGraph::setUrl('https://kinhtez.com/tra-cuu-doanh-nghiep-' . $company->tax . '-' . $company->slug);
 
-            $companyRelate = Business::orderBy('date', 'DESC')->take(20)->get();
+            $companyRelate = Business::orderBy('date', 'DESC')
+                ->take(400)
+                ->get()
+                ->random(20);
             $viewData = [
                 'company' => $company,
                 'address' => urlencode($company->address),
@@ -88,7 +91,7 @@ class BusinessController extends Controller
 
             $viewData = [
                 'company' => $business,
-            //'query' => $posts->query()
+                //'query' => $posts->query()
             ];
             //dd($business);
             return view('frontend.company.search', $viewData);
