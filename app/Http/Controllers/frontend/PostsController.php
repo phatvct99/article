@@ -68,10 +68,11 @@ class PostsController extends Controller
         }
     }
 
-    public function getArticleSitemap(){
+    public function getArticleSitemap()
+    {
         try {
             $posts = DB::table('article')
-               
+
                 ->select(
                     'article.title',
                     'article.slug',
@@ -113,7 +114,10 @@ class PostsController extends Controller
                 OpenGraph::addImage('https://kinhtez.com' . $post->image, ['height' => 320, 'width' => 500]);
             }
             // dd($posts);
-            $posts_related = Article::where('category_id', $post->category_id)->orderBy('id', 'DESC')->paginate(15);
+            $posts_related = Article::where('category_id', $post->category_id)
+                ->where('article.dlt_flg', 0)
+                ->where('article.status', 1)
+                ->orderBy('id', 'DESC')->paginate(15);
 
             // dd($posts);
             $viewData = [
