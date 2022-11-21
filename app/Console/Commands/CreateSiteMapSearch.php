@@ -56,7 +56,7 @@ class CreateSiteMapSearch extends Command
         //     dump(urlencode($bus->chairman));
         // }
         foreach ($business as $bus) {
-            if ($counter == 45000) {
+            if ($counter == 5000) {
                 // generate new sitemap file
                 $sitemap->store('xml', 'sitemap-search-' . $sitemapCounter);
                 // add the file to the sitemaps array
