@@ -60,7 +60,7 @@ class BusinessController extends Controller
                 'address' => urlencode($company->address),
                 'companyRelate' => $companyRelate,
             ];
-            // dd($companyRelate);
+
             return view('frontend.company.detail', $viewData);
         } catch (Exception $e) {
 
@@ -74,20 +74,21 @@ class BusinessController extends Controller
             $search = $request->input('search');
             if (strlen($search) == 10 && is_numeric($search)) {
                 $business = Business::select('chairman', 'tax', 'address', 'slug', 'name')->where('tax', $search)->get();
+                SEOMeta::setTitle('Tra cứu mã số thuế ' . $search . ', thông tin công ty, doanh nghiệp toàn quốc | KinhteZ');
+                OpenGraph::setTitle('Tra cứu mã số thuế ' . $search . ', thông tin công ty, doanh nghiệp toàn quốc | KinhteZ');
             } else {
                 $business = Business::query()->select('chairman', 'tax', 'address', 'slug', 'name')
                     ->Where('name', 'LIKE', "{$search}%")
                     ->orWhere('chairman', 'LIKE', "{$search}%")->get();
+                SEOMeta::setTitle('Tra cứu tên công ty của ' . $search . ', thông tin doanh nghiệp toàn quốc | KinhteZ');
+                OpenGraph::setTitle('Tra cứu tên công ty của ' . $search . ', thông tin doanh nghiệp toàn quốc | KinhteZ');
             }
 
-            // dd($business);
-            // SEO
-            SEOMeta::setTitle('Tra cứu mã số thuế ' . $search . ', thông tin công ty ' . $search . ', doanh nghiệp toàn quốc | KinhteZ');
-            SEOMeta::setDescription('Tra cứu mã số thuế ' . $search . ' của doanh nghiệp, hồ sơ công ty tra cứu mã số thuế cá nhân, tra cứu mã số thuế trên facebook, zalo. Tin tức về thuế, kế toán và doanh nghiệp.');
-            SEOMeta::addKeyword('Tra cứu mã số thuế, Tra cứu thông tin doanh nghiệp, Tra cứu doanh nghiêp, Tra cứu công ty, Hồ Sơ công ty, MST công ty, KinhteZ');
-            OpenGraph::setDescription('Tra cứu mã số thuế của doanh nghiệp, hồ sơ công ty tra cứu mã số thuế cá nhân, tra cứu mã số thuế trên facebook, zalo. Tin tức về thuế, kế toán và doanh nghiệp.');
-            OpenGraph::setTitle('Tra cứu mã số thuế ' . $search . ', thông tin công ty ' . $search . ', doanh nghiệp toàn quốc | KinhteZ');
-            OpenGraph::setUrl('https://kinhtez.com/tra-cuu-doanh-nghiep?search=' . $search);
+                // SEO
+                SEOMeta::setDescription('Tra cứu mã số thuế ' . $search . ' của doanh nghiệp, hồ sơ công ty tra cứu mã số thuế cá nhân, tra cứu mã số thuế trên facebook, zalo. Tin tức về thuế, kế toán và doanh nghiệp.');
+                SEOMeta::addKeyword('Tra cứu mã số thuế, tra cuu ma so thue, Tra cứu doanh nghiêp, Tra cứu công ty, tra cuu cong ty, MST công ty, KinhteZ');
+                OpenGraph::setDescription('Tra cứu mã số thuế của doanh nghiệp, hồ sơ công ty tra cứu mã số thuế cá nhân, tra cứu mã số thuế trên facebook, zalo. Tin tức về thuế, kế toán và doanh nghiệp.');
+                OpenGraph::setUrl('https://kinhtez.com/tra-cuu-doanh-nghiep?search=' . $search);
 
             $viewData = [
                 'company' => $business,
