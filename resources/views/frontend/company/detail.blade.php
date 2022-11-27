@@ -9,7 +9,7 @@
         <div class="row">
 
             <div class="col-lg-8 col-md-12">
-                <div class="bg-accent p-35-r mb-50 item-shadow-1">
+                <div class="bg-accent p-35-r mb-30 item-shadow-1">
                     <div class="media-body pt-10 media-margin30">
                         <div class="newsletter-area bg-primary">
                             <h2 class="title-medium-light size-xl pl-30 pr-30">Tra cứu thông tin doanh nghiệp trên toàn quốc!</h2>
@@ -60,77 +60,74 @@
                     </div>
                 </div>
                 @endif
-                <div class="row">
-                    @if((new \Jenssegers\Agent\Agent())->isDesktop())
-                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
-                        @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                        <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                        </a>
-                        @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                        <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                        </a>
-                        @else
-                        <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                            <img src="/frontend/img/ads/ads-binance-top.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                        </a>
-                        @endif
-                    </div>
-                    @endif
-                    @if((new \Jenssegers\Agent\Agent())->isMobile())
-                    <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
-                        <div class="sidebar-box image-ads">
-                            <div class="ne-banner-layout1 text-center">
-                                @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
-                                <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                                </a>
-                                @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
-                                <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                                </a>
-                                @else
-                                <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                                    <img src="/frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image" loading="lazy">
-                                </a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    @endif
-                    @if(isset($companyRelate))
-                    @foreach($companyRelate as $com)
-                    <div class="col-sm-12 col-12">
-                        <div class="content-business">
-                            <div class="company">
-                                <h3 class="title-company">
-                                    <a href="{{ route('frontend.business.detail',['tax' => $com->tax, 'slug' => $com->slug])}}">{{$com->name}}</a>
-                                </h3>
-                                <div>
-                                    @if($com->chairman != NULL)
-                                    <span>Người đại diện: {{$com->chairman}}</span>
-                                    <br>
-                                    @endif
-                                    <span>Mã số thuế: {{$com->tax}}</span>
-                                    <br>
-                                    <em>Địa chỉ:</em>
-                                    {{$com->address}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                <div class="ne-banner-layout1 mb-15 mt-10-r text-center">
+                    @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                    <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                        <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản Binance, ưu đãi giảm 40% phí giao dịch " class="thumbnail-image" loading="lazy">
+                    </a>
+                    @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                    <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                        <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản Binance, ưu đãi giảm 40% phí giao dịch " class="thumbnail-image" loading="lazy">
+                    </a>
+                    @else
+                    <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                        <img src="/frontend/img/ads/ads-binance-top.gif" alt="Đăng kí tài khoản Binance, ưu đãi giảm 40% phí giao dịch " class="thumbnail-image" loading="lazy">
+                    </a>
                     @endif
                 </div>
+                @if((new \Jenssegers\Agent\Agent())->isMobile())
+                <div class="ne-banner-layout1 mb-10 mt-10-r text-center">
+                    <div class="sidebar-box image-ads">
+                        <div class="ne-banner-layout1 text-center">
+                            @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
+                            <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
+                            </a>
+                            @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
+                            <a href="https://shorten.asia/UBPExYGq" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
+                            </a>
+                            @else
+                            <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
+                                <img src="/frontend/img/ads/ads4.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @endif
+                @if(isset($companyRelate))
+                @foreach($companyRelate as $com)
+                <div class="col-sm-12 col-12">
+                    <div class="content-business">
+                        <div class="company">
+                            <h3 class="title-company">
+                                <a href="{{ route('frontend.business.detail',['tax' => $com->tax, 'slug' => $com->slug])}}">{{$com->name}}</a>
+                            </h3>
+                            <div>
+                                @if($com->chairman != NULL)
+                                <span>Người đại diện: {{$com->chairman}}</span>
+                                <br>
+                                @endif
+                                <span>Mã số thuế: {{$com->tax}}</span>
+                                <br>
+                                <em>Địa chỉ:</em>
+                                {{$com->address}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+
             </div>
 
             <div class="ne-sidebar sidebar-break-md col-lg-4 col-md-12">
                 <div class="sidebar-box image-ads">
                     <div class="ne-banner-layout1 text-center">
                         <a href="#">
-                            <img src="../frontend/img/ads/ads4.gif" alt="ad" class="thumbnail-image">
+                            <img src="../frontend/img/ads/ads4.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image">
                         </a>
                     </div>
                 </div>
@@ -141,15 +138,15 @@
         <div class="ne-banner-layout1 text-center">
             @if((new \Jenssegers\Agent\Agent())->platform() == 'AndroidOS' )
             <a href="https://trackmobi.asia/ZnPC5Qu2" target="_blank">
-                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
+                <img src="/frontend/img/ads/ads1.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
             </a>
             @elseif((new \Jenssegers\Agent\Agent())->platform() == 'iOS' )
             <a href="https://shorten.asia/UBPExYGq" target="_blank">
-                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
+                <img src="/frontend/img/ads/ads1.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
             </a>
             @else
             <a href="https://mobilebanking.mbbank.com.vn:8443/referral/referred.html?referral_code=Z61LQN7ZUV171BDYCZPF" target="_blank">
-                <img src="/frontend/img/ads/ads1.gif" alt="ad" class="thumbnail-image" loading="lazy">
+                <img src="/frontend/img/ads/ads1.gif" alt="Đăng kí tài khoản MB bank miễn phí chuyển tiền, chọn số tài khoản số đẹp" class="thumbnail-image" loading="lazy">
             </a>
             @endif
         </div>
