@@ -19,7 +19,7 @@ class CreateSiteMap extends Command
      *
      * @var string
      */
-    protected $signature = 'sitemap:create';
+    protected $signature = 'sitemap:business';
 
     /**
      * The console command description.
