@@ -50,7 +50,8 @@ Route::group(['namespace'=>'frontend'], function(){
 Route::group(['namespace'=>'backend', 'prefix' => 'admin','middleware' => 'auth:sanctum', 'verified'], function(){
     Route::get('/','DashboardController@index')->name('backend.index');
     Route::get('/statistic','StatisticController@index')->name('backend.statistic');
-
+	Route::get('/download','FileController@index')->name('backend.download.image');
+	Route::post('/download','FileController@downloadImage');
     Route::group(['prefix'=>'posts'],function()
     {
         Route::get('/','PostsController@index')->name('backend.posts.index');

@@ -2,8 +2,6 @@
 @section('script')
 <script src="{{ URL::asset('backend/htmldiff.js') }}"></script>
 <script>
-    var data = <?php echo json_encode($old, JSON_UNESCAPED_UNICODE); ?>;
-
 
     var newPost = JSON.parse(JSON.stringify({!!$new!!}));
     var oldPost = JSON.parse(JSON.stringify({!!$old!!}));
