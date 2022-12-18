@@ -13,5 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/public/kinhtez-367004-5d5934b34876.json
+/public/*.json
 /public/photos
