@@ -36,7 +36,7 @@ class HomeController extends Controller
                                             <div class="media media-none--lg mb-30">
                                                 <div class="position-relative width-40">
                                                     <a href="/tin-tuc-' . $post->slug . '" class="img-opacity-hover">
-                                                        <img src="' . $post->image . '"  class="thumbnail-image">
+                                                        <img src="' . $post->image . '"  class="thumbnail-image" style="height: 200px;">
                                                     </a>
                                             </div>
                                             <div class="media-body p-mb-none-child media-margin30">
