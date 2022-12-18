@@ -2,7 +2,27 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-ngan-hang-nha-nuoc-%E2%80%98trong-ngan-han-co-the-phai-lua-chon-danh-doi-giua-cac-muc-tieu%E2%80%99</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-muc-lai-suat-huy-dong-niem-yet-len-toi-105nam</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-viet-nam-co-hon-40-vi-dien-tu-dang-hoat-dong-%E2%80%93-momo-chiem-thi-phan-cao-nhat</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-du-doan-gia-bitcoin-xuong-sau-trong-thoi-gian-sap-toi-day-la-cac-muc-gia-can-theo-doi</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-co-phieu-apple-tiep-tuc-giam</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-ty-phu-tien-dien-tu-mike-novogratz-noi-rang-ceo-cua-ftx-se-vao-tu-neu-su-that-xay-ra-theo-cach-toi-mong-doi</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
@@ -12,27 +32,22 @@
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-hon-7000-doanh-nghiep-bat-dong-san-chao-doi-trong-luc-thi-truong-tram-lang</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-linh-vuc-tro-choi-blockchain-nhan-duoc-hon-500-trieu-do-la-dau-tu-tu-thang-10-den-thang-11-nam-nay</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-thu-tuong-pham-minh-chinh-kiem-soat-lam-phat-tao-dong-luc-tang-truong</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-singapore-han-che-tin-dung-tien-dien-tu-nhung-lenh-cam-trung-quoc-thi-lai-kho-xay-ra</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-world-cup-nam-nay-va-nhung-ky-luc-ve-chi-phi-dau-tu</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-da-lat-neu-ten-30-du-an-bat-dong-san-trien-khai-cham-tien-do</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-kinh-te-au-my-suy-thoai-ky-vong-khoi-sac-vao-chau-a</loc>
-		<priority>0.9</priority>
-		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-nhin-nhan-toan-dien-de-hoi-sinh-thi-truong-trai-phieu-doanh-nghiep</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-tim-thay-thi-truong-cho-den-facebook-cho-cac-tai-khoan-quang-cao-gian-lan</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
@@ -42,7 +57,47 @@
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://www.kinhtez.com/tin-tuc-singapore-han-che-tin-dung-tien-dien-tu-nhung-lenh-cam-trung-quoc-thi-lai-kho-xay-ra</loc>
+	<loc>https://www.kinhtez.com/tin-tuc-chau-a-vuon-len-lap-nhieu-ky-luc-dang-ngo-tai-world-cup-2022</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-nvidia-va-tuong-lai-3d-cua-internet</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-hon-7000-doanh-nghiep-bat-dong-san-chao-doi-trong-luc-thi-truong-tram-lang</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-world-cup-nam-nay-va-nhung-ky-luc-ve-chi-phi-dau-tu</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-lam-gi-trong-thi-truong-bat-dong-san-dang-u-am</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-ngan-hang-nha-nuoc-%E2%80%98trong-ngan-han-co-the-phai-lua-chon-danh-doi-giua-cac-muc-tieu%E2%80%99</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-nhin-nhan-toan-dien-de-hoi-sinh-thi-truong-trai-phieu-doanh-nghiep</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-kinh-te-au-my-suy-thoai-ky-vong-khoi-sac-vao-chau-a</loc>
+		<priority>0.9</priority>
+		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://www.kinhtez.com/tin-tuc-thu-tuong-pham-minh-chinh-kiem-soat-lam-phat-tao-dong-luc-tang-truong</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-11-20T08:00:52+00:00</lastmod>
 	</url>
