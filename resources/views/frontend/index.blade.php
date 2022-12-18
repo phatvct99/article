@@ -116,7 +116,7 @@
                 </div>
                 @foreach ($postBusiness as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -127,7 +127,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
@@ -161,7 +161,7 @@
                 </div>
                 @foreach ($postFinance as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -172,7 +172,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
@@ -206,7 +206,7 @@
                 </div>
                 @foreach ($postLand as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -217,7 +217,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
@@ -251,7 +251,7 @@
                 </div>
                 @foreach ($postTech as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -262,7 +262,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
@@ -296,7 +296,7 @@
                 </div>
                 @foreach ($postSociety as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -307,7 +307,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
@@ -341,7 +341,7 @@
                 </div>
                 @foreach ($postCrypto as $post)
                 @if ($loop->first)
-                <div class="img-overlay-70 img-scale-animate mb-30">
+                <div class="img-overlay-70 img-scale-animate position-relative mb-20">
                     <div class="mask-content-sm">
                         <h3 class="title-medium-light">
                             @if(!empty($post->name))
@@ -352,7 +352,7 @@
                         </h3>
                     </div>
                     @if(!empty($post->image))
-                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image width-100">
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="thumbnail-image" style="height: 215px;">
                     @else
                     <img src="/frontend/img/news/news19.jpg" alt="{{ $post->title }}" class="thumbnail-image">
                     @endif
